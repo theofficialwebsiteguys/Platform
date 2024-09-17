@@ -1,1 +1,138 @@
-<p>nav works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark black-bck">
+    <div class="container-fluid nav-section">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="assets/navbar/logo.png" alt="The Website Guys" height="70">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="toggleDropdown('productsDropdown', $event)">
+              Products <i id="productsDropdown-arrow" class="fas fa-chevron-down dropdown-arrow"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Pricing 
+            </a>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center">
+          <a href="#" class="text-white me-3">Log In</a>
+          <button class="btn btn-outline-light rounded-pill">Get Started</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+<div class="dropdown-content black-bck text-white collapse" id="productsDropdown">
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <h5 class="border-bottom pb-2">Website Packages</h5>
+                <a class="dropdown-item text-white" href="#">Single-Page Websites</a>
+                <small class="item-description">A simple, elegant single-page website solution.</small>
+                
+                <a class="dropdown-item text-white" href="#">Multi-Page Websites</a>
+                <small class="item-description">Ideal for businesses needing more pages and flexibility.</small>
+                
+                <a class="dropdown-item text-white" href="#">E-Commerce Websites</a>
+                <small class="item-description">Robust online stores to sell your products efficiently.</small>
+                
+                <a class="dropdown-item text-white" href="#">Portfolio/Blog Websites</a>
+                <small class="item-description">Showcase your work or share your thoughts online.</small>
+                
+                <a class="dropdown-item text-white" href="#">Custom Websites</a>
+                <small class="item-description">Fully customized websites tailored to your needs.</small>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h5 class="border-bottom pb-2">SEO & Marketing Services</h5>
+                <a class="dropdown-item text-white" href="#">SEO Optimization</a>
+                <small class="item-description">Help your website rank higher on search engines.</small>
+                
+                <a class="dropdown-item text-white" href="#">Social Media Integration</a>
+                <small class="item-description">Connect your website seamlessly with social platforms.</small>
+                
+                <a class="dropdown-item text-white" href="#">Content Creation</a>
+                <small class="item-description">Professional copywriting and blog creation for your site.</small>
+                
+                <a class="dropdown-item text-white" href="#">Email Marketing Solutions</a>
+                <small class="item-description">Integrated email capture and marketing tools.</small>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h5 class="border-bottom pb-2">Development Services</h5>
+                <a class="dropdown-item text-white" href="#">Custom Web Development</a>
+                <small class="item-description">Full-stack development for customized web solutions.</small>
+
+                <a class="dropdown-item text-white" href="#">Mobile App Development</a>
+                <small class="item-description">Expand your business with responsive and user-friendly mobile apps.</small>
+
+                <a class="dropdown-item text-white" href="#">API Integration</a>
+                <small class="item-description">Connect third-party services and streamline your operations.</small>
+
+                <a class="dropdown-item text-white" href="#">Web Application Development</a>
+                <small class="item-description">Advanced web-based solutions for your business needs.</small>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h5 class="border-bottom pb-2">Support & Maintenance</h5>
+                <a class="dropdown-item text-white" href="#">24/7 Technical Support</a>
+                <small class="item-description">Keep your website running smoothly with constant support.</small>
+
+                <a class="dropdown-item text-white" href="#">Website Updates & Maintenance</a>
+                <small class="item-description">Ensure your site stays updated and secure.</small>
+
+                <a class="dropdown-item text-white" href="#">Hosting Solutions</a>
+                <small class="item-description">Fast, reliable, and secure website hosting services.</small>
+
+            </div>
+            <div class="col-md-3 mb-4">
+                <h5 class="border-bottom pb-2">Consulting Services</h5>
+                <a class="dropdown-item text-white" href="#">Digital Strategy Consultation</a>
+                <small class="item-description">Get expert advice on growing your online presence.</small>
+
+                <a class="dropdown-item text-white" href="#">Technology Consultation</a>
+                <small class="item-description">Explore the best tools and platforms to enhance your business.</small>
+
+                <a class="dropdown-item text-white" href="#">E-Commerce Optimization</a>
+                <small class="item-description">Enhance your online store with expert recommendations.</small>
+
+            </div>
+            <div class="col-md-3 mb-4">
+                <h5 class="border-bottom pb-2">Website Analytics & Reporting</h5>
+                <a class="dropdown-item text-white" href="#">Performance Analytics</a>
+                <small class="item-description">Track your website’s performance and user engagement.</small>
+
+                <a class="dropdown-item text-white" href="#">SEO Reporting</a>
+                <small class="item-description">Monitor your site’s search engine performance and rankings.</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="dropdown-content bg-dark text-white collapse" id="partnersDropdownContent">
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-md-3">
+                <h5 class="border-bottom pb-2">Partner Services</h5>
+                <a class="dropdown-item text-white" href="#">Service 1</a>
+                <a class="dropdown-item text-white" href="#">Service 2</a>
+                <a class="dropdown-item text-white" href="#">Service 3</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="dropdown-content bg-dark text-white collapse" id="pricingDropdownContent">
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-md-3">
+                <h5 class="border-bottom pb-2">Pricing Options</h5>
+                <a class="dropdown-item text-white" href="#">Basic Plan</a>
+                <a class="dropdown-item text-white" href="#">Standard Plan</a>
+                <a class="dropdown-item text-white" href="#">Premium Plan</a>
+            </div>
+        </div>
+    </div>
+</div>

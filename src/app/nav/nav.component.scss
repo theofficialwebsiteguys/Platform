@@ -1,0 +1,60 @@
+.nav-section {
+    margin-left: 15%;
+    margin-right: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.black-bck{
+    background-color: black;
+}
+
+.navbar-nav {
+    margin-left: 25px;
+    font-size: 20px;
+}
+
+.d-flex {
+    align-items: center;
+}
+
+.collapse {
+    flex-grow: 1;
+}
+
+.collapse .navbar-nav {
+    justify-content: center; /* Centers the nav items between logo and login */
+}
+
+.cta-button {
+    margin-left: auto; /* Ensures the button is on the far right */
+}
+
+.item-description {
+    display: block;
+    color: rgba(255, 255, 255, 0.6); /* Faded white color */
+    font-size: 0.8rem; /* Slightly smaller font */
+    margin-top: -5px; /* Slight space between link and description */
+    margin-bottom: 15px; /* Adds space between this item and the next */
+}
+
+/* Arrow rotation transition */
+.dropdown-arrow {
+    transition: transform 0.3s ease;
+  }
+  
+  /* Rotate down */
+  .rotate {
+    transform: rotate(180deg);
+  }
+  
+  /* Dropdown styling */
+  .dropdown-content {
+    display: none;
+  }
+  
+  .dropdown-content.show {
+    display: block;
+  }
+  
