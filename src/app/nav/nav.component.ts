@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-nav',
@@ -8,7 +8,91 @@ import { Component } from '@angular/core';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
 })
-export class NavComponent {
+export class NavComponent implements OnDestroy  {
+
+  menuVisible = false;
+
+  constructor() {
+    window.addEventListener('resize', this.onResize.bind(this));
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('resize', this.onResize.bind(this));
+  }
+
+  onResize() {
+    if (window.innerWidth > 991 && this.menuVisible) { // Assuming 768px is the mobile breakpoint
+      this.closeMenu();
+    }
+  }
+
+  closeMenu() {
+    this.menuVisible = false;
+
+    const fullscreenMenu = document.querySelector('.fullscreen-menu');
+    const body = document.body;
+
+    fullscreenMenu?.classList.remove('show');
+    body.style.overflow = '';
+    body.style.position = '';
+    body.style.width = '';
+    body.style.height = '';
+    body.style.top = '';
+    body.style.left = '';
+  }
+
+  isMenuOpen = false;
+  isProductsDropdownOpen = false;
+  openDropdownId = '';
+
+  
+toggleDropdownMobile(dropdownId: string, event: Event) {
+  event.preventDefault();
+  if (this.openDropdownId === dropdownId) {
+      this.openDropdownId = ''; // Close the dropdown if it's already open
+  } else {
+      this.openDropdownId = dropdownId; // Open the clicked dropdown
+  }
+  this.updateDropdownStates();
+}
+
+updateDropdownStates() {
+  const dropdowns = document.querySelectorAll('.dropdown-content-mobile');
+  dropdowns.forEach((dropdown) => {
+      if (dropdown.id === this.openDropdownId) {
+          dropdown.classList.add('show');
+      } else {
+          dropdown.classList.remove('show');
+      }
+  });
+}
+
+  toggleMenu(event: Event) {
+    event.preventDefault();
+    this.menuVisible = !this.menuVisible;
+
+    const fullscreenMenu = document.querySelector('.fullscreen-menu');
+    const body = document.body;
+
+    if (this.menuVisible) {
+      fullscreenMenu?.classList.add('show');
+      body.style.overflow = 'hidden';
+      body.style.position = 'fixed';
+      body.style.width = '100%';
+      body.style.height = '100%';
+      body.style.top = '0';
+      body.style.left = '0';
+    } else {
+      fullscreenMenu?.classList.remove('show');
+      body.style.overflow = '';
+      body.style.position = '';
+      body.style.width = '';
+      body.style.height = '';
+      body.style.top = '';
+      body.style.left = '';
+    }
+  }
+
 
   toggleDropdown(dropdownId: string, event: Event): void {
     event.preventDefault();
