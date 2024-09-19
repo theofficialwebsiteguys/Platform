@@ -1,1 +1,22 @@
-<p>hero works!</p>
+<div class="hero-section">
+    <div class="grid-container">
+      <div class="grid-item"
+           *ngFor="let image of images; let i = index"
+           [ngClass]="{
+            'large-item': i === 8,
+            'pop-out': getImageClass(i) === 'pop-out',
+            'pop-in': getImageClass(i) === 'pop-in'
+          }">
+        <img *ngIf="i<9" [src]="image.src" alt="image" />
+      </div>
+    </div>
+  
+    <div class="hero-content">
+      <div class="header-content">
+        <h1 class="main-header">Welcome to Our Website</h1>
+        <p class="sub-header">Your gateway to exceptional digital experiences</p>
+    </div>
+    
+    </div>
+  </div>
+  
