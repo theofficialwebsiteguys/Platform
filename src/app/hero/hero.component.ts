@@ -25,10 +25,10 @@ export class HeroComponent {
 
     // The full set of images from which to randomly pick
     fullImageArray = [
-      { src: 'assets/image1.jpg' },
-      { src: 'assets/image2.jpg' },
-      { src: 'assets/image3.jpg' },
-      { src: 'assets/image4.jpg' },
+      { src: 'assets/default.jpg' },
+      { src: 'assets/default.jpg' },
+      { src: 'assets/default.jpg' },
+      { src: 'assets/default.jpg' },
       { src: 'assets/default.jpg' },
       { src: 'assets/default.jpg' },
       // Add as many images as you like here

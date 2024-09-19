@@ -1,0 +1,100 @@
+/* General container for feature steps */
+.feature-steps-container {
+    display: flex;
+    align-items: center;
+    background-color: #e7e7e7;
+    /* Light background to make content stand out */
+    padding: 50px 50px 50px 50px;
+    border-radius: 10px;
+    /* Soft shadow for a modern look */
+}
+
+/* Text section */
+.feature-steps-text {
+    width: 50%;
+}
+
+.feature-steps-text h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.feature-steps-text p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+.feature-steps-text ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.feature-steps-text li {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    color: #555;
+}
+
+.feature-steps-text strong {
+    color: #000;
+    font-weight: bold;
+}
+
+/* Image section */
+.feature-steps-body {
+    width: 45%;
+    position: relative;
+}
+
+.feature-steps-body img {
+    width: 100%;
+}
+
+.get-started-btn {
+    display: inline-block;
+    background-color: #000000;
+    /* Green color for the button */
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    margin-top: 30px;
+}
+
+
+.get-started-btn:hover {
+    background-color: #868686;
+    color: rgb(0, 0, 0);
+    /* Slightly darker green on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .feature-steps-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .feature-steps-text,
+    .feature-steps-body {
+        width: 100%;
+        margin: 0;
+    }
+
+    .feature-steps-text {
+        margin-bottom: 30px;
+    }
+
+    .get-started-btn {
+        width: 100%;
+    }
+}
