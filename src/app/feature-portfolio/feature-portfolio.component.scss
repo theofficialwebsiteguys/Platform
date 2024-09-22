@@ -1,0 +1,150 @@
+.portfolio-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+}
+
+.portfolio-banner-img {
+    width: 100vw;
+    height: auto;
+}
+
+.portfolio-static {
+    position: relative;
+    opacity: .7;
+    transition: .4s opacity ease-in-out;
+}
+
+.portfolio-hover {
+    position: relative;
+    opacity: .3;
+    transition: .4s opacity ease-in-out;
+}
+
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    width: 100vw;
+}
+
+.fade-in {
+    opacity: 1;
+    transition: opacity 500ms ease-in-out;
+}
+  
+.fade-out {
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+}
+
+.text-hover {
+    color: white;
+    pointer-events: none;
+}
+
+.text-static {
+    color: white;
+    font-size: 48px;
+    font-weight: 600;
+    pointer-events: none;
+}
+
+.text-hover-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.text-hover-list li {
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+
+/* Extra small devices */
+@media (max-width: 575.98px) {
+    .text-static {
+        font-size: 18px;
+    }
+
+    .text-hover-list {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .text-hover-list li {
+        font-size: 8px;
+        margin-bottom: 3px;
+    }
+}
+  
+/* Small devices */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .text-static {
+        font-size: 24px;
+    }
+
+    .text-hover-list {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .text-hover-list li {
+        font-size: 12px;
+    }
+}
+
+/* Medium devices */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .text-static {
+        font-size: 30px;
+    }
+
+    .text-hover-list {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .text-hover-list li {
+        font-size: 16px;
+    }
+}
+
+/* Large devices */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .text-static {
+        font-size: 36px;
+    }
+
+    .text-hover-list {
+        align-items: center;
+        width: 100%;
+    }
+    .text-hover-list li {
+        font-size: 20px;
+        width: 33%;
+    }
+}
+
+/* Extra large devices */
+@media (min-width: 1200px) {
+    .text-static {
+        font-size: 48px;
+    }
+
+    .text-hover-list {
+        align-items: center;
+        width: 100%;
+    }
+    .text-hover-list li {
+        font-size: 24px;
+        width: 33%;
+    }
+}
