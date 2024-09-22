@@ -1,18 +1,73 @@
-<div class="feature-steps-container">
-    <div class="feature-steps-text">
-        <h2>Create. Connect. Launch.</h2>
-        <p>Generate your free website template, connect with our team, and watch your website come to life.</p>
-        <ul>
-            <li><strong>Your Website, Your Control:</strong> You’re in charge of the design, we handle the
-                rest—effortlessly.</li>
-            <li><strong>Design with Ease, Develop with Experts:</strong> Take control of the design process, and our
-                professional USA developers will do the rest.</li>
-            <li><strong>Free to Create, Quick to Launch:</strong> Generate your free website template, connect with our
-                team, and watch your business grow.</li>
-        </ul>
-        <button class="get-started-btn">Get Started Today</button>
+<div class="feature-section py-5">
+  <!-- Static Header with Full-Width Underline -->
+  <div class="header text-center mb-5 position-relative">
+    <div class="underline"></div>
+    <div class="highlight" [style.transform]="'translateX(' + highlightPosition + '%)'"></div>
+
+    <div class="col-lg-4 col-md-4 mb-4 header-text">
+      <div class="text active-text">Create.</div>
+      <div class="subtext-frame" [ngClass]="{'active-subtext': activeSection === 'create'}">
+        <p class="subtext">Generate your free website template</p>
+      </div>
     </div>
-    <div class="feature-steps-body">
-        <img src="assets/feature-steps/3StepInfoGraphic.png" alt="3 Step InfoGraphic">
+    <div class="col-lg-4 col-md-4 mb-4 header-text">
+      <div class="text">Connect.</div>
+      <div class="subtext-frame" [ngClass]="{'active-subtext': activeSection === 'connect'}">
+        <p class="subtext">Connect with our team</p>
+      </div>
     </div>
+    <div class="col-lg-4 col-md-4 header-text">
+      <div class="text">Launch.</div>
+      <div class="subtext-frame" [ngClass]="{'active-subtext': activeSection === 'launch'}">
+        <p class="subtext">Watch your website come to life</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carousel Content -->
+  <div id="featureCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-pause="false">
+    <div class="carousel-inner">
+      <!-- Create Section -->
+      <div class="carousel-item" [class.active]="activeSection === 'create'">
+        <div class="feature">
+          <div class="hook">
+            <h2 class="main-text display-4 fw-bold">Your Business,</h2>
+            <h2 class="main-text display-4 fw-bold">Your Control</h2>
+            <p class="description lead">Craft your website's design and features to your exact specifications, with complete control at your fingertips.</p>
+          </div>
+          <div class="image">
+            <img src="assets/default.jpg" alt="">
+          </div>
+        </div>
+      </div>
+
+      <!-- Connect Section (Reversed layout) -->
+      <div class="carousel-item" [class.active]="activeSection === 'connect'">
+        <div class="feature ">
+          <div class="hook">
+            <h2 class="main-text display-4 fw-bold">Building Bridges,</h2>
+            <h2 class="main-text display-4 fw-bold">Connecting Teams</h2>
+            <p class="description lead">Collaborate with our team to bring your vision to life.</p>
+          </div>
+          <div class="image">
+            <img src="assets/default.jpg" alt="">
+          </div>
+        </div>
+      </div>
+
+      <!-- Launch Section -->
+      <div class="carousel-item" [class.active]="activeSection === 'launch'">
+        <div class="feature">
+          <div class="hook">
+            <h2 class="main-text display-4 fw-bold">Ready,</h2>
+            <h2 class="main-text display-4 fw-bold">Set, Launch!</h2>
+            <p class="description lead">Take your website live and reach your audience.</p>
+          </div>
+          <div class="image">
+            <img src="assets/default.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
