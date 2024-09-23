@@ -43,12 +43,14 @@
 .rotate {
     transform: rotate(180deg);
 }
-
 .dropdown-content {
-    display: none;
-    position: absolute;
+    position: fixed;
+    top: 70px; /* Adjust this based on your navbar height */
+    left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 999;
+    background-color: black;
+    display: none; /* Initially hidden */
 }
 
 .dropdown-content.show {
@@ -123,6 +125,7 @@
     left: 0;
     right: 0;
     z-index: 1000;
+    background-color: black; /* Ensure the navbar has a background color */
 }
 
 @media (max-width: 768px) {

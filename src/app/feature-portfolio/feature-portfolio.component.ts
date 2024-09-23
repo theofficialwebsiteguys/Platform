@@ -12,10 +12,10 @@ export class FeaturePortfolioComponent {
   isHover = false;
 
   onMouseEnter() {
-    this.isHover = true;
+    // this.isHover = true;
   }
 
   onMouseLeave() {
-    this.isHover = false;
+    // this.isHover = false;
   }
 }
