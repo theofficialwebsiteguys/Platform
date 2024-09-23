@@ -2,7 +2,7 @@
 .feature-steps-container {
     display: flex;
     align-items: center;
-    background-color: #e7e7e7;
+    background-color: #ffffff;
     /* Light background to make content stand out */
     padding: 50px 50px 50px 50px;
     border-radius: 10px;
@@ -12,6 +12,7 @@
 /* Text section */
 .feature-steps-text {
     width: 50%;
+    padding: 50px;
 }
 
 .feature-steps-text h2 {
@@ -54,28 +55,6 @@
     width: 100%;
 }
 
-.get-started-btn {
-    display: inline-block;
-    background-color: #000000;
-    /* Green color for the button */
-    color: white;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease;
-    margin-top: 30px;
-}
-
-
-.get-started-btn:hover {
-    background-color: #868686;
-    color: rgb(0, 0, 0);
-    /* Slightly darker green on hover */
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
