@@ -11,83 +11,84 @@ import { Component } from '@angular/core';
   styleUrl: './hero.component.scss'
 })
 export class HeroComponent {
-  images = [
-    { src: 'assets/default.jpg', state: 'default' },
-    { src: 'assets/default.jpg', state: 'default' },
-    { src: 'assets/default.jpg', state: 'default' },
-    { src: 'assets/default.jpg', state: 'default' },
-    { src: 'assets/default.jpg', state: 'default' },
-    { src: 'assets/default.jpg', state: 'default' },
-    { src: 'assets/default.jpg', state: 'default' },
-    { src: 'assets/default.jpg', state: 'default' },
+  videos = [
+    { src: 'assets/hero-clips/amores-hero-clip.mp4', state: 'default' },
+    { src: 'assets/hero-clips/andy-hero-clip.mp4', state: 'default' },
+    { src: 'assets/hero-clips/cakes-hero-clip.mp4', state: 'default' },
+    { src: 'assets/hero-clips/jeremy-hero-clip.mp4', state: 'default' },
+    { src: 'assets/hero-clips/luke-hero-clip.mp4', state: 'default' },
+    { src: 'assets/hero-clips/oliver-hero-clip.mp4', state: 'default' },
+    { src: 'assets/hero-clips/riverside-hero-clip.mp4', state: 'default' },
+    { src: 'assets/hero-clips/riverside-hero-clip.mp4', state: 'default' },
     { src: 'assets/default.jpg', state: 'default' }
   ];
 
-    // The full set of images from which to randomly pick
-    fullImageArray = [
-      { src: 'assets/default.jpg' },
-      { src: 'assets/default.jpg' },
-      { src: 'assets/default.jpg' },
-      { src: 'assets/default.jpg' },
-      { src: 'assets/default.jpg' },
-      { src: 'assets/default.jpg' },
-      // Add as many images as you like here
-    ];
- 
+  largeVideo = { src: 'assets/hero-clips/hero-video.mp4' }; 
 
-  currentImageIndex = 0;
+  websiteClips = [ 
+    { src: 'assets/hero-clips/amores-hero-clip.mp4' },
+  ]
+
+  fullVideoArray = [
+    { src: 'assets/hero-clips/amores-hero-clip.mp4' },
+    { src: 'assets/hero-clips/andy-hero-clip.mp4'},
+    { src: 'assets/hero-clips/cakes-hero-clip.mp4'},
+    { src: 'assets/hero-clips/jeremy-hero-clip.mp4'},
+    { src: 'assets/hero-clips/luke-hero-clip.mp4'},
+    { src: 'assets/hero-clips/oliver-hero-clip.mp4'},
+    { src: 'assets/hero-clips/riverside-hero-clip.mp4'},
+  ];
+
+  currentVideoIndex = 0;
   transitioning = false;
 
-  getRandomIndex(currentIndex: number, arrayLength: number): number {
-    let randomIndex: number;
-    do {
-      randomIndex = Math.floor(Math.random() * arrayLength);
-    } while (randomIndex === currentIndex);
-    return randomIndex;
-  }
-
   ngOnInit() {
-    this.startImageRotation();
+    this.startVideoRotation();
   }
 
-
-  startImageRotation() {
+  startVideoRotation() {
     setInterval(() => {
       if (!this.transitioning) {
         this.transitioning = true;
 
-        // Transition out the current image
-        setTimeout(() => {
-          // Generate a new random index and select a new image from fullImageArray
-          const newImage = this.getRandomImage();
+        // Start pop-out animation
+        this.videos[this.currentVideoIndex].state = 'pop-out';
 
-          // Update the current image's source in the visible grid
-          this.images[this.currentImageIndex].src = newImage.src;
+        setTimeout(() => {
+          // Generate a new random index and select a new video from fullVideoArray
+          const newVideo = this.getRandomVideo();
+
+          // Update the current video's source in the visible grid
+          this.videos[this.currentVideoIndex].src = newVideo.src;
+          this.videos[this.currentVideoIndex].state = 'pop-in';
 
           // Pick a new random index for the next transition
           let newIndex: number;
           do {
-            newIndex = Math.floor(Math.random() * this.images.length);
-          } while (newIndex === this.currentImageIndex);
+            newIndex = Math.floor(Math.random() * this.videos.length);
+          } while (newIndex === this.currentVideoIndex);
 
-          this.currentImageIndex = newIndex;
+          this.currentVideoIndex = newIndex;
           this.transitioning = false;
-        }, 1000); // Duration of the pop-out animation
+        }, 1000); // Match this timing with your pop-out animation duration
       }
-    }, 4000); // Change image every 4 seconds (1s pop-out + 3s pause)
+    }, 4000); // Change video every 4 seconds (1s pop-out + 3s pause)
   }
 
-  // Function to get a random image from the fullImageArray
-  getRandomImage() {
-    const randomIndex = Math.floor(Math.random() * this.fullImageArray.length);
-    return this.fullImageArray[randomIndex];
+  // Function to get a random video from the fullVideoArray
+  getRandomVideo() {
+    const randomIndex = Math.floor(Math.random() * this.fullVideoArray.length);
+    return this.fullVideoArray[randomIndex];
   }
 
   // Return the correct animation class based on the current index
   getImageClass(index: number) {
-    if (index === this.currentImageIndex) {
-      return this.transitioning ? 'pop-out' : 'pop-in';
-    }
-    return 'pop-in';
+    return this.videos[index].state;
+  }
+
+  onVideoLoaded(index: number) {
+    // Ensure the video plays when the source is updated
+    const videoElement = document.querySelectorAll('video')[index] as HTMLVideoElement;
+    videoElement.play();
   }
 }

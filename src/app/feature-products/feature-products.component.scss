@@ -3,16 +3,20 @@
     display: flex;
     align-items: center;
     background-color: #ffffff;
-    /* Light background to make content stand out */
-    padding: 50px 50px 50px 50px;
+    padding: 50px;
     border-radius: 10px;
-    /* Soft shadow for a modern look */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add a soft shadow for a modern look */
+    flex-wrap: wrap; /* Ensure content wraps on smaller screens */
+}
+
+.feature-steps-container.reverse-layout {
+    flex-direction: row-reverse;
 }
 
 /* Text section */
 .feature-steps-text {
     width: 50%;
-    padding: 50px;
+    padding: 20px;
 }
 
 .feature-steps-text h2 {
@@ -53,14 +57,31 @@
 
 .feature-steps-body img {
     width: 100%;
+    border-radius: 8px; /* Adds a slight curve to the image corners */
 }
 
-
 /* Responsive adjustments */
+@media (max-width: 1024px) {
+    .feature-steps-text {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .feature-steps-body {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .feature-steps-container.reverse-layout {
+        flex-direction: column-reverse;
+    }
+}
+
 @media (max-width: 768px) {
     .feature-steps-container {
         flex-direction: column;
         text-align: center;
+        padding: 30px;
     }
 
     .feature-steps-text,
@@ -75,5 +96,24 @@
 
     .get-started-btn {
         width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-steps-text h2 {
+        font-size: 2rem;
+    }
+
+    .feature-steps-text p,
+    .feature-steps-text li {
+        font-size: 1rem;
+    }
+
+    .feature-steps-text {
+        padding: 10px;
+    }
+
+    .feature-steps-container {
+        padding: 20px;
     }
 }

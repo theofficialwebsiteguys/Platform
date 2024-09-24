@@ -1,0 +1,116 @@
+.mission-container {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 100px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    gap: 15%;
+  }
+  
+  .image-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px; /* Add margin for spacing when wrapped */
+  }
+  
+  .profile-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .overlay-text {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: #86c547;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.9em; /* Slightly smaller font for better fit */
+  }
+  
+  .mission-content {
+    max-width: 40%;
+    flex: 1; /* Allow content to grow and shrink */
+    text-align: left;
+  }
+  
+  .quote-icon {
+    font-size: 3em;
+    color: #86c547;
+    margin-bottom: -10px;
+  }
+  
+  .mission-header {
+    font-size: 2em;
+    color: #3b3b3b;
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .mission-description {
+    color: #555;
+    font-size: 1em;
+    line-height: 1.5;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .mission-container {
+        gap: 10%;
+        padding: 20px;
+      }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .mission-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .mission-content {
+      max-width: 100%;
+      text-align: center;
+    }
+  
+    .mission-header {
+      font-size: 1.5em;
+    }
+  
+    .quote-icon {
+      font-size: 2.5em;
+      margin-bottom: 0;
+    }
+  
+    .mission-description {
+      font-size: 0.9em;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .mission-container {
+      padding: 15px;
+    }
+  
+    .image-container {
+      max-width: 100%;
+    }
+  
+    .overlay-text {
+      font-size: 0.8em;
+      padding: 8px;
+    }
+  
+    .mission-header {
+      font-size: 1.2em;
+    }
+  
+    .mission-description {
+      font-size: 0.85em;
+    }
+  }
+  

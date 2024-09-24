@@ -25,6 +25,14 @@
     border-radius: 10px;
 }
 
+.grid-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
 .large-item {
     grid-column: 2 / 4;
     grid-row: 2 / 4;
@@ -123,6 +131,7 @@
     .hero-section {
         flex-direction: column;
         align-items: center;
+        padding: 40px;
     }
 
     .header-content {
@@ -148,6 +157,7 @@
     .hero-section {
         flex-direction: column;
         align-items: center;
+        padding: 20px;
     }
 
     .header-content {
