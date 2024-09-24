@@ -1,23 +1,25 @@
 <div class="hero-section">
-    <div class="grid-container">
+  <div class="grid-container">
       <div class="grid-item"
-           *ngFor="let image of images; let i = index"
+           *ngFor="let video of videos; let i = index"
            [ngClass]="{
             'large-item': i === 8,
-            'pop-out': getImageClass(i) === 'pop-out',
-            'pop-in': getImageClass(i) === 'pop-in'
+            'pop-out': getImageClass(i) === 'pop-out' && i !== 8,
+            'pop-in': getImageClass(i) === 'pop-in' && i !== 8
           }">
-        <img *ngIf="i<9" [src]="image.src" alt="image" />
+          <video *ngIf="i < 9"
+                 [src]="i === 8 ? largeVideo.src : video.src"
+                 autoplay muted loop playsinline
+                 (loadeddata)="onVideoLoaded(i)">
+          </video>
       </div>
-    </div>
-  
-    <div class="hero-content">
-      <div class="header-content">
-        <h1 class="main-header">Crafted by Experts, Designed for You</h1>
-        <p class="sub-header">Connect, Design, and let our USA based expert developers do all the work.</p>
-        <button class="get-started-btn">Get Started Today</button>
-    </div>
-    
+  </div>
+
+  <div class="hero-content">
+    <div class="header-content">
+      <h1 class="main-header">Crafted by Experts, Designed for You</h1>
+      <p class="sub-header">Connect, Design, and let our USA based expert developers do all the work.</p>
+      <button class="get-started-btn">Get Started Today</button>
     </div>
   </div>
-  
+</div>

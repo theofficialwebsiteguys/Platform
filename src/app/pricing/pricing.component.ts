@@ -12,88 +12,67 @@ import { FaqSectionComponent } from '../faq-section/faq-section.component';
 export class PricingComponent {
   pricingPlans = [
     {
-      name: 'Starter',
-      description: 'Ideal for beginners',
-      price: '$19',
-      billingCycle: 'billed monthly',
-      promo: 'First month free',
+      name: 'Single-Page Websites',
+      description: 'Ideal for Event Pages, Landing Pages, Personal Blogs/Resumes',
+      price: '$29',
+      promo: 'Quick & Easy',
       popular: false,
-      rates: [
-        '3.0% + 20¢ per transaction',
-        'No setup fees',
-        'No hidden charges'
-      ],
       features: [
-        'Basic support',
-        'Up to 2 user accounts',
-        'Access to standard tools',
-        'Community support',
+        '1 Page Website',
+        'Custom Design',
+        '24/7 Maintenance & Support',
+        'Free Domain (1 Year)',
         'Basic analytics'
       ],
-      cta: 'Get started'
+      cta: 'Get Started Free'
     },
     {
-      name: 'Pro',
-      description: 'For growing businesses',
-      price: '$49',
-      billingCycle: 'billed monthly',
-      promo: 'Free for the first 14 days',
+      name: 'Standard Website',
+      description: 'For Small to Medium sized businesses. Restaurants, Shops, Service.',
+      price: '$53',
+      promo: 'Take Your Business Online',
       popular: true,
-      rates: [
-        '2.5% + 15¢ per transaction',
-        'Priority support',
-        'Access to premium features'
-      ],
       features: [
-        'Up to 10 user accounts',
+        '2-8 Page Website',
+        'Custom Design',
+        '24/7 Maintenance & Support',
+        'Free Domain (1 Year)',
+        'Basic analytics'
+      ],
+      cta: 'Get Started Free'
+    },
+    {
+      name: 'Advanced Website',
+      description: 'For medium to large established companies.',
+      price: '$86',
+      promo: 'Ensure your clients are satisfied.',
+      popular: false,
+      features: [
+        '8+ Page Website',
+        'Custom Design',
+        '24/7 Maintenance & Support',
+        'Free Domain (1 Year)',
+        'SEO & Marketing Consulting',
+        'Advanced analytics'
+      ],
+      cta: 'Get Started Free'
+    },
+    {
+      name: 'E-Commerce Shop',
+      description: 'For businesses looking to sell their products online to customers.',
+      price: '$129',
+      promo: 'Sell Your Product',
+      popular: false,
+      features: [
+        '1-8 Page Ecommerce Website',
+        'Custom Design',
+        '24/7 Maintenance & Support',
+        'Free Domain (1 Year)',
+        'SEO & Marketing Consulting',
         'Advanced analytics',
-        'Customizable templates',
-        'Integration with third-party apps',
-        '24/7 email support'
+        ''
       ],
-      cta: 'Start your trial'
-    },
-    {
-      name: 'Enterprise',
-      description: 'For established companies',
-      price: '$199',
-      billingCycle: 'billed annually',
-      promo: 'Save 20% with annual billing',
-      popular: false,
-      rates: [
-        '1.5% + 10¢ per transaction',
-        'Dedicated account manager',
-        'Custom SLA'
-      ],
-      features: [
-        'Unlimited user accounts',
-        'Advanced security features',
-        'Custom integrations',
-        'Dedicated support',
-        'Onboarding assistance'
-      ],
-      cta: 'Request a demo'
-    },
-    {
-      name: 'Ultimate',
-      description: 'For enterprises with custom needs',
-      price: 'Contact us',
-      billingCycle: 'Custom billing options',
-      promo: 'Tailored solutions available',
-      popular: false,
-      rates: [
-        'Custom transaction rates',
-        'Personalized service',
-        'Enterprise-level security'
-      ],
-      features: [
-        'Custom user roles',
-        'Priority 24/7 support',
-        'Bespoke features',
-        'Dedicated infrastructure',
-        'Custom training and onboarding'
-      ],
-      cta: 'Contact sales'
+      cta: 'Start Selling'
     }
   ];
 
