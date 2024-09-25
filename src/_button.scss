@@ -1,0 +1,27 @@
+// _buttons.scss
+
+// Variables
+$primary-color: #F2F2F2;
+$primary-text-color: #000000;
+$border-radius-pill: 40px;
+
+button{
+    display: inline-block;
+    background-color: #000000;
+    /* Green color for the button */
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+
+}
+
+button:hover {
+    background-color: #b8b8b8;
+    color: rgb(0, 0, 0);
+}
