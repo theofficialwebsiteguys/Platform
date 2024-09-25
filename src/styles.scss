@@ -2,27 +2,6 @@
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
 body{
-    margin-top: 96px;
+    margin-top: 80px;
 
-}
-
-button{
-    display: inline-block;
-    background-color: #000000;
-    /* Green color for the button */
-    color: white;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease;
-
-}
-
-button:hover {
-    background-color: #b8b8b8;
-    color: rgb(0, 0, 0);
 }
