@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,7 +14,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 export class SignUpComponent {
   signUpForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.signUpForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       firstName: ['', Validators.required],
@@ -29,8 +31,16 @@ export class SignUpComponent {
   }
 
   onSubmit() {
-    if (this.signUpForm.valid) {
-      console.log('Form Submitted', this.signUpForm.value);
-    }
+    // if (this.signUpForm.valid) {
+    //   this.authService.signUp(this.signUpForm.value).subscribe(
+    //     (response) => {
+    //       console.log('Signup successful', response);
+    //       this.router.navigate(['/login']); // Navigate to login or another page after signup
+    //     },
+    //     (error) => {
+    //       console.error('Signup failed', error);
+    //     }
+    //   );
+    // }
   }
 }

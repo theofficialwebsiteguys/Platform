@@ -1,0 +1,26 @@
+<div class="packages-section" [ngStyle]="{'background-color': backgroundColor}">
+    <div class="container">
+      <div class="hook">
+        <h1 class="header" [ngStyle]="{'color': textColor}">{{ header }}</h1>
+      </div>
+      <div class="packages">
+        <div class="package-card" *ngFor="let package of packages">
+          <div class="contents">
+            <div class="image-background">
+              <img [src]="package.icon" [alt]="package.title + ' icon'" />
+            </div>
+            <div class="details">
+              <h2 class="title">{{ package.title }}</h2>
+              <div class="bullets">
+                <div class="bullet-point" *ngFor="let bullet of package.bullets">
+                  <div class="bullet"></div>
+                  <div class="text">{{ bullet }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

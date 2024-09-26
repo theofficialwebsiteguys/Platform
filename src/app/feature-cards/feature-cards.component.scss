@@ -1,0 +1,177 @@
+/* PackagesSection */
+.packages-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  width: 100%;
+  background: #000000;
+}
+
+/* Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 0 64px;
+  gap: 48px;
+  width: 100%;
+}
+
+/* Hook */
+.hook {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+
+/* Header */
+.header {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 2.25rem; /* Relative unit for fluid typography */
+  line-height: 1.2;
+  text-align: center;
+  color: #F2F2F2;
+}
+
+/* Packages */
+.packages {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center; /* Center content on small screens */
+  align-items: center;
+  padding: 0 16px; /* Adjust padding for smaller screens */
+  width: 100%;
+}
+
+/* PackageCard */
+.package-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px;
+  width: 100%; /* Make cards take full width on mobile */
+  max-width: 264px; /* Limit width on larger screens */
+  height: 300px;
+  background: #F2F2F2;
+  border-radius: 16px;
+  margin: 16px; /* Add margin for spacing */
+}
+
+/* Contents */
+.contents {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* Icon */
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 40px;
+}
+
+/* Details */
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* Title */
+.title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem; /* Relative unit for fluid typography */
+  line-height: 1.2;
+  color: #000000;
+}
+
+/* Bullets */
+.bullets {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* BulletPoint */
+.bullet-point {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Bullet */
+.bullet {
+  width: 6px;
+  height: 6px;
+  background: #000000;
+  transform: rotate(-45deg);
+}
+
+/* Text */
+.text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 1rem; /* Relative unit for fluid typography */
+  line-height: 1.2;
+  color: #000000;
+}
+
+/* Media Queries */
+
+/* Mobile (max-width: 600px) */
+@media (max-width: 600px) {
+  .header {
+    font-size: 1.75rem;
+  }
+
+  .packages {
+    flex-direction: column;
+    padding: 0 16px;
+  }
+
+
+  .contents {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .text {
+    font-size: 0.875rem;
+  }
+}
+
+/* Tablet (min-width: 601px) and (max-width: 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .header {
+    font-size: 2rem;
+  }
+
+  .packages {
+    justify-content: center;
+    padding: 0 32px;
+  }
+
+  .package-card {
+    width: 45%; /* Two cards per row */
+  }
+}
