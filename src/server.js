@@ -1,12 +1,13 @@
 // load environment variables
-require('dotenv').config(); 
+require('dotenv').config()
 
-// imports
+// import and setup packages
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
+// init the express app
 const app = express()
 
 // mount middleware
@@ -20,10 +21,15 @@ mongoose.connect(process.env.MONGO_URI)
 
 // routes
 app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+    res.send('Hello World!')
+})
+
+//api routes for the user model
+const userRoutes = require('./routes/user')
+app.use('/api/users', userRoutes)
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+  console.log(`Server is running on http://localhost:${PORT}`)
+})
