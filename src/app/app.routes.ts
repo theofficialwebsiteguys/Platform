@@ -11,7 +11,7 @@ import { MissionComponent } from './mission/mission.component';
 import { ContactComponent } from './contact/contact.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: '/landing', pathMatch: 'full' },
+    { path: '', pathMatch: 'full', component: LandingComponent },
     { path: 'landing', component: LandingComponent },
     { path: 'pricing', component: PricingComponent },
     { path: 'sign-up', component: SignUpComponent },
