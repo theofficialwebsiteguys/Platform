@@ -14,15 +14,15 @@
                 </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="/mission">Our Mission</a>
+                  <a class="nav-link" routerLink="/mission">Our Mission</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="/pricing">Pricing</a>
+                  <a class="nav-link" routerLink="/pricing">Pricing</a>
               </li>
           </ul>
           <div class="d-flex align-items-center">
-              <!-- <a href="/login" class="text-white me-3">Log In</a> -->
-              <a href="/contact"><button class="btn btn-outline-light rounded-pill">Get Started</button></a>
+              <!-- <a routerLink="/login" class="text-white me-3">Log In</a> -->
+              <a routerLink="/contact"><button class="btn btn-outline-light rounded-pill">Get Started</button></a>
           </div>
       </div>
   </div>
@@ -38,52 +38,52 @@
       <div class="dropdown-content-mobile" id="productsDropdownMobile">
         <ul>
           <h5 class="border-bottom text-white pb-2">Website Packages</h5>
-          <li><a class="dropdown-item text-white" href="/products/websites">Single-Page Websites</a>
+          <li><a class="dropdown-item text-white" routerLink="/products/websites">Single-Page Websites</a>
             <small class="item-description">A simple, elegant single-page website solution.</small></li>
-          <li>          <a class="dropdown-item text-white" href="/products/websites">Multi-Page Websites</a>
+          <li>          <a class="dropdown-item text-white" routerLink="/products/websites">Multi-Page Websites</a>
             <small class="item-description">Ideal for businesses needing more pages and flexibility.</small></li>
-          <li>                <a class="dropdown-item text-white" href="/products/websites">E-Commerce Websites</a>
+          <li>                <a class="dropdown-item text-white" routerLink="/products/websites">E-Commerce Websites</a>
             <small class="item-description">Robust online stores to sell your products efficiently.</small></li>
-          <li>                <a class="dropdown-item text-white" href="/products/websites">Portfolio/Blog Websites</a>
+          <li>                <a class="dropdown-item text-white" routerLink="/products/websites">Portfolio/Blog Websites</a>
             <small class="item-description">Showcase your work or share your thoughts online.</small></li>
-          <li>   <a class="dropdown-item text-white" href="/products/websites">Custom Websites</a>
+          <li>   <a class="dropdown-item text-white" routerLink="/products/websites">Custom Websites</a>
             <small class="item-description">Fully customized websites tailored to your needs.</small></li>
 
           <h5 class="border-bottom text-white pb-2">SEO & Marketing Services</h5>
-          <li> <a class="dropdown-item text-white" href="/products/seo-marketing">SEO Optimization</a>
+          <li> <a class="dropdown-item text-white" routerLink="/products/seo-marketing">SEO Optimization</a>
             <small class="item-description">Help your website rank higher on search engines.</small></li>
-          <li>            <a class="dropdown-item text-white" href="/products/seo-marketing">Social Media Integration</a>
+          <li>            <a class="dropdown-item text-white" routerLink="/products/seo-marketing">Social Media Integration</a>
             <small class="item-description">Connect your website seamlessly with social platforms.</small></li>
-          <li>            <a class="dropdown-item text-white" href="/products/seo-marketing">Content Creation</a>
+          <li>            <a class="dropdown-item text-white" routerLink="/products/seo-marketing">Content Creation</a>
             <small class="item-description">Professional copywriting and blog creation for your site.</small></li>
-          <li>            <a class="dropdown-item text-white" href="/products/seo-marketing">Email Marketing Solutions</a>
+          <li>            <a class="dropdown-item text-white" routerLink="/products/seo-marketing">Email Marketing Solutions</a>
             <small class="item-description">Integrated email capture and marketing tools.</small></li>
 
-            <li>            <a class="dropdown-item text-white" href="/products/seo-marketing">Performance Analytics</a>
+            <li>            <a class="dropdown-item text-white" routerLink="/products/seo-marketing">Performance Analytics</a>
               <small class="item-description">Track your website's performance and user engagement.</small></li>
-            <li>            <a class="dropdown-item text-white" href="/products/seo-marketing">SEO Reporting</a>
+            <li>            <a class="dropdown-item text-white" routerLink="/products/seo-marketing">SEO Reporting</a>
               <small class="item-description">Monitor your site's search engine performance and rankings.</small></li>
   
               <h5 class="border-bottom text-white pb-2">Software Development</h5>
-              <li>              <a class="dropdown-item text-white" href="/products/development">Custom Web Development</a>
+              <li>              <a class="dropdown-item text-white" routerLink="/products/development">Custom Web Development</a>
                 <small class="item-description">Full-stack development for customized web solutions.</small></li>
-              <li>              <a class="dropdown-item text-white" href="/products/development">Mobile App Development</a>
+              <li>              <a class="dropdown-item text-white" routerLink="/products/development">Mobile App Development</a>
                 <small class="item-description">Expand your business with responsive and user-friendly mobile apps.</small></li>
-              <li>              <a class="dropdown-item text-white" href="/products/development">API Integration</a>
+              <li>              <a class="dropdown-item text-white" routerLink="/products/development">API Integration</a>
                 <small class="item-description">Connect third-party services and streamline your operations.</small></li>
-              <li>              <a class="dropdown-item text-white" href="/products/development">Web Application Development</a>
+              <li>              <a class="dropdown-item text-white" routerLink="/products/development">Web Application Development</a>
                 <small class="item-description">Advanced web-based solutions for your business needs.</small></li>
 
         </ul>
       </div>
     </li>
     <li>
-      <a class="nav-link" href="/mission">
+      <a class="nav-link" routerLink="/mission">
         Our Mission
       </a>
     </li>
     <li>
-      <a class="nav-link" href="/pricing">
+      <a class="nav-link" routerLink="/pricing">
         Pricing 
       </a>
     </li>
@@ -91,7 +91,7 @@
   <div class="auth-buttons" (click)="$event.stopPropagation()">
     <!-- <button class="btn btn-outline-light rounded-pill">Log In</button>
     <button class="btn btn-outline-light rounded-pill">Sign Up</button> -->
-    <a href="/contact"><button class="bg-white text-black" >Get Started</button></a>
+    <a routerLink="/contact"><button class="bg-white text-black" >Get Started</button></a>
   </div>
 </div>
 
@@ -101,92 +101,68 @@
     <div class="container p-4">
         <div class="row">
             <div class="col-md-4 mb-4">
-                <a class="text-white text-decoration-none" href="/products/websites">
+                <a class="text-white text-decoration-none" routerLink="/products/websites">
                 <h5 class="border-bottom pb-2">Website Packages</h5>
-                <a class="dropdown-item text-white" href="/products/websites">Single-Page Websites</a>
+                <a class="dropdown-item text-white" routerLink="/products/websites">Single-Page Websites</a>
                 <small class="item-description">A simple, elegant single-page website solution.</small>
                 
-                <a class="dropdown-item text-white" href="/products/websites">Multi-Page Websites</a>
+                <a class="dropdown-item text-white" routerLink="/products/websites">Multi-Page Websites</a>
                 <small class="item-description">Ideal for businesses needing more pages and flexibility.</small>
                 
-                <a class="dropdown-item text-white" href="/products/websites">E-Commerce Websites</a>
+                <a class="dropdown-item text-white" routerLink="/products/websites">E-Commerce Websites</a>
                 <small class="item-description">Robust online stores to sell your products efficiently.</small>
                 
-                <a class="dropdown-item text-white" href="/products/websites">Portfolio/Blog Websites</a>
+                <a class="dropdown-item text-white" routerLink="/products/websites">Portfolio/Blog Websites</a>
                 <small class="item-description">Showcase your work or share your thoughts online.</small>
                 
-                <a class="dropdown-item text-white" href="/products/websites">Custom Websites</a>
+                <a class="dropdown-item text-white" routerLink="/products/websites">Custom Websites</a>
                 <small class="item-description">Fully customized websites tailored to your needs.</small></a>
             </div>
             <div class="col-md-4 mb-4">
-              <a class="text-white text-decoration-none" href="/products/seo-marketing">
+              <a class="text-white text-decoration-none" routerLink="/products/seo-marketing">
                 <h5 class="border-bottom pb-2">SEO & Marketing Services</h5>
-                <a class="dropdown-item text-white" href="/products/seo-marketing">SEO Optimization</a>
+                <a class="dropdown-item text-white" routerLink="/products/seo-marketing">SEO Optimization</a>
                 <small class="item-description">Help your website rank higher on search engines.</small>
                 
-                <a class="dropdown-item text-white" href="/products/seo-marketing">Social Media Integration</a>
+                <a class="dropdown-item text-white" routerLink="/products/seo-marketing">Social Media Integration</a>
                 <small class="item-description">Connect your website seamlessly with social platforms.</small>
               
                 
-                <a class="dropdown-item text-white" href="/products/seo-marketing">Email Marketing Solutions</a>
+                <a class="dropdown-item text-white" routerLink="/products/seo-marketing">Email Marketing Solutions</a>
                 <small class="item-description">Integrated email capture and marketing tools.</small></a>
 
-                <a class="dropdown-item text-white" href="/products/seo-marketing">Performance Analytics</a>
+                <a class="dropdown-item text-white" routerLink="/products/seo-marketing">Performance Analytics</a>
                 <small class="item-description">Track your website's performance and user engagement.</small>
 
-                <a class="dropdown-item text-white" href="/products/seo-marketing">SEO Reporting</a>
+                <a class="dropdown-item text-white" routerLink="/products/seo-marketing">SEO Reporting</a>
                 <small class="item-description">Monitor your site's search engine performance and rankings.</small>
             </div>
             <div class="col-md-4 mb-4">
-              <a class="text-white text-decoration-none" href="/products/development">
+              <a class="text-white text-decoration-none" routerLink="/products/development">
                 <h5 class="border-bottom pb-2">Software Development</h5>
-                <a class="dropdown-item text-white" href="/products/development">Custom Web Development</a>
+                <a class="dropdown-item text-white" routerLink="/products/development">Custom Web Development</a>
                 <small class="item-description">Full-stack development for customized web solutions.</small>
 
-                <a class="dropdown-item text-white" href="/products/development">Mobile App Development</a>
+                <a class="dropdown-item text-white" routerLink="/products/development">Mobile App Development</a>
                 <small class="item-description">Expand your business with responsive and user-friendly mobile apps.</small>
 
-                <a class="dropdown-item text-white" href="/products/development">API Integration</a>
+                <a class="dropdown-item text-white" routerLink="/products/development">API Integration</a>
                 <small class="item-description">Connect third-party services and streamline your operations.</small>
 
-                <a class="dropdown-item text-white" href="/products/development">Web Application Development</a>
+                <a class="dropdown-item text-white" routerLink="/products/development">Web Application Development</a>
                 <small class="item-description">Advanced web-based solutions for your business needs.</small></a>
             </div>
             <!-- <div class="col-md-3 mb-4">
-              <a class="text-white text-decoration-none" href="/products/analytics">
+              <a class="text-white text-decoration-none" routerLink="/products/analytics">
                 <h5 class="border-bottom pb-2">Website Analytics & Reporting</h5>
-                <a class="dropdown-item text-white" href="/products/analytics">Performance Analytics</a>
+                <a class="dropdown-item text-white" routerLink="/products/analytics">Performance Analytics</a>
                 <small class="item-description">Track your website's performance and user engagement.</small>
 
-                <a class="dropdown-item text-white" href="/products/analytics">SEO Reporting</a>
+                <a class="dropdown-item text-white" routerLink="/products/analytics">SEO Reporting</a>
                 <small class="item-description">Monitor your site's search engine performance and rankings.</small></a>
             </div> -->
         </div>
     </div>
 </div>
 
-<div class="dropdown-content bg-dark text-white collapse" id="partnersDropdownContent">
-    <div class="container p-4">
-        <div class="row">
-            <div class="col-md-3">
-                <h5 class="border-bottom pb-2">Partner Services</h5>
-                <a class="dropdown-item text-white" href="#">Service 1</a>
-                <a class="dropdown-item text-white" href="#">Service 2</a>
-                <a class="dropdown-item text-white" href="#">Service 3</a>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="dropdown-content bg-dark text-white collapse" id="pricingDropdownContent">
-    <div class="container p-4">
-        <div class="row">
-            <div class="col-md-3">
-                <h5 class="border-bottom pb-2">Pricing Options</h5>
-                <a class="dropdown-item text-white" href="#">Basic Plan</a>
-                <a class="dropdown-item text-white" href="#">Standard Plan</a>
-                <a class="dropdown-item text-white" href="#">Premium Plan</a>
-            </div>
-        </div>
-    </div>
-</div>
