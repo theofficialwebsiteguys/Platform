@@ -21,8 +21,16 @@ export class NavComponent implements OnDestroy  {
   }
 
   onResize() {
-    if (window.innerWidth > 991 && this.menuVisible) { // Assuming 768px is the mobile breakpoint
+    const width = window.innerWidth;
+
+    // If the screen size is larger than the mobile breakpoint and the menu is open, close it
+    if (width > 991 && this.menuVisible) { 
       this.closeMenu();
+    }
+
+    // Also close any dropdowns when screen size changes
+    if (width <= 991) {
+      this.closeAllDropdowns();  // Close dropdowns if shrinking to mobile view
     }
   }
 

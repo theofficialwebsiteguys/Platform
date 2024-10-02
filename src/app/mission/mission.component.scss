@@ -1,6 +1,5 @@
 .mission-container {
     display: flex;
-    align-items: center;
     background-color: #fff;
     padding: 100px;
     border-radius: 10px;
@@ -24,13 +23,22 @@
   
   .overlay-text {
     position: absolute;
-    bottom: 10px;
+    top: 10px;
     left: 10px;
-    background-color: #86c547;
+    background-color: #b3cee3;
     color: #fff;
     padding: 10px;
     border-radius: 5px;
-    font-size: 0.9em; /* Slightly smaller font for better fit */
+    font-size: 1em; /* Slightly smaller font for better fit */
+    font-weight: bold;
+
+    .name{
+      margin: 0;
+    }
+
+    .title{
+      margin: 0;
+    }
   }
   
   .mission-content {
@@ -41,7 +49,6 @@
   
   .quote-icon {
     font-size: 3em;
-    color: #86c547;
     margin-bottom: -10px;
   }
   
@@ -54,14 +61,18 @@
   
   .mission-description {
     color: #555;
-    font-size: 1em;
+    font-size: 1.2em;
     line-height: 1.5;
   }
 
   @media screen and (max-width: 1024px) {
     .mission-container {
         gap: 10%;
-        padding: 20px;
+        padding: 50px;
+      }
+
+      .image-container {
+        max-width: 400px;
       }
   }
   

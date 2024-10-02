@@ -9,8 +9,8 @@ import { Component, Renderer2 } from '@angular/core';
   styleUrl: './feature-steps.component.scss'
 })
 export class FeatureStepsComponent {
-  activeSection: string = 'create';
-  sections = ['create', 'connect', 'launch'];
+  activeSection: string = 'connect';
+  sections = ['connect', 'design', 'launch'];
   highlightPosition = 0; // Start at the first section
 
   constructor(private renderer: Renderer2) {}

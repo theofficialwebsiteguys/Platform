@@ -11,38 +11,28 @@ import { Component } from '@angular/core';
 export class FaqSectionComponent {
   faqs = [
     {
-      question: 'What is website development?',
-      answer: 'Website development refers to the process of creating, building, and maintaining a website. It includes everything from web design to coding, content creation, and website management.',
+      question: 'How long will it take to build my website?',
+      answer: 'We tailor each website project to meet your specific needs. The timeline can vary based on the complexity and features of your site, but we work efficiently while maintaining close communication to ensure a smooth process. A typical website can take anywhere from a few days to a few weeks, depending on the project scope and business owner preparation.',
       open: false
     },
     {
-      question: 'How long does it take to develop a website?',
-      answer: 'The time it takes to develop a website varies depending on the complexity and requirements of the project. A simple website might take a few weeks, while a more complex website could take several months.',
+      question: 'What are the costs involved in creating a website?',
+      answer: 'The cost of building a website depends on several factors, such as the number of pages, functionality, and custom features. We offer various packages to suit different needs, from simple one-page websites to fully functional e-commerce stores.',
       open: false
     },
     {
-      question: 'What are the costs involved in website development?',
-      answer: 'The cost of website development depends on various factors, including the complexity of the design, the number of pages, the features required, and whether you need ongoing maintenance and support.',
+      question: 'Will my website appear on the first page of Google?',
+      answer: 'Not at all. We provide ongoing support and maintenance services by expert software developers to handle everything for you.',
       open: false
     },
     {
       question: 'Do I need to know how to code to manage my website?',
-      answer: 'No, you don’t need to know how to code. Most modern websites are built using content management systems (CMS) like WordPress, which allow you to manage and update your website without any coding knowledge.',
+      answer: 'Getting to the first page of Google requires strategic effort over time. We offer SEO services that help improve your site’s visibility in search results. While no one can guarantee a first-page ranking immediately, our team works diligently to optimize your website for search engines, helping your business climb the ranks.',
       open: false
     },
     {
-      question: 'What is responsive web design?',
-      answer: 'Responsive web design is an approach to web design that ensures a website looks and works well on all devices, including desktops, tablets, and smartphones. The layout adjusts automatically to fit the screen size.',
-      open: false
-    },
-    {
-      question: 'How can I improve my website’s search engine ranking?',
-      answer: 'Improving your website’s search engine ranking involves optimizing your content for relevant keywords, ensuring your site is mobile-friendly, improving page load speed, and building backlinks from reputable sources.',
-      open: false
-    },
-    {
-      question: 'Can I update my website after it’s launched?',
-      answer: 'Yes, you can update your website after it’s launched. Whether you want to add new content, update images, or change design elements, a CMS makes it easy to make changes without needing to rebuild the site.',
+      question: 'Can I make updates to my website after it’s launched?',
+      answer: 'Yes, absolutely. The Website Guys will be by your side to update and change anything as needed. Whether it’s minor adjustments or more complex updates, we’re here to ensure your site continues to grow and evolve with your business.',
       open: false
     }
   ];

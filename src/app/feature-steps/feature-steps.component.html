@@ -5,15 +5,15 @@
     <div class="highlight" [style.transform]="'translateX(' + highlightPosition + '%)'"></div>
 
     <div class="col-lg-4 col-md-4 mb-4 header-text">
-      <div class="text active-text">Create.</div>
-      <div class="subtext-frame" [ngClass]="{'active-subtext': activeSection === 'create'}">
-        <p class="subtext">Generate your free website template</p>
+      <div class="text active-text">Connect.</div>
+      <div class="subtext-frame" [ngClass]="{'active-subtext': activeSection === 'connect'}">
+        <p class="subtext">Get Paired Your Website Guy</p>
       </div>
     </div>
     <div class="col-lg-4 col-md-4 mb-4 header-text">
-      <div class="text">Connect.</div>
-      <div class="subtext-frame" [ngClass]="{'active-subtext': activeSection === 'connect'}">
-        <p class="subtext">Connect with our team</p>
+      <div class="text">Design.</div>
+      <div class="subtext-frame" [ngClass]="{'active-subtext': activeSection === 'design'}">
+        <p class="subtext">Share Your Vision</p>
       </div>
     </div>
     <div class="col-lg-4 col-md-4 header-text">
@@ -28,29 +28,31 @@
   <div id="featureCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-pause="false">
     <div class="carousel-inner">
       <!-- Create Section -->
-      <div class="carousel-item" [class.active]="activeSection === 'create'">
+      <div class="carousel-item" [class.active]="activeSection === 'connect'">
         <div class="feature">
           <div class="hook">
-            <h2 class="main-text display-4 fw-bold">Your Business,</h2>
-            <h2 class="main-text display-4 fw-bold">Your Control</h2>
-            <p class="description lead">Craft your website's design and features to your exact specifications, with complete control at your fingertips.</p>
+            <h2 class="main-text display-4 fw-bold">Expert Developers,</h2>
+            <h2 class="main-text display-4 fw-bold">Expert Solutions</h2>
+            <p class="description lead">Connect Directly with Our US-Based Professional Developers.</p>
+            <a href="/contact"><button>Connect Today</button></a>
           </div>
-          <div class="image">
-            <img src="assets/default.jpg" alt="">
+          <div >
+            <img class="image" src="assets/chat.png" alt="">
           </div>
         </div>
       </div>
 
       <!-- Connect Section (Reversed layout) -->
-      <div class="carousel-item" [class.active]="activeSection === 'connect'">
+      <div class="carousel-item" [class.active]="activeSection === 'design'">
         <div class="feature ">
           <div class="hook">
-            <h2 class="main-text display-4 fw-bold">Expert Developers,</h2>
-            <h2 class="main-text display-4 fw-bold">Expert Solutions</h2>
-            <p class="description lead">Connect Directly with Our USA-Based Professional Developers.</p>
+            <h2 class="main-text display-4 fw-bold">Your Business,</h2>
+            <h2 class="main-text display-4 fw-bold">Your Control</h2>
+            <p class="description lead">Crafted website design to your exact needs, with complete control at your fingertips.</p>
+            <a href="/contact"><button>Design Your Website</button></a>
           </div>
-          <div class="image">
-            <img src="assets/default.jpg" alt="">
+          <div>
+            <img class="image" src="assets/design.png" alt="">
           </div>
         </div>
       </div>
@@ -60,11 +62,12 @@
         <div class="feature">
           <div class="hook">
             <h2 class="main-text display-4 fw-bold">Launch Your Website,</h2>
-            <h2 class="main-text display-4 fw-bold">Fast and Flawless</h2>
+            <h2 class="main-text display-4 fw-bold">Built to Perfection</h2>
             <p class="description lead">We make your dream website a reality with a quick, hassle-free launch process.</p>
+            <a href="/contact"><button>Launch Your Website</button></a>
           </div>
-          <div class="image">
-            <img src="assets/default.jpg" alt="">
+          <div>
+            <img class="image" src="assets/launch.png" alt="">
           </div>
         </div>
       </div>

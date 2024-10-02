@@ -8,6 +8,7 @@ import { SeoMarketingComponent } from './seo-marketing/seo-marketing.component';
 import { DevelopmentComponent } from './development/development.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { MissionComponent } from './mission/mission.component';
+import { ContactComponent } from './contact/contact.component';
 
 export const routes: Routes = [
     { path: '', pathMatch: 'full', component: LandingComponent },
@@ -16,6 +17,7 @@ export const routes: Routes = [
     { path: 'sign-up', component: SignUpComponent },
     { path: 'login', component: LoginComponent },
     { path: 'mission', component: MissionComponent },
+    { path: 'contact', component: ContactComponent },
     { path: 'products/websites', component: WebsitePackagesComponent },
     { path: 'products/seo-marketing', component: SeoMarketingComponent },
     { path: 'products/development', component: DevelopmentComponent },

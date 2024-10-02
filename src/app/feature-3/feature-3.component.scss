@@ -1,8 +1,7 @@
 .feature-section {
   background: #000000;
-  padding: 2rem 0;
+  padding: 4rem 0;
   overflow-x: hidden; /* Prevent horizontal scrolling */
-  min-height: 700px;
 }
 
 .image-container {
@@ -12,8 +11,6 @@
   width: 100%;
   max-width: 100%; /* Ensure it does not exceed the container width */
   height: auto;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  filter: drop-shadow(0px 1px 8px #363636);
   border-radius: 12px;
   margin: 0 auto; /* Center the image container */
 }
@@ -99,11 +96,6 @@
       flex-direction: column-reverse; /* Stack the image below the text */
   }
   
-  .col-md-6 {
-      width: 100%;
-      max-width: 100%;
-  }
-
   .image-container {
       margin-top: 2rem; /* Add space above the image */
   }
@@ -114,6 +106,9 @@
 }
 
 @media (max-width: 576px) { /* Mobile */
+  .image{
+    max-width: 90%;
+  }
   .header {
       font-size: 1.75rem;
   }

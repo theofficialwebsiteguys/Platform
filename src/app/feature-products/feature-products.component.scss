@@ -1,12 +1,15 @@
-/* General container for feature steps */
+@import '../../_button';
+
 .feature-steps-container {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    padding: 100px 96px;
+    max-width: 90%;
+    margin: auto;
+    transition: opacity 0.5s ease;
+    flex-wrap: wrap;
     background-color: #ffffff;
-    padding: 50px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add a soft shadow for a modern look */
-    flex-wrap: wrap; /* Ensure content wraps on smaller screens */
 }
 
 .feature-steps-container.reverse-layout {
@@ -20,7 +23,7 @@
 }
 
 .feature-steps-text h2 {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-weight: bold;
     margin-bottom: 20px;
     color: #333;
@@ -37,6 +40,10 @@
     padding: 0;
 }
 
+.feature-steps-body{
+    max-width: 40%;
+}
+
 .feature-steps-text li {
     font-size: 1.1rem;
     margin-bottom: 20px;
@@ -49,32 +56,30 @@
     font-weight: bold;
 }
 
-/* Image section */
-.feature-steps-body {
-    width: 45%;
-    position: relative;
-}
-
 .feature-steps-body img {
-    width: 100%;
-    border-radius: 8px; /* Adds a slight curve to the image corners */
+    border-radius: 20px;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 
 /* Responsive adjustments */
+@media (max-width: 1350px) {
+    .feature-steps-container {
+        padding: 0;
+    }
+}
+
 @media (max-width: 1024px) {
     .feature-steps-text {
         width: 100%;
         padding: 20px;
     }
 
-    .feature-steps-body {
-        width: 100%;
-        margin-top: 20px;
-    }
-
     .feature-steps-container.reverse-layout {
         flex-direction: column-reverse;
     }
+
 }
 
 @media (max-width: 768px) {
@@ -83,19 +88,13 @@
         text-align: center;
         padding: 30px;
     }
-
-    .feature-steps-text,
-    .feature-steps-body {
-        width: 100%;
-        margin: 0;
-    }
-
+    
     .feature-steps-text {
         margin-bottom: 30px;
     }
 
-    .get-started-btn {
-        width: 100%;
+    .feature-steps-body {
+        max-width: 100%
     }
 }
 
