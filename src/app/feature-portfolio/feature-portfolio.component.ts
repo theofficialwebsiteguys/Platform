@@ -9,5 +9,13 @@ import { Component } from '@angular/core';
   styleUrl: './feature-portfolio.component.scss'
 })
 export class FeaturePortfolioComponent {
+  isHover = false;
 
+  onMouseEnter() {
+    // this.isHover = true;
+  }
+
+  onMouseLeave() {
+    // this.isHover = false;
+  }
 }

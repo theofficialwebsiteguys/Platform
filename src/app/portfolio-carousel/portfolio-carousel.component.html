@@ -1,0 +1,11 @@
+<div class="business-growth-section py-5">
+    <div class="carousel-wrapper">
+      <owl-carousel-o [options]="carouselOptions">
+        <ng-template carouselSlide *ngFor="let logo of logos">
+          <div class="logo-slide">
+            <img [src]="logo" alt="Logo" class="logo-img">
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+  </div>

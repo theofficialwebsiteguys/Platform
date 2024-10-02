@@ -1,0 +1,126 @@
+.portfolio-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    overflow: hidden; /* Prevent overflow */
+    width: 100%; /* Ensure the wrapper is full-width but not overflowing */
+}
+
+.portfolio-banner {
+    width: 100%;
+    max-width: 100%; /* Ensure it does not exceed the parent width */
+    position: relative;
+}
+
+.portfolio-banner-img {
+    width: 100%;
+    height: auto;
+    display: block; /* Ensures there is no extra space below the image */
+}
+
+.portfolio-static {
+    opacity: 0.7;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.portfolio-hover {
+    opacity: 0.3;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    width: calc(100% - 20px); /* Adjust width to prevent overflow */
+    max-width: 100%; /* Ensure it does not exceed the viewport width */
+    box-sizing: border-box; /* Include padding in the element's width */
+    color: black !important;
+}
+
+.fade-in {
+    opacity: 1;
+    transition: opacity 500ms ease-in-out;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+}
+
+.text-hover, .text-static {
+    color: white;
+    pointer-events: none;
+}
+
+.text-static {
+    font-size: 48px;
+    font-weight: 600;
+}
+
+.text-hover-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text-hover-list li {
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 575.98px) {
+    .text-static {
+        font-size: 18px;
+    }
+    .text-hover-list li {
+        font-size: 8px;
+        margin-bottom: 3px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .text-static {
+        font-size: 24px;
+    }
+    .text-hover-list li {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .text-static {
+        font-size: 30px;
+    }
+    .text-hover-list li {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .text-static {
+        font-size: 36px;
+    }
+    .text-hover-list li {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .text-static {
+        font-size: 48px;
+    }
+    .text-hover-list li {
+        font-size: 24px;
+    }
+}

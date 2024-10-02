@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-feature-products',
@@ -9,5 +9,11 @@ import { Component } from '@angular/core';
   styleUrl: './feature-products.component.scss'
 })
 export class FeatureProductsComponent {
-
+  @Input() title: string = '';
+  @Input() description: string = '';
+  @Input() steps: { title: string, description: string }[] = [];
+  @Input() buttonText: string = '';
+  @Input() imageUrl: string = '';
+  @Input() imageAlt: string = '';
+  @Input() alignment: 'left' | 'right' = 'left'; // New input property for alignment
 }

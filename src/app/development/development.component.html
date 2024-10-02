@@ -1,0 +1,39 @@
+<app-product-hero
+  [headerText]="'Automate Your Business.'"
+  [subheaderText]="'Streamline Operations and Boost Efficiency with Advanced Software Solutions Crafted by Experts'"
+  [buttonText]="'Get Ahead'"
+  [imageUrl]="'assets/software.png'"
+  [backgroundColor]="'#f5f7fa'"
+></app-product-hero>
+
+<app-feature-cards
+  header="Your Dream, Our Expertise"
+  [packages]="[
+    { icon: 'assets/icons/menu.png', title: 'Data Collection & Management', bullets: ['Streamlined Data Gathering', 'Secure Data Storage', 'Data Analytics Integration', 'Automated Data Workflow'] },
+    { icon: 'assets/icons/menu.png', title: 'API Integration', bullets: ['Custom API Development', 'Third-Party Service Integration', 'Real-Time Data Exchange', 'Secure API Implementation'] },
+    { icon: 'assets/icons/menu.png', title: 'Software as a Service', bullets: ['Scalable Cloud Solutions', 'Subscription-Based Models', 'Multi-Tenant Architecture', 'User-Centric Design'] },
+    { icon: 'assets/icons/menu.png', title: 'E-Commerce Development', bullets: ['Custom Storefront Design', 'Secure Payment Gateways','Custom Shipping Services', 'Inventory Management Integration'] }
+    ]"
+  backgroundColor="#1A1A1A"
+  textColor="#FFFFFF">
+</app-feature-cards>
+
+
+<app-feature-products
+  title="Next-Level Software for Next-Level Businesses"
+  description="Accelerate growth with intelligent software development that’s built to scale."
+  [steps]="[ ]"
+  buttonText="Create Your Vision"
+  imageUrl="../../assets/software-agile.png"
+  imageAlt="Product Features Image"
+  alignment="right">
+</app-feature-products>
+
+
+<app-feature-bullets [features]="[
+  { icon: 'assets/icons/menu.png', title: 'Enhance Efficiency & Productivity', description: 'Free up valuable time by automating day-to-day operations, allowing your team to focus on high-impact activities.' },
+  { icon: 'assets/icons/chart.png', title: 'Improve Security & Compliance', description: 'Reduce operational risks with secure, reliable software that protects your business from cyber threats.' },
+  { icon: 'assets/icons/timer.png', title: 'Foster Collaboration & Communication', description: 'Empower your team to work from anywhere with cloud-based software solutions that keep everyone connected and productive.' },
+  { icon: 'assets/icons/arrow.png', title: 'Drive Revenue Growth', description: 'Leverage software to automate marketing efforts, reaching more customers with less manual effort.' }
+  ]">
+</app-feature-bullets>

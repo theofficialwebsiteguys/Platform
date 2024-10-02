@@ -1,1 +1,16 @@
-<p>feature-products works!</p>
+<div class="feature-steps-container" [ngClass]="{'reverse-layout': alignment === 'right'}">
+    <div class="feature-steps-text">
+      <h2>{{ title }}</h2>
+      <p>{{ description }}</p>
+      <ul>
+        <li *ngFor="let step of steps">
+          <strong>{{ step.title }}:</strong> {{ step.description }}
+        </li>
+      </ul>
+      <a href="/contact"><button>{{ buttonText }}</button></a>
+    </div>
+    <div class="feature-steps-body">
+      <img [src]="imageUrl" [alt]="imageAlt">
+    </div>
+  </div>
+  

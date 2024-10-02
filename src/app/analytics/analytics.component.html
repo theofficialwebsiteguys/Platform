@@ -1,0 +1,44 @@
+<app-product-hero
+  [headerText]="'Know Where You Stand 24/7.'"
+  [subheaderText]="'Text expaining web analytics and reporting service + 24/7 support'"
+  [buttonText]="'Learn More'"
+  [imageUrl]="'assets/default.jpg'"
+  [backgroundColor]="'#e6f7ff'"
+></app-product-hero>
+
+<app-feature-bullets [features]="[
+  { icon: 'assets/icons/menu.png', title: 'SEO Tracking', description: 'Scalable websites designed with your future growth in mind, ensuring your online presence expands as you do.' },
+  { icon: 'assets/icons/chart.png', title: 'Traffic', description: 'Our websites are built with advanced SEO strategies to help you achieve and maintain high visibility online as your business evolves.' },
+  { icon: 'assets/icons/timer.png', title: 'Conversion Rate', description: 'Stay competitive with a website that not only grows with you but is also optimized to endure the test of time, keeping your business thriving online.' },
+  { icon: 'assets/icons/arrow.png', title: 'Engagement', description: 'Enjoy ongoing support and enhancements that ensure your website stays ahead of the curve and continues to grow alongside your business.' }
+  ]">
+</app-feature-bullets>
+
+
+<app-feature-products
+  title="Product Features to Drive Sales"
+  description="Innovative features designed to enhance your product offerings"
+  [steps]="[
+    { title: 'Advanced Product Filtering', description: 'Help your customers find exactly what they need with advanced filtering options.' },
+    { title: 'Dynamic Product Bundling', description: 'Increase average order value by suggesting related products and creating custom bundles.' },
+    { title: 'Flexible Shipping Options', description: 'Offer a variety of shipping methods tailored to your customer’s needs.' },
+    { title: 'Real-Time Inventory Updates', description: 'Keep customers informed with up-to-date stock information.' }
+  ]"
+  buttonText="Explore Our Features"
+  imageUrl="../../assets/default.jpg"
+  imageAlt="Product Features Image"
+  alignment="right">
+</app-feature-products>
+
+
+<app-feature-cards
+  header="Your Dream, Our Expertise"
+  [packages]="[
+    { icon: 'assets/icons/menu.png', title: 'Single Page Website', bullets: ['Feature 1', 'Feature 2', 'Feature 3'] },
+    { icon: 'assets/icons/menu.png', title: 'Standard Website', bullets: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4'] },
+    { icon: 'assets/icons/menu.png', title: 'Advanced Website', bullets: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5'] },
+    { icon: 'assets/icons/menu.png', title: 'E-Commerce Shop', bullets: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5'] }
+    ]"
+  backgroundColor="#1A1A1A"
+  textColor="#FFFFFF">
+</app-feature-cards>

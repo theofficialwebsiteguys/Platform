@@ -1,0 +1,118 @@
+@import '../../_button';
+
+.feature-steps-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px 96px;
+    max-width: 90%;
+    margin: auto;
+    transition: opacity 0.5s ease;
+    flex-wrap: wrap;
+    background-color: #ffffff;
+}
+
+.feature-steps-container.reverse-layout {
+    flex-direction: row-reverse;
+}
+
+/* Text section */
+.feature-steps-text {
+    width: 50%;
+    padding: 20px;
+}
+
+.feature-steps-text h2 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.feature-steps-text p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+.feature-steps-text ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.feature-steps-body{
+    max-width: 40%;
+}
+
+.feature-steps-text li {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    color: #555;
+}
+
+.feature-steps-text strong {
+    color: #000;
+    font-weight: bold;
+}
+
+.feature-steps-body img {
+    border-radius: 20px;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1350px) {
+    .feature-steps-container {
+        padding: 0;
+    }
+}
+
+@media (max-width: 1024px) {
+    .feature-steps-text {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .feature-steps-container.reverse-layout {
+        flex-direction: column-reverse;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .feature-steps-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+    
+    .feature-steps-text {
+        margin-bottom: 30px;
+    }
+
+    .feature-steps-body {
+        max-width: 100%
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-steps-text h2 {
+        font-size: 2rem;
+    }
+
+    .feature-steps-text p,
+    .feature-steps-text li {
+        font-size: 1rem;
+    }
+
+    .feature-steps-text {
+        padding: 10px;
+    }
+
+    .feature-steps-container {
+        padding: 20px;
+    }
+}
