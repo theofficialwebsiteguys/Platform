@@ -16,4 +16,14 @@ import { FeatureProductsComponent } from './feature-products/feature-products.co
 })
 export class AppComponent {
   title = 'platform-frontend';
+
+  onActivate(event: any) {
+ 
+    window.scroll({ 
+            top: 0, 
+            left: 0, 
+            behavior: 'smooth' 
+     });
+ 
+ }
 }

@@ -31,8 +31,6 @@
 
 /* Header */
 .header {
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
   font-size: 2.25rem; /* Relative unit for fluid typography */
   line-height: 1.2;
   text-align: center;
@@ -55,10 +53,10 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 24px;
+  padding: 14px;
   width: 100%; /* Make cards take full width on mobile */
   max-width: 264px; /* Limit width on larger screens */
-  height: 300px;
+  height: 350px;
   background: #F2F2F2;
   border-radius: 16px;
   margin: 16px; /* Add margin for spacing */
@@ -70,6 +68,7 @@
   flex-direction: row;
   align-items: flex-start;
   gap: 16px;
+  width: 100%;
 }
 
 /* Icon */
@@ -92,8 +91,6 @@
 
 /* Title */
 .title {
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
   font-size: 1.5rem; /* Relative unit for fluid typography */
   line-height: 1.2;
   color: #000000;
@@ -125,9 +122,7 @@
 
 /* Text */
 .text {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 1rem; /* Relative unit for fluid typography */
+  font-size: 1.3rem; /* Relative unit for fluid typography */
   line-height: 1.2;
   color: #000000;
 }
@@ -149,6 +144,7 @@
   .contents {
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
 
   .title {
@@ -156,7 +152,7 @@
   }
 
   .text {
-    font-size: 0.875rem;
+    font-size: 1.3rem;
   }
 }
 

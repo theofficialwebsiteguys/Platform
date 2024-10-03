@@ -6,12 +6,14 @@
     padding: 0;
     width: 100%;
     color: #F2F2F2;
+    margin: auto;
 }
 
 .container {
     width: 100%;
     max-width: 1248px;
     padding: 0 24px;
+    margin: auto; /* Add auto margins for better centering */
 }
 
 .logo-and-directory {
@@ -21,6 +23,7 @@
     padding: 48px 0;
     border-bottom: 2px solid #F2F2F2;
     width: 100%;
+    margin: auto; /* Ensure proper centering */
 }
 
 .logo {
@@ -29,15 +32,16 @@
     height: auto;
     background: url('../../assets/logos/logo.png') no-repeat center center;
     background-size: contain;
-    margin-bottom: 24px;
+    margin: 30px;
 }
 
 .directory {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 60%;
     gap: 40px;
+    margin: auto; /* Center the directory */
 }
 
 .directory-section {
@@ -73,6 +77,7 @@
     padding: 16px 0;
     width: 100%;
     text-align: center;
+    margin: auto; /* Add auto margins to center */
 }
 
 .copyright {
@@ -97,31 +102,35 @@
     }
 }
 
-
 /* Responsive Design */
 @media (min-width: 768px) {
     .logo-and-directory {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        margin: auto; /* Auto margins for better alignment */
     }
 
     .directory {
         flex-direction: row;
-        justify-content: flex-end;
+        justify-content: space-between;
         flex-wrap: wrap;
         gap: 40px;
+        width: 100%;
+        margin: auto; /* Ensure the directory is centered */
     }
 
     .directory-section {
         text-align: left;
-        margin: auto;
     }
 
     .copyright-and-socials {
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
+        width: 100%;
         text-align: left;
+        margin: auto; /* Ensure proper alignment */
     }
 
     .copyright {

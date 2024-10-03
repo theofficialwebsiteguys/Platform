@@ -103,6 +103,7 @@ updateDropdownStates() {
   }
 
 
+
   toggleDropdown(dropdownId: string, event: Event): void {
     event.preventDefault();
 
@@ -126,5 +127,20 @@ updateDropdownStates() {
 
     dropdowns.forEach(dropdown => dropdown.classList.remove('show'));
     arrows.forEach(arrow => arrow.classList.remove('rotate')); // Reset arrow rotation
+
+    const fullscreenMenu = document.querySelector('.fullscreen-menu');
+    const body = document.body;
+
+    this.menuVisible = false;
+    this.openDropdownId = '';
+    this.updateDropdownStates();
+
+      fullscreenMenu?.classList.remove('show');
+      body.style.overflow = '';
+      body.style.position = '';
+      body.style.width = '';
+      body.style.height = '';
+      body.style.top = '';
+      body.style.left = '';
   }
 }

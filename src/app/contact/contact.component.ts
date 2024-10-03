@@ -68,32 +68,39 @@ export class ContactComponent {
   }
 
   sendEmail() {
+    if (this.contactForm.invalid) {
+      // Mark all fields as touched to trigger validation errors
+      this.contactForm.markAllAsTouched();
+      return; // Prevent form submission if invalid
+    }
+  
     this.submitted = true; // Set to true to show the spinner and disable the button
-
+  
     const formData = new FormData();
     formData.append('name', this.contactForm.get('name')?.value);
     formData.append('email', this.contactForm.get('email')?.value);
     formData.append('phone', this.contactForm.get('phone')?.value);
     formData.append('serviceType', this.contactForm.get('serviceType')?.value);
     formData.append('proposal', this.contactForm.get('proposal')?.value);
-
+  
     const files: File[] = this.contactForm.get('images')?.value;
     if (files) {
-        for (let i = 0; i < files.length; i++) {
-            formData.append('images[]', files[i]);
-        }
+      for (let i = 0; i < files.length; i++) {
+        formData.append('images[]', files[i]);
+      }
     }
-
+  
     this.emailService.sendEmail(formData).subscribe(
-        response => {
-            console.log('Email sent successfully!', response);
-            this.successMessage = 'Your website template request has been submitted successfully!';
-            this.submitted = false; // Reset the submitted flag
-        },
-        error => {
-            console.error('Error sending email:', error);
-            this.submitted = false; // Reset the submitted flag even if there's an error
-        }
+      response => {
+        console.log('Email sent successfully!', response);
+        this.successMessage = 'Your website template request has been submitted successfully!';
+        this.submitted = false; // Reset the submitted flag
+      },
+      error => {
+        console.error('Error sending email:', error);
+        this.submitted = false; // Reset the submitted flag even if there's an error
+      }
     );
-}
+  }
+  
 }
