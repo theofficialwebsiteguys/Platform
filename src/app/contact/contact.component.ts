@@ -94,6 +94,8 @@ export class ContactComponent {
       response => {
         console.log('Email sent successfully!', response);
         this.successMessage = 'Your website template request has been submitted successfully!';
+        this.contactForm.reset();
+        this.uploadedFiles = [];  // Clear uploaded files
         this.submitted = false; // Reset the submitted flag
       },
       error => {
