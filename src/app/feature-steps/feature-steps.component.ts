@@ -1,16 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component, Renderer2 } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-feature-steps',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './feature-steps.component.html',
   styleUrl: './feature-steps.component.scss'
 })
 export class FeatureStepsComponent {
-  activeSection: string = 'create';
-  sections = ['create', 'connect', 'launch'];
+  activeSection: string = 'connect';
+  sections = ['connect', 'design', 'launch'];
   highlightPosition = 0; // Start at the first section
 
   constructor(private renderer: Renderer2) {}

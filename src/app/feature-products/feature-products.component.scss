@@ -1,119 +1,130 @@
-/* General container for feature steps */
+@import '../../_button';
+
+// Variables for colors, padding, and font sizes
+$primary-bg: #ffffff;
+$heading-color: #333;
+$text-color-dark: #555;
+$text-color-light: #666;
+$padding-large: 100px 96px;
+$padding-medium: 30px;
+$padding-small: 20px;
+$font-size-heading: 3.5rem;
+$font-size-text-lg: 1.8rem;
+$font-size-text-sm: 1.1rem;
+
+// Feature Steps Container
 .feature-steps-container {
-    display: flex;
-    align-items: center;
-    background-color: #ffffff;
-    padding: 50px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add a soft shadow for a modern look */
-    flex-wrap: wrap; /* Ensure content wraps on smaller screens */
-}
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $padding-large;
+  max-width: 90%;
+  margin: auto;
+  transition: opacity 0.5s ease;
+  flex-wrap: wrap;
+  background-color: $primary-bg;
 
-.feature-steps-container.reverse-layout {
+  &.reverse-layout {
     flex-direction: row-reverse;
+  }
 }
 
-/* Text section */
+// Text Section
 .feature-steps-text {
-    width: 50%;
-    padding: 20px;
-}
+  width: 50%;
+  padding: $padding-small;
 
-.feature-steps-text h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
-}
+  h2 {
+    font-size: $font-size-heading;
+    margin-bottom: $padding-small;
+    color: $heading-color;
+  }
 
-.feature-steps-text p {
-    font-size: 1.2rem;
+  p {
+    font-size: $font-size-text-lg;
     margin-bottom: 30px;
-    color: #666;
-}
+    color: $text-color-light;
+  }
 
-.feature-steps-text ul {
+  ul {
     list-style-type: none;
     padding: 0;
-}
+  }
 
-.feature-steps-text li {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
+  li {
+    font-size: $font-size-text-sm;
+    margin-bottom: $padding-small;
     line-height: 1.5;
-    color: #555;
+    color: $text-color-dark;
+
+    strong {
+      color: $heading-color;
+    }
+  }
 }
 
-.feature-steps-text strong {
-    color: #000;
-    font-weight: bold;
-}
-
-/* Image section */
+// Feature Body Section
 .feature-steps-body {
-    width: 45%;
-    position: relative;
+  max-width: 40%;
+
+  img {
+    border-radius: 20px;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
 }
 
-.feature-steps-body img {
-    width: 100%;
-    border-radius: 8px; /* Adds a slight curve to the image corners */
+// Responsive adjustments
+
+@media (max-width: 1350px) {
+  .feature-steps-container {
+    padding: 0;
+  }
 }
 
-/* Responsive adjustments */
 @media (max-width: 1024px) {
-    .feature-steps-text {
-        width: 100%;
-        padding: 20px;
-    }
+  .feature-steps-text {
+    width: 100%;
+    padding: $padding-small;
+  }
 
-    .feature-steps-body {
-        width: 100%;
-        margin-top: 20px;
-    }
-
-    .feature-steps-container.reverse-layout {
-        flex-direction: column-reverse;
-    }
+  .feature-steps-container.reverse-layout {
+    flex-direction: column-reverse;
+  }
 }
 
 @media (max-width: 768px) {
-    .feature-steps-container {
-        flex-direction: column;
-        text-align: center;
-        padding: 30px;
-    }
+  .feature-steps-container {
+    flex-direction: column;
+    text-align: center;
+    padding: $padding-medium;
+  }
 
-    .feature-steps-text,
-    .feature-steps-body {
-        width: 100%;
-        margin: 0;
-    }
+  .feature-steps-text {
+    margin-bottom: $padding-medium;
+  }
 
-    .feature-steps-text {
-        margin-bottom: 30px;
-    }
-
-    .get-started-btn {
-        width: 100%;
-    }
+  .feature-steps-body {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
-    .feature-steps-text h2 {
-        font-size: 2rem;
+  .feature-steps-text {
+    padding: 10px;
+
+    h2 {
+      font-size: 2rem;
     }
 
-    .feature-steps-text p,
-    .feature-steps-text li {
-        font-size: 1rem;
+    p,
+    li {
+      font-size: 1rem;
     }
+  }
 
-    .feature-steps-text {
-        padding: 10px;
-    }
-
-    .feature-steps-container {
-        padding: 20px;
-    }
+  .feature-steps-container {
+    padding: $padding-small;
+  }
 }

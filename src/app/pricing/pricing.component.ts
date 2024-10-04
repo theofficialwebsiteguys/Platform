@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FaqSectionComponent } from '../faq-section/faq-section.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-pricing',
   standalone: true,
-  imports: [CommonModule, FaqSectionComponent],
+  imports: [CommonModule, FaqSectionComponent, RouterModule],
   templateUrl: './pricing.component.html',
   styleUrl: './pricing.component.scss'
 })

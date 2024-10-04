@@ -1,0 +1,29 @@
+@import '../../_button';
+
+.banner-container {
+    background-color: #1A1A1A;
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+  
+    .banner-content {
+      color: #fff;
+      max-width: 600px;
+  
+      .banner-header {
+        font-size: 3rem;
+        margin-bottom: 10px;
+      }
+  
+      .banner-subheader {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+      }
+      }
+  }
+  

@@ -1,52 +1,64 @@
+// Variables for colors, padding, and dimensions
+$primary-bg: #161616;
+$logo-max-size: 100px;
+$carousel-width: 800px;
+$transition-duration: 0.3s;
+
+// Business Growth Section
 .business-growth-section {
-    background-color: #161616;
-    align-items: center; /* Aligns the text and carousel vertically */
-    justify-content: center; /* Centers the entire section horizontally */
-    margin: 0 auto; /* Centers the section on the screen */
-    z-index: 0; /* Set the z-index for the entire section */
-    position: relative; /* Ensure z-index works by setting position relative */
+  background-color: $primary-bg;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  z-index: 0;
+  position: relative;
+}
+
+// Logo Carousel Container
+.logo-carousel-container {
+  background-color: $primary-bg;
+  padding: 15px 0;
+  justify-content: center;
+}
+
+// Owl Carousel Theme
+.owl-theme {
+  width: $carousel-width !important;
+  margin: 0 auto;
+}
+
+// Logo Slide
+.logo-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $logo-max-size;
+  width: $carousel-width;
+}
+
+// Logo Image
+.logo-img {
+  max-width: $logo-max-size;
+  max-height: $logo-max-size;
+  transition: transform $transition-duration ease-in-out;
+}
+
+// Owl Carousel Stage Outer
+.owl-carousel .owl-stage-outer {
+  padding-left: 0 !important;
+}
+
+// Owl Carousel Items
+.owl-carousel .owl-item {
+  opacity: 0.8;
+  transition: opacity $transition-duration ease-in-out, transform $transition-duration ease-in-out;
+
+  &.active.center {
+    opacity: 1;
+    transform: scale(1.1); // Slightly scale up the active logo
   }
-  
-    .logo-carousel-container {
-      background-color: #161616; /* Match the background color with surrounding elements */
-      padding: 15px 0;
-      justify-content: center; /* Center the carousel horizontally */
-    }
-    
-    .owl-theme {
-      width: 800px !important;
-      margin: 0 auto; /* Center the carousel within the container */
-    }
-    
-    .logo-slide {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100px; /* Adjust the height to fit your design */
-      width: 800px;
-    }
-    
-    .logo-img {
-      max-width: 100px; /* Adjust size as needed for logos */
-      max-height: 100px;
-      transition: transform 0.3s ease-in-out;
-    }
-    
-    .owl-carousel .owl-stage-outer {
-      padding-left: 0px !important;
-    }
-    
-    
-    .owl-carousel .owl-item {
-      opacity: 0.8; /* Add slight transparency to logos */
-      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-    }
-    
-    .owl-carousel .owl-item.active.center {
-      opacity: 1;
-      transform: scale(1.1); /* Slightly scale up the active logo */
-    }
-    
-    .owl-carousel .owl-item.cloned {
-      opacity: 0.5; /* Further reduce opacity for cloned items */
-    }
+
+  &.cloned {
+    opacity: 0.5; // Further reduce opacity for cloned items
+  }
+}

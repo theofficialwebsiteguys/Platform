@@ -1,133 +1,144 @@
+// Variables for colors, padding, and font sizes
+$primary-bg: #ffffff;
+$secondary-bg: #f0f0f0;
+$text-color-dark: #555;
+$text-color-light: #777;
+$primary-btn-bg: #b3cee3;
+$disabled-btn-bg: #ddd;
+$btn-text-color: #fff;
+$input-border-color: #ddd;
+$font-size-header: 24px;
+$font-size-input: 14px;
+$font-size-btn: 16px;
+$font-size-footer-link: 12px;
+$border-radius: 5px;
+$box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+// Log In Page
+.log-in-page {
+  background-color: $secondary-bg;
+  padding: 5px;
+}
+
+// Login Container
 .login-container {
-    max-width: 400px;
-    margin: auto;
-    margin-top: 20px;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: $primary-bg;
+  border-radius: 10px;
+  box-shadow: $box-shadow;
+}
+
+// Login Header
+.login-header {
+  text-align: center;
+  margin-bottom: 20px;
+
+  h1 {
+    font-size: $font-size-header;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: $text-color-dark;
     margin-bottom: 20px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
-  
-  .log-in-page{
-      background-color: #f0f0f0;
-      padding: 5px;
-  }
-  
-  .login-header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
+}
+
+// Logo
+.login-header-logo {
+  text-align: center;
+
   .logo {
     width: 40%;
     margin: auto;
   }
-  
-  h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  p {
-    color: #555;
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
+}
+
+// Form Group
+.form-group {
+  margin-bottom: 15px;
+
   label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
   }
-  
+
   input[type="email"],
   input[type="text"],
   input[type="password"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
+    border: 1px solid $input-border-color;
+    border-radius: $border-radius;
+    font-size: $font-size-input;
   }
-  
-  button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #b3cee3;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  button[type="submit"]:disabled {
-    background-color: #ddd;
+}
+
+// Submit Button
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: $primary-btn-bg;
+  color: $btn-text-color;
+  border: none;
+  border-radius: $border-radius;
+  font-size: $font-size-btn;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: $disabled-btn-bg;
     cursor: not-allowed;
   }
-  
-  .login-link {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .login-link a {
+}
+
+// Login Link
+.login-link {
+  text-align: center;
+  margin-top: 20px;
+
+  a {
     color: #007bff;
     text-decoration: none;
   }
-  
-  .terms {
-    font-size: 12px;
-    color: #777;
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .terms a {
-    color: #007bff;
+}
+
+// Footer Links
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+
+  a {
+    font-size: $font-size-footer-link;
+    color: $text-color-light;
     text-decoration: none;
   }
-  
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-  }
-  
-  .footer-links a {
-    font-size: 12px;
-    color: #777;
-    text-decoration: none;
-  }
-  
-  .name-container {
-      display: flex;
-      gap: 10px; /* Adjusts the space between the two fields */
-    }
-    
-    .name-field {
-      flex: 1; /* Ensures both fields take up equal width */
-    }
-    
-    .name-field label {
+}
+
+// Name Container
+.name-container {
+  display: flex;
+  gap: 10px; // Adjusts the space between the two fields
+
+  .name-field {
+    flex: 1;
+
+    label {
       display: block;
       margin-bottom: 5px;
       font-weight: bold;
     }
-    
+
     input[type="text"] {
       width: 100%;
       padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      font-size: 14px;
+      border: 1px solid $input-border-color;
+      border-radius: $border-radius;
+      font-size: $font-size-input;
     }
-    
-    .login-header-logo{
-      text-align: center;
-    }
+  }
+}

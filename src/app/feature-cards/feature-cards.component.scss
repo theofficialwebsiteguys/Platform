@@ -1,79 +1,88 @@
-/* PackagesSection */
+// Variables for colors, paddings, and other reusable values
+$primary-bg: #000000;
+$text-color-light: #F2F2F2;
+$text-color-dark: #000000;
+$padding-large: 48px;
+$padding-small: 16px;
+$gap-large: 48px;
+$gap-small: 8px;
+$card-width: 264px;
+$card-height: 350px;
+
+// PackagesSection
 .packages-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0;
   width: 100%;
-  background: #000000;
+  background: $primary-bg;
 }
 
-/* Container */
+// Container
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 48px 0 64px;
-  gap: 48px;
+  padding: $padding-large 0 $padding-large * 1.33;
+  gap: $gap-large;
   width: 100%;
 }
 
-/* Hook */
+// Hook
 .hook {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: auto;
 }
 
-/* Header */
+// Header
 .header {
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  font-size: 2.25rem; /* Relative unit for fluid typography */
+  font-size: 2.25rem; // Relative unit for fluid typography
   line-height: 1.2;
   text-align: center;
-  color: #F2F2F2;
+  color: $text-color-light;
 }
 
-/* Packages */
+// Packages
 .packages {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center; /* Center content on small screens */
+  justify-content: center; // Center content on small screens
   align-items: center;
-  padding: 0 16px; /* Adjust padding for smaller screens */
+  padding: 0 $padding-small;
   width: 100%;
 }
 
-/* PackageCard */
+// PackageCard
 .package-card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 24px;
-  width: 100%; /* Make cards take full width on mobile */
-  max-width: 264px; /* Limit width on larger screens */
-  height: 300px;
-  background: #F2F2F2;
+  padding: 14px;
+  width: 100%; // Make cards take full width on mobile
+  max-width: $card-width; // Limit width on larger screens
+  height: $card-height;
+  background: $text-color-light;
   border-radius: 16px;
-  margin: 16px; /* Add margin for spacing */
+  margin: $gap-small; // Add margin for spacing
 }
 
-/* Contents */
+// Contents
 .contents {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 16px;
+  gap: $gap-small * 2;
+  width: 100%;
 }
 
-/* Icon */
-.icon {
+// Icon (ImageBackground)
+.image-background {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,59 +91,55 @@
   border-radius: 40px;
 }
 
-/* Details */
+// Details
 .details {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  gap: $gap-small;
 }
 
-/* Title */
+// Title
 .title {
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  font-size: 1.5rem; /* Relative unit for fluid typography */
+  font-size: 1.5rem; // Relative unit for fluid typography
   line-height: 1.2;
-  color: #000000;
+  color: $text-color-dark;
 }
 
-/* Bullets */
+// Bullets
 .bullets {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  gap: $gap-small;
 }
 
-/* BulletPoint */
+// BulletPoint
 .bullet-point {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 8px;
+  gap: $gap-small;
 }
 
-/* Bullet */
+// Bullet
 .bullet {
   width: 6px;
   height: 6px;
-  background: #000000;
+  background: $text-color-dark;
   transform: rotate(-45deg);
 }
 
-/* Text */
+// Text
 .text {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 1rem; /* Relative unit for fluid typography */
+  font-size: 1.3rem; // Relative unit for fluid typography
   line-height: 1.2;
-  color: #000000;
+  color: $text-color-dark;
 }
 
-/* Media Queries */
+// Media Queries
 
-/* Mobile (max-width: 600px) */
+// Mobile (max-width: 600px)
 @media (max-width: 600px) {
   .header {
     font-size: 1.75rem;
@@ -142,13 +147,13 @@
 
   .packages {
     flex-direction: column;
-    padding: 0 16px;
+    padding: 0 $padding-small;
   }
-
 
   .contents {
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
 
   .title {
@@ -156,11 +161,11 @@
   }
 
   .text {
-    font-size: 0.875rem;
+    font-size: 1.3rem;
   }
 }
 
-/* Tablet (min-width: 601px) and (max-width: 1024px) */
+// Tablet (min-width: 601px) and (max-width: 1024px)
 @media (min-width: 601px) and (max-width: 1024px) {
   .header {
     font-size: 2rem;
@@ -168,10 +173,10 @@
 
   .packages {
     justify-content: center;
-    padding: 0 32px;
+    padding: 0 $padding-small * 2;
   }
 
   .package-card {
-    width: 45%; /* Two cards per row */
+    width: 45%; // Two cards per row
   }
 }
