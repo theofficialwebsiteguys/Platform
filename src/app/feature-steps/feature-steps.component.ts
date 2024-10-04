@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, Renderer2 } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-feature-steps',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './feature-steps.component.html',
   styleUrl: './feature-steps.component.scss'
 })

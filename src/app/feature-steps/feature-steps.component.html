@@ -5,39 +5,39 @@
     <div class="highlight" [style.transform]="'translateX(' + highlightPosition + '%)'"></div>
 
     <div class="col-lg-4 col-md-4 mb-4 header-text">
-      <div class="text active-text">Connect.</div>
+      <div class="text active-text afacad-flux-regular">Connect.</div>
       <div class="subtext-frame" [ngClass]="{'active-subtext': activeSection === 'connect'}">
-        <p class="subtext">Get Paired Your Website Guy</p>
+        <p class="subtext afacad-flux-thin">Get Paired Your Website Guy</p>
       </div>
     </div>
     <div class="col-lg-4 col-md-4 mb-4 header-text">
-      <div class="text">Design.</div>
+      <div class="text afacad-flux-regular">Design.</div>
       <div class="subtext-frame" [ngClass]="{'active-subtext': activeSection === 'design'}">
-        <p class="subtext">Share Your Vision</p>
+        <p class="subtext afacad-flux-thin">Share Your Vision</p>
       </div>
     </div>
     <div class="col-lg-4 col-md-4 header-text">
-      <div class="text">Launch.</div>
+      <div class="text afacad-flux-regular">Launch.</div>
       <div class="subtext-frame" [ngClass]="{'active-subtext': activeSection === 'launch'}">
-        <p class="subtext">Watch your website come to life</p>
+        <p class="subtext afacad-flux-thin">Watch your website come to life</p>
       </div>
     </div>
   </div>
 
   <!-- Carousel Content -->
-  <div id="featureCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-pause="false">
+  <div id="featureCarousel" class="carousel slide" data-bs-ride="carousel"  data-bs-interval="10000" data-bs-pause="false">
     <div class="carousel-inner">
       <!-- Create Section -->
       <div class="carousel-item" [class.active]="activeSection === 'connect'">
         <div class="feature">
           <div class="hook">
-            <h2 class="main-text display-4 fw-bold">Expert Developers,</h2>
-            <h2 class="main-text display-4 fw-bold">Expert Solutions</h2>
-            <p class="description lead">Connect Directly with Our US-Based Professional Developers.</p>
-            <a href="/contact"><button>Connect Today</button></a>
+            <h2 class="main-text display-4 afacad-flux-regular">Expert Developers,</h2>
+            <h2 class="main-text display-4 afacad-flux-regular">Expert Solutions</h2>
+            <p class="description lead afacad-flux-thin">Connect Directly with Our US-Based Professional Developers.</p>
+            <a routerLink="/contact"><button>Connect Today</button></a>
           </div>
           <div >
-            <img class="image" src="assets/chat.png" alt="">
+            <img class="image" src="assets/landing/chat.png" alt="">
           </div>
         </div>
       </div>
@@ -46,13 +46,13 @@
       <div class="carousel-item" [class.active]="activeSection === 'design'">
         <div class="feature ">
           <div class="hook">
-            <h2 class="main-text display-4 fw-bold">Your Business,</h2>
-            <h2 class="main-text display-4 fw-bold">Your Control</h2>
-            <p class="description lead">Crafted website design to your exact needs, with complete control at your fingertips.</p>
-            <a href="/contact"><button>Design Your Website</button></a>
+            <h2 class="main-text display-4 afacad-flux-regular">Your Business,</h2>
+            <h2 class="main-text display-4 afacad-flux-regular">Your Control</h2>
+            <p class="description lead afacad-flux-thin">Crafted website design to your exact needs, with complete control at your fingertips.</p>
+            <a routerLink="/contact"><button>Design Your Website</button></a>
           </div>
           <div>
-            <img class="image" src="assets/design.png" alt="">
+            <img class="image" src="assets/landing/design.png" alt="">
           </div>
         </div>
       </div>
@@ -61,13 +61,13 @@
       <div class="carousel-item" [class.active]="activeSection === 'launch'">
         <div class="feature">
           <div class="hook">
-            <h2 class="main-text display-4 fw-bold">Launch Your Website,</h2>
-            <h2 class="main-text display-4 fw-bold">Built to Perfection</h2>
-            <p class="description lead">We make your dream website a reality with a quick, hassle-free launch process.</p>
-            <a href="/contact"><button>Launch Your Website</button></a>
+            <h2 class="main-text display-4 afacad-flux-regular">Launch Your Website,</h2>
+            <h2 class="main-text display-4 afacad-flux-regular">Built to Perfection</h2>
+            <p class="description lead afacad-flux-thin">We make your dream website a reality with a quick, hassle-free launch process.</p>
+            <a routerLink="/contact"><button>Launch Your Website</button></a>
           </div>
           <div>
-            <img class="image" src="assets/launch.png" alt="">
+            <img class="image" src="assets/landing/launch.png" alt="">
           </div>
         </div>
       </div>

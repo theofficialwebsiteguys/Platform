@@ -1,13 +1,13 @@
 <div class="feature-steps-container" [ngClass]="{'reverse-layout': alignment === 'right'}">
     <div class="feature-steps-text">
-      <h2>{{ title }}</h2>
-      <p>{{ description }}</p>
+      <h2 class="afacad-flux-regular">{{ title }}</h2>
+      <p class="desc afacad-flux-thin">{{ description }}</p>
       <ul>
         <li *ngFor="let step of steps">
-          <strong>{{ step.title }}:</strong> {{ step.description }}
+          <strong class="">{{ step.title }}:</strong> {{ step.description }}
         </li>
       </ul>
-      <a href="/contact"><button>{{ buttonText }}</button></a>
+      <a routerLink="/contact"><button>{{ buttonText }}</button></a>
     </div>
     <div class="feature-steps-body">
       <img [src]="imageUrl" [alt]="imageAlt">

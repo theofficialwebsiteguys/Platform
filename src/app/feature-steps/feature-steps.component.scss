@@ -1,30 +1,56 @@
 @import '../../_button';
 
+// Variables for colors, padding, and font sizes
+$primary-bg: #f4f4f4;
+$primary-highlight: #229EFF;
+$text-color: #000000;
+$padding-large: 96px;
+$padding-medium: 2rem;
+$font-size-heading-lg: 60px;
+$font-size-heading-md: 30px;
+$font-size-subtext: 30px;
+$font-size-description: 2rem;
+$font-size-hook-lg: 3.5rem;
+$font-size-hook-sm: 2.5rem;
+$border-radius: 20px;
+$transition-duration: 0.5s;
+
+// Feature Section
 .feature-section {
-  background-color: #f4f4f4;
+  background-color: $primary-bg;
   position: relative;
   padding-bottom: 48px;
   min-height: 800px;
 }
 
+// Header Text
 .header-text {
   position: relative;
   display: inline-block;
   padding: 8px 16px;
-  cursor: pointer;
+  // cursor: pointer;
 }
 
-.image img{
-  border-radius: 20px;
+.text {
+  font-size: $font-size-heading-lg;
+  line-height: 61px;
+  transition: color $transition-duration ease;
+  position: relative;
+  z-index: 3;
+
+  &.active-text {
+    color: $primary-highlight;
+  }
 }
 
+// Underline and Highlight
 .underline {
   position: absolute;
   bottom: 24px;
   left: 0;
   width: 100%;
   height: 4px;
-  background-color: #000000;
+  background-color: $text-color;
   z-index: 1;
 }
 
@@ -34,25 +60,12 @@
   left: 0;
   width: 33.33%;
   height: 4px;
-  background-color: #229EFF;
-  transition: transform 0.5s ease;
+  background-color: $primary-highlight;
+  transition: transform $transition-duration ease;
   z-index: 2;
 }
 
-.text {
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  font-size: 50px;
-  line-height: 61px;
-  transition: color 0.5s ease;
-  position: relative;
-  z-index: 3;
-}
-
-.active-text {
-  color: #229EFF;
-}
-
+// Subtext Frame
 .subtext-frame {
   position: absolute;
   top: 80px;
@@ -60,72 +73,72 @@
   width: 100%;
   text-align: center;
   opacity: 0;
-  transition: opacity 0.5s ease;
-}
+  transition: opacity $transition-duration ease;
 
-.subtext-frame.active-subtext {
-  opacity: 1;
-  color: #229EFF;
+  &.active-subtext {
+    opacity: 1;
+    color: $primary-highlight;
+  }
 }
 
 .subtext {
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  font-size: 20px;
+  font-size: $font-size-subtext;
   line-height: 24px;
 }
 
+// Hook and Description
 .hook .main-text {
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  font-size: 3.5rem;
+  font-size: $font-size-hook-lg;
   line-height: 1.2;
-  color: #000000;
+  color: $text-color;
 }
 
 .description {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  font-size: 2rem;
-  color: #000000;
+  font-size: $font-size-description;
+  color: $text-color;
 }
 
+// Image Container
 .image-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: $padding-medium;
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.1);
   filter: drop-shadow(0px 1px 8px #363636);
-  border-radius: 12px;
+  border-radius: $border-radius;
 }
 
+// Feature Layout
 .feature {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 96px;
-  transition: opacity 0.5s ease;
+  padding: 0px $padding-large;
+  transition: opacity $transition-duration ease;
   margin: auto;
   max-width: 90%;
+
+  &.flex-row-reverse {
+    flex-direction: row-reverse;
+  }
 }
 
-.feature.flex-row-reverse {
-  flex-direction: row-reverse;
-}
+// Responsive adjustments
 
 @media (max-width: 1350px) {
-  .feature{
+  .feature {
     padding: 0;
   }
-
 }
 
 @media (max-width: 768px) {
   .text {
-    font-size: 30px;
+    font-size: $font-size-heading-md;
     line-height: 40px;
   }
 
@@ -137,7 +150,7 @@
     font-size: 3rem;
   }
 
-  .hook{
+  .hook {
     text-align: center;
   }
 
@@ -153,12 +166,11 @@
   .feature {
     flex-direction: column;
     align-items: center;
-    
   }
 }
 
 @media (max-width: 576px) {
-  .image{
+  .image {
     max-width: 350px;
   }
 
@@ -168,7 +180,7 @@
   }
 
   .hook .main-text {
-    font-size: 2.5rem;
+    font-size: $font-size-hook-sm;
   }
 
   .description {

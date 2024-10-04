@@ -1,209 +1,216 @@
 @import '../../_button';
 
-.full-pricing-container{
-    background-color: #f0f0f0;
-    padding: 5px;
+// Variables for colors, padding, and font sizes
+$primary-bg: #f0f0f0;
+$secondary-bg: #ffffff;
+$button-bg: black;
+$button-hover-bg: #333;
+$text-color-dark: #333;
+$text-color-muted: #555;
+$font-size-header-lg: 36px;
+$font-size-header-sm: 28px;
+$font-size-text-lg: 16px;
+$padding-header: 40px 20px;
+$padding-section: 20px;
+$border-radius: 10px;
+$box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+// Full Pricing Container
+.full-pricing-container {
+  background-color: $primary-bg;
+  padding: 5px;
 }
 
-.pricing-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    background-color: #f0f0f0;
-  }
-  
-  .pricing-section {
-    display: flex;
-    justify-content: space-around;
-    align-items: stretch;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-    flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
-  }
-  
-  .pricing-card {
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    width: 23%;
-    text-align: center;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 20px; /* Add spacing between rows */
-  }
-  
-  .pricing-header {
-    background-color: #f8f8f8;
-    padding: 15px;
-    border-radius: 10px 10px 0 0;
-  }
-  
-  .pricing-header.popular {
-    background-color: #53ffc6;
-  }
-  
-  .pricing-price {
-    margin: 20px 0;
-    font-size: 32px;
-    font-weight: bold;
-  }
-  
-  .pricing-price span {
-    font-size: 16px;
-  }
-  
-  .pricing-details {
-    margin: 20px 0;
-    text-align: left;
-    flex-grow: 1;
-  }
-  
-  .pricing-details h4 {
-    margin-bottom: 10px;
-    font-size: 18px;
-    font-weight: 600;
-  }
-  
-  .pricing-details ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .pricing-details li {
-    margin-bottom: 10px;
-  }
-  
-  .pricing-cta button {
-    background-color: black;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 30px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  
-  .pricing-cta button:hover {
-    background-color: #333;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 992px) {
-    .pricing-card {
-      width: 45%; /* Two cards per row on medium screens */
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .pricing-card {
-      width: 48%; /* Adjusted width for better fit on smaller screens */
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .pricing-card {
-      width: 100%; /* Full width on small screens */
-    }
-  }
-  
+// Pricing Header Container
+.pricing-header-container {
+  background: linear-gradient(to right, #ffffff, #b3cee3);
+  text-align: center;
+  padding: $padding-header;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  margin: 20px 5% 10px;
 
-  .pricing-header-container {
-    background: linear-gradient(to right, #ffffff, #b3cee3);
-    text-align: center;
-    padding: 40px 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px; /* To create space between this section and the pricing cards */
-    margin-top: 20px;  
-    margin-left: 5%;
-    margin-right: 5%;
-}
-  
-  .pricing-header-container h2 {
+  h2 {
     font-size: 14px;
     font-weight: bold;
-    color: #333;
+    color: $text-color-dark;
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
   }
-  
-  .pricing-header-container h1 {
-    font-size: 36px;
+
+  h1 {
+    font-size: $font-size-header-lg;
     font-weight: 700;
     color: #000;
     margin-bottom: 20px;
   }
-  
-  .pricing-header-container p {
-    font-size: 16px;
-    color: #555;
+
+  p {
+    font-size: $font-size-text-lg;
+    color: $text-color-muted;
     margin-bottom: 30px;
   }
-  
+
   .email-signup {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 15px;
-  }
-  
-  .email-signup input {
-    width: 300px;
-    padding: 10px 15px;
-    border-radius: 25px;
-    border: 1px solid #ddd;
-    font-size: 16px;
-    margin-right: 10px;
-    outline: none;
-  }
-  
-  .email-signup button {
-    padding: 10px 20px;
-    border-radius: 25px;
-    border: none;
-    background-color: black;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .email-signup button:hover {
-    background-color: #333;
-  }
-  
-  .disclaimer {
-    font-size: 12px;
-    color: #777;
-    margin-top: 20px;
-  }
-  
-  @media (max-width: 768px) {
-    .pricing-header-container h1 {
-      font-size: 28px;
+
+    button {
+      padding: 10px 20px;
+      border-radius: 25px;
+      border: none;
+      background-color: $button-bg;
+      color: white;
+      font-size: $font-size-text-lg;
+      cursor: pointer;
+      box-shadow: $box-shadow;
+
+      &:hover {
+        background-color: $button-hover-bg;
+      }
     }
-  
-    .email-signup {
-      flex-direction: column;
+
+    input {
+      width: 300px;
+      padding: 10px 15px;
+      border-radius: 25px;
+      border: 1px solid #ddd;
+      font-size: $font-size-text-lg;
+      margin-right: 10px;
+      outline: none;
     }
-  
-    .email-signup input {
+  }
+}
+
+// Pricing Container
+.pricing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: $padding-section;
+  background-color: $primary-bg;
+}
+
+.pricing-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+// Pricing Card
+.pricing-card {
+  background-color: $secondary-bg;
+  border: 1px solid #e0e0e0;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  width: 23%;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+  .pricing-header {
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-radius: $border-radius $border-radius 0 0;
+
+    &.popular {
+      background-color: #53ffc6;
+    }
+  }
+
+  .pricing-price {
+    margin: 20px 0;
+    font-size: 32px;
+    font-weight: bold;
+
+    span {
+      font-size: 16px;
+    }
+  }
+
+  .pricing-details {
+    margin: 20px 0;
+    text-align: left;
+    flex-grow: 1;
+
+    h4 {
+      margin-bottom: 10px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .pricing-cta {
+    button {
+      background-color: $button-bg;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+
+      &:hover {
+        background-color: $button-hover-bg;
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 992px) {
+  .pricing-card {
+    width: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .pricing-card {
+    width: 48%;
+  }
+
+  .pricing-header-container h1 {
+    font-size: $font-size-header-sm;
+  }
+
+  .email-signup {
+    flex-direction: column;
+
+    input {
       width: 100%;
-      margin-right: 0;
       margin-bottom: 10px;
     }
-  
-    .email-signup button {
+
+    button {
       width: 100%;
     }
   }
-  
+}
+
+@media (max-width: 576px) {
+  .pricing-card {
+    width: 100%;
+  }
+}

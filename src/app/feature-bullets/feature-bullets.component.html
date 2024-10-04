@@ -3,12 +3,9 @@
       <div class="feature-text">
         <div class="text-grid">
           <div class="text-section" *ngFor="let feature of features">
-            <div class="image-background">
-              <img [src]="feature.icon" [alt]="feature.title + ' icon'" class="feature-icon" />
-            </div>
             <div class="header-with-supporting-text">
-              <h2 class="header">{{ feature.title }}</h2>
-              <p class="supporting-text">{{ feature.description }}</p>
+              <h2 class="header afacad-flux-regular">{{ feature.title }}</h2>
+              <p class="supporting-text afacad-flux-thin">{{ feature.description }}</p>
             </div>
           </div>
         </div>

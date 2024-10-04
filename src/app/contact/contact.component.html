@@ -1,79 +1,85 @@
 <div class="contact-container">
-    <h2>Fill Out The Form Below To Speak With The Website Guys.</h2>
-    <form class="form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" (ngSubmit)="sendEmail()" [formGroup]="contactForm" enctype="multipart/form-data">
-      
-      <div class="form-group">
-        <label for="name">Your Name*</label>
-        <input id="name" formControlName="name" class="form-control" type="text" placeholder="Enter your name" name="name" required />
-      </div>
-  
-      <div class="form-group">
-        <label for="email">Your Email*</label>
-        <input formControlName="email" id="email" class="form-control" type="email" placeholder="Enter your email" name="email" required />
-      </div>
-  
-      <div class="form-group">
-        <label for="phone">Phone*</label>
-        <input formControlName="phone" id="phone" class="form-control" type="tel" placeholder="Enter your phone number" name="phone" required />
-      </div>
-  
-      <div class="form-group">
-        <label for="serviceType">Type of Service*</label>
-        <select id="serviceType" formControlName="serviceType" class="form-control" required>
-          <option value="" disabled [selected]="!contactForm.get('serviceType')?.value">Select a Service Type</option>
-          <option value="Single Page Website">Single Page Website</option>
-          <option value="Multi-Page Website">Multi-Page Website</option>
-          <option value="E-Commerce">E-Commerce</option>
-          <option value="SEO & Marketing">SEO & Marketing</option>
-          <option value="Software Development">Software Development</option>
-        </select>
-      </div>
-      
-  
-      <div class="form-group">
-        <label for="proposal">Tell us as much as you can about your new Project*</label>
-        <textarea formControlName="proposal" name="proposal" class="form-control" id="proposal" rows="5" required placeholder="Please include as many details as possible."></textarea>
-      </div>
-  
-      <div class="form-group">
-        <label for="logo">ADD IMAGES/CONTEXT</label>
-        <div class="file-upload" 
-             [class.drag-over]="dragOver"
-             (dragover)="onDragOver($event)" 
-             (dragleave)="onDragLeave($event)" 
-             (drop)="onDrop($event)">
-          
-          <input type="file" #fileInput (change)="onImagesChange($event)" style="display:none" multiple />
-          
-          <ul *ngIf="uploadedFiles.length" class="uploaded-files">
-            <li *ngFor="let file of uploadedFiles">{{ file.name }}</li>
-          </ul>
-  
-          <div class="file-upload-message" (click)="triggerFileInput(fileInput)">
-            <p *ngIf="!uploadedFiles.length">Drop files here or</p>
-            <button type="button" class="select-files">Select Files</button>
-          </div>
-          
+  <h2 class="afacad-flux-regular">Fill Out The Form Below To Speak With The Website Guys.</h2>
+  <form class="form" [formGroup]="contactForm" (ngSubmit)="sendEmail()">
     
+    <div class="form-group">
+      <label class="afacad-flux-regular required" for="name">Your Name</label>
+      <input id="name" formControlName="name" class="form-control" type="text" placeholder="Enter your name" />
+      <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" class="error-message">
+        Name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="afacad-flux-regular required" for="email">Your Email</label>
+      <input formControlName="email" id="email" class="form-control" type="email" placeholder="Enter your email" />
+      <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="error-message">
+        A valid email is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="afacad-flux-regular required" for="phone">Phone</label>
+      <input formControlName="phone" id="phone" class="form-control" type="tel" placeholder="Enter your phone number" />
+      <div *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched" class="error-message">
+        Phone number is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="afacad-flux-regular required" for="serviceType">Type of Service</label>
+      <select id="serviceType" formControlName="serviceType" class="form-control">
+        <option value="" disabled [selected]="!contactForm.get('serviceType')?.value">Select a Service Type</option>
+        <option value="Single Page Website">Single Page Website</option>
+        <option value="Multi-Page Website">Multi-Page Website</option>
+        <option value="E-Commerce">E-Commerce</option>
+        <option value="SEO & Marketing">SEO & Marketing</option>
+        <option value="Software Development">Software Development</option>
+      </select>
+      <div *ngIf="contactForm.get('serviceType')?.invalid && contactForm.get('serviceType')?.touched" class="error-message">
+        Please select a service type.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="proposal" class="afacad-flux-regular required">Tell us as much as you can about your new Project</label>
+      <textarea formControlName="proposal" name="proposal" class="form-control" id="proposal" rows="5" placeholder="Please include as many details as possible."></textarea>
+      <div *ngIf="contactForm.get('proposal')?.invalid && contactForm.get('proposal')?.touched" class="error-message">
+        Proposal details are required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="logo" class="afacad-flux-regular">ADD IMAGES/CONTEXT</label>
+      <div class="file-upload" 
+           [class.drag-over]="dragOver"
+           (dragover)="onDragOver($event)" 
+           (dragleave)="onDragLeave($event)" 
+           (drop)="onDrop($event)">
+        
+        <input type="file" #fileInput (change)="onImagesChange($event)" style="display:none" multiple />
+        
+        <ul *ngIf="uploadedFiles.length" class="uploaded-files">
+          <li *ngFor="let file of uploadedFiles">{{ file.name }}</li>
+        </ul>
+
+        <div class="file-upload-message" (click)="triggerFileInput(fileInput)">
+          <p *ngIf="!uploadedFiles.length">Drop files here or</p>
+          <button type="button" class="select-files">Select Files</button>
         </div>
       </div>
-      
+    </div>
+
+    <button type="submit" class="submit-button">
+      <span *ngIf="!submitted">Submit</span>
+      <span *ngIf="submitted">
+        <i class="fa fa-spinner fa-spin"></i> Sending...
+      </span>
+    </button>
+
+    <div *ngIf="successMessage" class="alert alert-success mt-3">
+      {{ successMessage }}
+    </div>
     
-      <div style="display:none;">
-        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-      </div>
-  
-      <button type="submit" class="" [disabled]="submitted">
-        <span *ngIf="!submitted">Submit</span>
-        <span *ngIf="submitted">
-          <i class="fa fa-spinner fa-spin"></i> Sending...
-        </span>
-      </button>
-      
-      <div *ngIf="successMessage" class="alert alert-success mt-3">
-        {{ successMessage }}
-      </div>
-      
-    </form>
-  </div>
-  
+  </form>
+</div>

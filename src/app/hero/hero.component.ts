@@ -1,12 +1,13 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss'
 })
@@ -23,28 +24,28 @@ export class HeroComponent {
   //   { src: 'assets/default.jpg', state: 'default' }
   // ];
 
-  largeVideo = { src: 'assets/hero-clips/hero-video.mp4' }; 
+  largeVideo = { src: 'https://storage.googleapis.com/the-website-guys/Hero-Clips/hero-video.mp4' }; 
 
   websiteVideos = [
-    { src: 'assets/hero-clips/amores-hero-clip.mp4', state: 'default' },
-    { src: 'assets/hero-clips/cakes-hero-clip.mp4', state: 'default' },
-    { src: 'assets/hero-clips/annie.mp4', state: 'default' },
-    { src: 'assets/hero-clips/assetace.mp4' },
-    { src: 'assets/hero-clips/ltd.mp4' },
-    { src: 'assets/hero-clips/rye.mp4' },
-    { src: 'assets/hero-clips/48.mp4' }
+    { src: 'https://storage.googleapis.com/the-website-guys/Hero-Clips/amores-hero-clip.mp4', state: 'default' },
+    { src: 'https://storage.googleapis.com/the-website-guys/Hero-Clips/cakes-hero-clip.mp4', state: 'default' },
+    { src: 'https://storage.googleapis.com/the-website-guys/Hero-Clips/annie.mp4', state: 'default' },
+    { src: 'https://storage.googleapis.com/the-website-guys/Hero-Clips/assetace.mp4' },
+    { src: 'https://storage.googleapis.com/the-website-guys/Hero-Clips/ltd.mp4' },
+    { src: 'https://storage.googleapis.com/the-website-guys/Hero-Clips/rye.mp4' },
+    { src: 'https://storage.googleapis.com/the-website-guys/Hero-Clips/48.mp4' }
   ];
 
   podcastVideos = [
-    { src: 'assets/hero-clips/orlando.mp4' },
-    { src: 'assets/hero-clips/phil.mp4' },
-    { src: 'assets/hero-clips/phil2.mp4' },
-    { src: 'assets/hero-clips/jared.mp4' },
-    { src: 'assets/hero-clips/andy-hero-clip.mp4', state: 'default' },
-    { src: 'assets/hero-clips/jeremy-hero-clip.mp4', state: 'default' },
-    { src: 'assets/hero-clips/luke-hero-clip.mp4', state: 'default' },
-    { src: 'assets/hero-clips/oliver-hero-clip.mp4', state: 'default' },
-    { src: 'assets/hero-clips/riverside-hero-clip.mp4', state: 'default' }
+    { src: 'https://storage.googleapis.com/the-website-guys/Hero-Clips/orlando.mp4' },
+    { src: 'https://storage.googleapis.com/the-website-guys/Hero-Clips/phil.mp4' },
+    { src: 'https://storage.googleapis.com/the-website-guys/Hero-Clips/phil2.mp4' },
+    { src: 'https://storage.googleapis.com/the-website-guys/Hero-Clips/jared.mp4' },
+    { src: 'https://storage.googleapis.com/the-website-guys/Hero-Clips/andy-hero-clip.mp4', state: 'default' },
+    { src: 'https://storage.googleapis.com/the-website-guys/Hero-Clips/jeremy-hero-clip.mp4', state: 'default' },
+    { src: 'https://storage.googleapis.com/the-website-guys/Hero-Clips/luke-hero-clip.mp4', state: 'default' },
+    { src: 'https://storage.googleapis.com/the-website-guys/Hero-Clips/oliver-hero-clip.mp4', state: 'default' },
+    { src: 'https://storage.googleapis.com/the-website-guys/Hero-Clips/riverside-hero-clip.mp4', state: 'default' }
   ];
 
   // Define which grid slots are for podcast and website videos

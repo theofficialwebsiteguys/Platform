@@ -1,127 +1,141 @@
+// Variables for colors, padding, and font sizes
+$primary-bg: #fff;
+$text-color-dark: #3b3b3b;
+$text-color-light: #555;
+$highlight-bg: #b3cee3;
+$padding-large: 100px;
+$padding-medium: 50px;
+$padding-small: 15px;
+$font-size-header-lg: 3em;
+$font-size-header-sm: 2em;
+$font-size-text-lg: 1.6em;
+$font-size-text-sm: 1.3em;
+$border-radius: 10px;
+$box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
+// Mission Container
 .mission-container {
-    display: flex;
-    background-color: #fff;
-    padding: 100px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
-    gap: 15%;
-  }
-  
-  .image-container {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    margin-bottom: 20px; /* Add margin for spacing when wrapped */
-  }
-  
+  display: flex;
+  background-color: $primary-bg;
+  padding: $padding-large;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  flex-wrap: wrap;
+  gap: 15%;
+}
+
+// Image Container
+.image-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+
   .profile-image {
     width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: $border-radius;
   }
-  
+
   .overlay-text {
     position: absolute;
     top: 10px;
     left: 10px;
-    background-color: #b3cee3;
-    color: #fff;
+    background-color: $highlight-bg;
+    color: $primary-bg;
     padding: 10px;
     border-radius: 5px;
-    font-size: 1em; /* Slightly smaller font for better fit */
+    font-size: 1em;
     font-weight: bold;
 
-    .name{
+    .name, .title {
       margin: 0;
     }
+  }
+}
 
-    .title{
-      margin: 0;
-    }
+// Mission Content
+.mission-content {
+  max-width: 40%;
+  flex: 1;
+  text-align: left;
+
+  .mission-header {
+    font-size: $font-size-header-lg;
+    color: $text-color-dark;
+    margin: 0;
+    font-weight: bold;
   }
-  
-  .mission-content {
-    max-width: 40%;
-    flex: 1; /* Allow content to grow and shrink */
-    text-align: left;
-  }
-  
+
   .quote-icon {
     font-size: 3em;
     margin-bottom: -10px;
   }
-  
-  .mission-header {
-    font-size: 2em;
-    color: #3b3b3b;
-    margin: 0;
-    font-weight: bold;
-  }
-  
+
   .mission-description {
-    color: #555;
-    font-size: 1.2em;
+    color: $text-color-light;
+    font-size: $font-size-text-lg;
     line-height: 1.5;
   }
+}
 
-  @media screen and (max-width: 1024px) {
-    .mission-container {
-        gap: 10%;
-        padding: 50px;
-      }
+// Responsive adjustments
 
-      .image-container {
-        max-width: 400px;
-      }
+@media screen and (max-width: 1024px) {
+  .mission-container {
+    gap: 10%;
+    padding: $padding-medium;
   }
-  
-  @media screen and (max-width: 768px) {
-    .mission-container {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-  
-    .mission-content {
-      max-width: 100%;
-      text-align: center;
-    }
-  
-    .mission-header {
-      font-size: 1.5em;
-    }
-  
-    .quote-icon {
-      font-size: 2.5em;
-      margin-bottom: 0;
-    }
-  
-    .mission-description {
-      font-size: 0.9em;
-    }
+
+  .image-container {
+    max-width: 400px;
   }
-  
-  @media screen and (max-width: 480px) {
-    .mission-container {
-      padding: 15px;
-    }
-  
-    .image-container {
-      max-width: 100%;
-    }
-  
-    .overlay-text {
-      font-size: 0.8em;
-      padding: 8px;
-    }
-  
-    .mission-header {
-      font-size: 1.2em;
-    }
-  
-    .mission-description {
-      font-size: 0.85em;
-    }
+}
+
+@media screen and (max-width: 768px) {
+  .mission-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
-  
+
+  .mission-content {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .mission-header {
+    font-size: $font-size-header-sm;
+  }
+
+  .quote-icon {
+    font-size: 2.5em;
+  }
+
+  .mission-description {
+    font-size: $font-size-text-sm;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .mission-container {
+    padding: $padding-small;
+  }
+
+  .image-container {
+    max-width: 100%;
+  }
+
+  .overlay-text {
+    font-size: 0.8em;
+    padding: 8px;
+  }
+
+  .mission-header {
+    font-size: $font-size-header-sm;
+  }
+
+  .mission-description {
+    font-size: $font-size-text-sm;
+  }
+}
