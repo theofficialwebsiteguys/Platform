@@ -20,7 +20,7 @@
 
     <div class="form-group">
       <label class="afacad-flux-regular required" for="phone">Phone</label>
-      <input formControlName="phone" id="phone" class="form-control" type="tel" placeholder="Enter your phone number" />
+      <input formControlName="phone" id="phone" class="form-control" type="tel" placeholder="Enter your phone number" appPhoneFormat  />
       <div *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched" class="error-message">
         Phone number is required.
       </div>
@@ -58,17 +58,31 @@
            (drop)="onDrop($event)">
         
         <input type="file" #fileInput (change)="onImagesChange($event)" style="display:none" multiple />
-        
         <ul *ngIf="uploadedFiles.length" class="uploaded-files">
-          <li *ngFor="let file of uploadedFiles">{{ file.name }}</li>
+          <li *ngFor="let file of uploadedFiles; let i = index" class="uploaded-file-item">
+            {{ file.name }}
+            <span class="file-actions">
+              <!-- Font Awesome icon for download -->
+              <a [href]="getFileURL(file)" download="{{ file.name }}" class="download-file" aria-label="Download">
+                <i class="fas fa-download"></i>
+              </a>
+              <!-- Font Awesome icon for remove -->
+              <button type="button" class="remove-file" (click)="removeFile(i)" aria-label="Remove">
+                <i class="fas fa-times"></i>
+              </button>
+            </span>
+          </li>
         </ul>
-
+        
+        
+    
         <div class="file-upload-message" (click)="triggerFileInput(fileInput)">
           <p *ngIf="!uploadedFiles.length">Drop files here or</p>
           <button type="button" class="select-files">Select Files</button>
         </div>
       </div>
     </div>
+    
 
     <button type="submit" class="submit-button">
       <span *ngIf="!submitted">Submit</span>

@@ -136,3 +136,43 @@ $box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     font-size: $font-size-text-sm;
   }
 }
+
+
+// Image Container
+.image-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+
+  .profile-image {
+    width: 100%;
+    height: auto;
+    border-radius: $border-radius;
+  }
+
+  .overlay-text {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: $highlight-bg;
+    color: $primary-bg;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+
+    .name, .title {
+      margin: 0;
+    }
+  }
+}
+
+// Make the image sticky on desktop screens
+@media screen and (min-width: 1024px) {
+  .image-container {
+    position: sticky;
+    top: $padding-large; // Controls the distance from the top while scrolling
+    align-self: start; // Ensures it stays aligned to the start of the container
+  }
+}
