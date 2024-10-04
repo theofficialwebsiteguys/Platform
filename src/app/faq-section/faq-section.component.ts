@@ -22,12 +22,12 @@ export class FaqSectionComponent {
     },
     {
       question: 'Will my website appear on the first page of Google?',
-      answer: 'Not at all. We provide ongoing support and maintenance services by expert software developers to handle everything for you.',
+      answer: 'Getting to the first page of Google requires strategic effort over time. We offer SEO services that help improve your site’s visibility in search results. While no one can guarantee a first-page ranking immediately, our team works diligently to optimize your website for search engines, helping your business climb the ranks.',
       open: false
     },
     {
       question: 'Do I need to know how to code to manage my website?',
-      answer: 'Getting to the first page of Google requires strategic effort over time. We offer SEO services that help improve your site’s visibility in search results. While no one can guarantee a first-page ranking immediately, our team works diligently to optimize your website for search engines, helping your business climb the ranks.',
+      answer: 'Not at all. We provide ongoing support and maintenance services by expert software developers to handle everything for you.',
       open: false
     },
     {

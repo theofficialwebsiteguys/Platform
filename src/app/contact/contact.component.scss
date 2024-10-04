@@ -131,3 +131,44 @@ $text-color: #333;
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.uploaded-files {
+  list-style: none;
+  padding: 0;
+}
+
+.uploaded-file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.file-actions {
+  display: flex;
+  gap: 1rem;  // Space between icons
+}
+
+.download-file,
+.remove-file {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #888;  // Subtle icon color
+  font-size: 1.2rem;
+}
+
+.download-file:hover,
+.remove-file:hover {
+  color: #000;  // Slightly darker on hover
+}
+
+.remove-file {
+  color: red;
+}
+
+.download-file {
+  color: #007bff;  // Subtle blue color for download icon
+}

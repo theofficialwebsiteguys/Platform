@@ -108,6 +108,10 @@ $z-index-high: 1000;
     display: block;
   }
 
+  .item-description{
+    color: $text-color-muted;
+  }
+
   .menu-list {
     list-style: none;
     padding: 0;
@@ -184,5 +188,31 @@ $z-index-high: 1000;
 
   .navbar-nav {
     margin-left: 0;
+  }
+}
+
+// Navbar Toggler for Mobile Devices
+.navbar-toggler {
+  position: relative;
+  z-index: $z-index-high; // Ensures the toggler stays on top of other elements
+  padding: 0.5rem 1rem; // Adjusts padding for better visibility on smaller devices
+  margin-right: 1rem; // Adds margin to the right for spacing
+}
+
+// Adjust Navbar for Smaller Devices
+@media (max-width: 768px) {
+  .navbar {
+    height: auto; // Adjust the height to fit smaller screens
+  }
+
+  .navbar-toggler {
+    z-index: $z-index-high; // Ensures the toggler stays on top on mobile
+
+    right: 1rem; // Aligns the toggler to the right
+    top: 0.5rem; // Adjusts the top position for better visibility
+  }
+
+  .nav-section {
+    margin: 0 5% !important; // Adjusts margins for smaller screens
   }
 }
