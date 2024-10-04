@@ -1,124 +1,132 @@
+// Variables for colors, paddings, and other reusable values
+$primary-bg: #000000;
+$text-color-light: #F2F2F2;
+$image-bg-color: #FFFFFF;
+$border-color: #F2F2F2;
+$padding-large: 4rem;
+$padding-medium: 2rem;
+$padding-small: 1.5rem;
+$gap-large: 32px;
+$gap-medium: 24px;
+
+// General styles
 .feature-section {
-  background: #000000;
-  padding: 4rem 0;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-}
+  background: $primary-bg;
+  padding: $padding-large 0;
+  overflow-x: hidden; // Prevent horizontal scrolling
 
-.image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 100%; /* Ensure it does not exceed the container width */
-  height: auto;
-  border-radius: 12px;
-  margin: 0 auto; /* Center the image container */
-}
-
-.feature-text {
-  width: 100%;
-  max-width: 100%; /* Ensure it does not exceed the container width */
-  margin: 0 auto;
-  padding: 0 1rem; /* Add padding to prevent content touching screen edge */
-}
-
-.hook {
-  margin-bottom: 32px;
-}
-
-.header {
-  font-size: 2.5rem;
-  line-height: 1.2;
-  color: #F2F2F2;
-}
-
-.supporting-text {
-  font-size: 1.5rem;
-  line-height: 1.2;
-  color: #F2F2F2;
-}
-
-.text-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  max-width: 90%;
-}
-
-.text-section {
-  width: 100%;
-  display: flex; /* Ensure elements stay aligned in a row */
-  align-items: flex-start;
-}
-
-.image-background {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 45px;
-  height: 40px;
-  background: #FFFFFF;
-  border-radius: 50%;
-  margin-right: 16px;
-  flex-shrink: 0; /* Prevent it from shrinking smaller than intended */
-}
-
-.vector {
-  width: 20px;
-  height: 20px;
-}
-
-.header-with-supporting-text {
-  flex-grow: 1;
-  border-bottom: 1px solid #F2F2F2;
-  padding-bottom: 24px;
-  width: 100%; /* Ensure it takes up the full width available */
-  box-sizing: border-box; /* Include padding/borders in the element’s width */
-}
-
-.header-with-supporting-text .header {
-  font-size: 1.5rem;
-  line-height: 1.2;
-}
-
-.header-with-supporting-text .supporting-text {
-  font-size: 1.2rem;
-  line-height: 1.2;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) { /* Tablet and below */
-  .row {
-      flex-direction: column-reverse; /* Stack the image below the text */
-  }
-  
   .image-container {
-      margin-top: 2rem; /* Add space above the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 0 auto; // Center the image container
   }
 
   .feature-text {
-      padding: 0 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 $padding-small; // Add padding to prevent content touching screen edge
+
+    .hook {
+      margin-bottom: $gap-large;
+    }
+
+    .header {
+      font-size: 2.5rem;
+      line-height: 1.2;
+      color: $text-color-light;
+    }
+
+    .supporting-text {
+      font-size: 1.5rem;
+      line-height: 1.2;
+      color: $text-color-light;
+    }
+
+    .text-grid {
+      display: flex;
+      flex-direction: column;
+      gap: $gap-large;
+      max-width: 90%;
+
+      .text-section {
+        display: flex;
+        align-items: flex-start;
+        width: 100%;
+
+        .image-background {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 45px;
+          height: 40px;
+          background: $image-bg-color;
+          border-radius: 50%;
+          margin-right: 16px;
+          flex-shrink: 0;
+        }
+
+        .header-with-supporting-text {
+          flex-grow: 1;
+          border-bottom: 1px solid $border-color;
+          padding-bottom: 24px;
+          width: 100%;
+          box-sizing: border-box;
+
+          .header {
+            font-size: 1.5rem;
+            line-height: 1.2;
+          }
+
+          .supporting-text {
+            font-size: 1.2rem;
+            line-height: 1.2;
+          }
+        }
+      }
+    }
   }
 }
 
-@media (max-width: 576px) { /* Mobile */
-  .image{
-    max-width: 90%;
-  }
-  .header {
-      font-size: 1.75rem;
-  }
-
-  .supporting-text {
-      font-size: 0.875rem;
-  }
-
-  .text-grid {
-      gap: 24px;
-      max-width: 100%;
+// Responsive adjustments
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column-reverse; // Stack the image below the text
   }
 
   .image-container {
-      margin-top: 1.5rem;
+    margin-top: $padding-medium; // Add space above the image
+  }
+
+  .feature-text {
+    padding: 0 $padding-medium;
+  }
+}
+
+@media (max-width: 576px) { // Mobile
+  .image {
+    max-width: 90%;
+  }
+
+  .header {
+    font-size: 1.75rem;
+  }
+
+  .supporting-text {
+    font-size: 0.875rem;
+  }
+
+  .text-grid {
+    gap: $gap-medium;
+    max-width: 100%;
+  }
+
+  .image-container {
+    margin-top: $padding-small;
   }
 }

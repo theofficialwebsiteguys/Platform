@@ -1,139 +1,164 @@
+// Variables for colors, padding, and font sizes
+$primary-bg: #000000;
+$text-color-light: #F2F2F2;
+$padding-large: 48px 0;
+$padding-small: 16px 0;
+$gap-large: 40px;
+$gap-small: 8px;
+$font-size-section-header: 18px;
+$font-size-list-item: 16px;
+$font-size-copyright: 16px;
+$font-weight-header: 800;
+$font-weight-normal: 400;
+$font-weight-copyright: 500;
+$logo-max-width: 250px;
+
+// Footer Wrapper
 .footer-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #000000;
-    padding: 0;
-    width: 100%;
-    color: #F2F2F2;
-    margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: $primary-bg;
+  padding: 0;
+  width: 100%;
+  color: $text-color-light;
+  margin: auto;
 }
 
+// Container
 .container {
-    width: 100%;
-    max-width: 1248px;
-    padding: 0 24px;
-    margin: auto; /* Add auto margins for better centering */
+  width: 100%;
+  max-width: 1248px;
+  padding: 0 24px;
+  margin: auto;
 }
 
+// Logo and Directory
 .logo-and-directory {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 48px 0;
-    border-bottom: 2px solid #F2F2F2;
-    width: 100%;
-    margin: auto; /* Ensure proper centering */
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $padding-large;
+  border-bottom: 2px solid $text-color-light;
+  width: 100%;
+  margin: auto;
 
-.logo {
+  .logo {
     width: 100%;
-    max-width: 250px;
+    max-width: $logo-max-width;
     height: auto;
+    margin: 30px;
     background: url('../../assets/logos/logo.png') no-repeat center center;
     background-size: contain;
-    margin: 30px;
-}
+  }
 
-.directory {
+  .directory {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     width: 60%;
-    gap: 40px;
-    margin: auto; /* Center the directory */
-}
-
-.directory-section {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    text-align: center;
-}
-
-.section-header {
-    font-family: 'Inter', sans-serif;
-    font-weight: 800;
-    font-size: 18px;
-}
-
-.list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.list-item {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-}
-
-.copyright-and-socials {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 16px 0;
-    width: 100%;
-    text-align: center;
-    margin: auto; /* Add auto margins to center */
-}
-
-.copyright {
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    margin-bottom: 16px;
-}
-
-.socials {
-    display: flex;
-    gap: 16px;
-}
-
-.social-icon {
-    font-size: 24px;
-    cursor: pointer;
-
-    .icon-link{
-        color: white;
-        text-decoration: none;
-    }
-}
-
-/* Responsive Design */
-@media (min-width: 768px) {
-    .logo-and-directory {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        margin: auto; /* Auto margins for better alignment */
-    }
-
-    .directory {
-        flex-direction: row;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 40px;
-        width: 100%;
-        margin: auto; /* Ensure the directory is centered */
-    }
+    gap: $gap-large;
+    margin: auto;
 
     .directory-section {
-        text-align: left;
-    }
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
 
-    .copyright-and-socials {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        text-align: left;
-        margin: auto; /* Ensure proper alignment */
+      .section-header {
+        font-family: 'Inter', sans-serif;
+        font-weight: $font-weight-header;
+        font-size: $font-size-section-header;
+      }
+
+      .list {
+        display: flex;
+        flex-direction: column;
+        gap: $gap-small;
+
+        .list-item {
+          font-family: 'Inter', sans-serif;
+          font-weight: $font-weight-normal;
+          font-size: $font-size-list-item;
+        }
+      }
     }
+  }
+}
+
+// Copyright and Socials
+.copyright-and-socials {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: $padding-small;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+
+  .copyright {
+    font-family: 'Inter', sans-serif;
+    font-weight: $font-weight-copyright;
+    font-size: $font-size-copyright;
+    margin-bottom: $padding-small;
+  }
+
+  .socials {
+    display: flex;
+    gap: 16px;
+
+    .social-icon {
+      font-size: 24px;
+      cursor: pointer;
+
+      .icon-link {
+        color: $text-color-light;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .directory{
+    align-items: center !important;
+  }
+}
+
+// Responsive Design
+@media (min-width: 768px) {
+  .logo-and-directory {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+  }
+
+  .directory {
+    flex-direction: row !important;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: $gap-large;
+    width: 100%;
+    margin: auto;
+  }
+
+  .directory-section {
+    text-align: left !important;
+  }
+
+  .copyright-and-socials {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    margin: auto;
 
     .copyright {
-        margin-bottom: 0;
+      margin-bottom: 0;
     }
+  }
 }

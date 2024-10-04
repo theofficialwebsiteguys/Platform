@@ -1,43 +1,54 @@
 @import '../../_button';
 
+// Variables for colors, padding, and font sizes
+$padding-section: 2rem;
+$border-radius: 8px;
+$font-size-header-lg: 4rem;
+$font-size-text-lg: 2rem;
+$margin-top-lg: 5%;
+$margin-bottom-lg: 1.5rem;
+
+// Custom Section
 .custom-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    border-radius: 8px;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $padding-section;
+  border-radius: $border-radius;
+  text-align: center;
+}
+
+// Content
+.content {
+  margin-top: $margin-top-lg;
+
+  h1 {
+    font-size: $font-size-header-lg;
+    margin-bottom: $margin-bottom-lg;
   }
 
-  .content{
-    margin-top: 5%;
+  p {
+    font-size: $font-size-text-lg;
+    margin-bottom: $margin-bottom-lg;
   }
-  
-  .content h1 {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-  }
-  
-  .content p {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  
-  .image-container {
-    margin-top: 2rem;
-    width: 100%;
-    max-width: 80%;
-  }
-  
-  .image-container img {
+}
+
+// Image Container
+.image-container {
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 80%;
+
+  img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: $border-radius;
   }
+}
 
-  @media (max-width: 576px) {
+// Responsive Design
+@media (max-width: 576px) {
   .image-container {
     max-width: 100%;
   }
-  }
+}
