@@ -26,6 +26,7 @@
     "express": "^4.21.0",
     "mongoose": "^8.6.3",
     "ngx-owl-carousel-o": "^18.0.0",
+    "platform-frontend": "file:",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
