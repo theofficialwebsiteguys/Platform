@@ -1,10 +1,12 @@
-@import '../../_button';
+@import '../../button';
 
 // Variables for colors, padding, and font sizes
 $primary-bg: #f4f4f4;
 $text-color-dark: #333;
 $text-color-light: #555;
 $padding-large: 50px;
+$padding-medium: 30px;
+$padding-small: 20px;
 $gap-small: 20px;
 $font-size-header-lg: 4vw;
 $font-size-subheader-lg: 2vw;
@@ -23,117 +25,69 @@ $border-radius: 10px;
   padding: $padding-large;
   background-color: $primary-bg;
   height: auto;
+  flex-direction: row; // Image and content side by side
+
+  @media (max-width: 1024px) {
+    flex-direction: column; // Switch to stacked layout on small screens
+    padding: $padding-medium;
+  }
+
+  @media (max-width: 425px) {
+    padding: $padding-small;
+  }
 }
 
-// Grid Container
-.grid-container {
-  width: 100%;
-  max-width: 40%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-gap: $grid-gap;
-}
+// Image Styling
+.hero-section img {
+  max-width: 50%;
+  height: auto;
+  margin: 5%;
 
-.grid-item video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: $border-radius;
-}
-
-// Large Item
-.large-item {
-  grid-column: 2 / 4;
-  grid-row: 2 / 4;
+  @media (max-width: 1024px) {
+    max-width: 100%; // Make image full width when stacked
+  }
 }
 
 // Hero Content
 .hero-content {
-  width: 100%;
+  width: 50%;
   max-width: 800px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 10%;
+
 
   h1 {
     font-size: $font-size-header-lg;
     margin-bottom: $gap-small;
     color: $text-color-dark;
+
+    @media (max-width: 1024px) {
+      font-size: $font-size-header-md;
+    }
+
+    @media (max-width: 425px) {
+      font-size: $font-size-header-sm;
+    }
   }
 
   p {
     font-size: $font-size-subheader-lg;
     margin-bottom: $gap-small * 1.5;
     color: $text-color-light;
-  }
-}
 
-// Pop-in / Pop-out Animations
-@keyframes popOut {
-  0% { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(0.5); }
-}
+    @media (max-width: 1024px) {
+      font-size: $font-size-subheader-md;
+    }
 
-@keyframes popIn {
-  0% { opacity: 0; transform: scale(0.5); }
-  100% { opacity: 1; transform: scale(1); }
-}
-
-.pop-out {
-  animation: popOut 1s forwards;
-}
-
-.pop-in {
-  animation: popIn 1s forwards;
-}
-
-@media (max-width: 768px) {
-  .grid-container {
-    max-width: 100%;
-    margin-top: 40px;
+    @media (max-width: 425px) {
+      font-size: $font-size-subheader-sm;
+    }
   }
 
-  .hero-section {
-    flex-direction: column;
-    align-items: center;
-    padding: 40px;
-  }
-
-  .header-content {
-    max-width: 100%;
+  @media (max-width: 1024px) {
+    width: 100%; // Ensure content takes full width when stacked
     text-align: center;
-    padding-top: 20px;
-  }
-
-  .hero-content h1 {
-    font-size: $font-size-header-md;
-  }
-
-  .hero-content p {
-    font-size: $font-size-subheader-md;
-  }
-}
-
-@media (max-width: 425px) {
-  .hero-section {
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
-
-  .header-content {
-    max-width: 100%;
-    text-align: center;
-    padding-top: 20px;
-  }
-
-  .hero-content h1 {
-    font-size: $font-size-header-sm;
-  }
-
-  .hero-content p {
-    font-size: $font-size-subheader-sm;
+  margin: 5%;
   }
 }

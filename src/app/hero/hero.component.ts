@@ -2,12 +2,13 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ProductHeroComponent } from '../product-hero/product-hero.component';
 
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ProductHeroComponent],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss'
 })

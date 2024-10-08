@@ -1,15 +1,5 @@
 <div class="hero-section">
-  <div class="grid-container">
-    <div class="grid-item" *ngFor="let slot of videoSlots; let i = index" [ngClass]="{
-            'large-item': i === 8,
-            'pop-out': getImageClass(i) === 'pop-out' && i !== 8,
-            'pop-in': getImageClass(i) === 'pop-in' && i !== 8
-          }">
-      <video *ngIf="i < 9" [src]="i === 8 ? largeVideo.src : slot.src" autoplay [muted]="i !== 8" loop playsinline
-        (loadeddata)="onVideoLoaded(i)">
-      </video>
-    </div>
-  </div>
+  <img class="hero-image" src="assets/landing/hero-vid.gif" alt="Hero Image">
 
   <div class="hero-content">
     <div class="header-content">
