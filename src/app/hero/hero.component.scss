@@ -91,3 +91,14 @@ $border-radius: 10px;
   margin: 5%;
   }
 }
+
+.hero-image {
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-image {
+    content: url('../../assets/landing/hero-vid-mobile.gif'); /* Path to the mobile image */
+  }
+}
