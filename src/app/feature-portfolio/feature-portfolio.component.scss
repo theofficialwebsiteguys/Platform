@@ -27,3 +27,9 @@ $black-color: black;
     display: block; // Ensures there is no extra space below the image
   }
 }
+
+@media (max-width: 768px) {
+  .portfolio-banner-img {
+    content: url('../../assets/landing/portfolio-mobile.png'); // Different image for smaller screens
+  }
+}

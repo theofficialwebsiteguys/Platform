@@ -195,8 +195,7 @@ $z-index-high: 1000;
 .navbar-toggler {
   position: relative;
   z-index: $z-index-high; // Ensures the toggler stays on top of other elements
-  padding: 0.5rem 1rem; // Adjusts padding for better visibility on smaller devices
-  margin-right: 1rem; // Adds margin to the right for spacing
+  padding: 0.5rem 1rem; // Adjusts padding for better visibility on smaller device
 }
 
 // Adjust Navbar for Smaller Devices
