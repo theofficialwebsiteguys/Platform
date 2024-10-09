@@ -48,19 +48,23 @@ $border-radius: 10px;
   }
 }
 
-// Hero Content
+// Hero Content with Animation
 .hero-content {
   width: 50%;
   max-width: 800px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  opacity: 0; // Start invisible
+  transform: translateY(30px); // Start slightly shifted down
+  animation: fadeSlideUp 1.2s ease-out forwards;
+  animation-delay: 0.5s; // Delay to give image some time
 
   h1 {
     font-size: $font-size-header-lg;
     margin-bottom: $gap-small;
     color: $text-color-dark;
+    animation-delay: 0.7s; // Optional staggered effect for header
 
     @media (max-width: 1024px) {
       font-size: $font-size-header-md;
@@ -75,6 +79,7 @@ $border-radius: 10px;
     font-size: $font-size-subheader-lg;
     margin-bottom: $gap-small * 1.5;
     color: $text-color-light;
+    animation-delay: 0.9s; // Optional staggered effect for paragraph
 
     @media (max-width: 1024px) {
       font-size: $font-size-subheader-md;
@@ -88,7 +93,7 @@ $border-radius: 10px;
   @media (max-width: 1024px) {
     width: 100%; // Ensure content takes full width when stacked
     text-align: center;
-  margin: 5%;
+    margin: 5%;
   }
 }
 
@@ -100,5 +105,17 @@ $border-radius: 10px;
 @media screen and (max-width: 768px) {
   .hero-image {
     content: url('../../assets/landing/hero-vid-mobile.gif'); /* Path to the mobile image */
+  }
+}
+
+// Animation for Fade In and Slide Up
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px); // Start slightly shifted down
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); // End in normal position
   }
 }
