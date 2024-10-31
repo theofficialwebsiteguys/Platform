@@ -13,67 +13,62 @@ import { RouterModule } from '@angular/router';
 export class PricingComponent {
   pricingPlans = [
     {
-      name: 'Single-Page Websites',
-      description: 'Ideal for Event Pages, Landing Pages, Personal Blogs/Resumes',
-      price: '$29',
+      name: 'Custom Website',
+      description: 'Perfect for any size business looking for a strong online presence.',
+      price: 'Starting at $500',
       promo: 'Quick & Easy',
-      popular: false,
-      features: [
-        '1 Page Website',
-        'Custom Design',
-        '24/7 Maintenance & Support',
-        'Free Domain (1 Year)',
-        'Basic analytics'
-      ],
-      cta: 'Get Started Free'
-    },
-    {
-      name: 'Standard Website',
-      description: 'For Small to Medium sized businesses. Restaurants, Shops, Service.',
-      price: '$53',
-      promo: 'Take Your Business Online',
       popular: true,
       features: [
-        '2-8 Page Website',
-        'Custom Design',
-        '24/7 Maintenance & Support',
+        'Single/Multi Page',
+        'Custom Design + Contact Form',
+        'FREE 24/7 Maintenance & Support (1 Month)',
         'Free Domain (1 Year)',
-        'Basic analytics'
+        'Basic Analytics'
       ],
-      cta: 'Get Started Free'
-    },
-    {
-      name: 'Advanced Website',
-      description: 'For medium to large established companies.',
-      price: '$86',
-      promo: 'Ensure your clients are satisfied.',
-      popular: false,
-      features: [
-        '8+ Page Website',
-        'Custom Design',
-        '24/7 Maintenance & Support',
-        'Free Domain (1 Year)',
-        'SEO & Marketing Consulting',
-        'Advanced analytics'
-      ],
-      cta: 'Get Started Free'
+      cta: 'Get Started'
     },
     {
       name: 'E-Commerce Shop',
-      description: 'For businesses looking to sell their products online to customers.',
-      price: '$129',
-      promo: 'Sell Your Product',
+      description: 'Expand your reach and connect with customers through a complete online store.',
+      price: 'Starting at $2,000',
+      promo: 'Sell Online Effortlessly',
       popular: false,
       features: [
-        '1-8 Page Ecommerce Website',
-        'Custom Design',
-        '24/7 Maintenance & Support',
+        'Single/Multi Page',
+        'Custom Design + Contact Form',
+        'Full Shopping Experience',
+        'Cart + Checkout Functionality',
+        'FREE 24/7 Maintenance & Support (1 Month)',
         'Free Domain (1 Year)',
-        'SEO & Marketing Consulting',
-        'Advanced analytics',
-        ''
+        'Basic Analytics'
       ],
-      cta: 'Start Selling'
+      cta: 'Start Selling Today'
+    },
+    {
+      name: 'Mobile Application',
+      description: 'Bring your business to customers’ fingertips with a tailored mobile experience.',
+      price: 'Starting at $5,000',
+      promo: 'Your Business, Mobile-Ready',
+      popular: false,
+      features: [
+        'Hybrid Design for IOS & Android',
+        '24/7 Maintenance & Support (1 Month)',
+        'Free Domain (1 Year)',
+        'Basic Analytics'
+      ],
+      cta: 'Go Mobile'
+    },
+    {
+      name: 'Software Development',
+      description: 'For complex needs and large-scale projects that require custom software solutions.',
+      price: 'Schedule a meeting today.',
+      promo: 'Innovate and Scale',
+      popular: false,
+      features: [
+        'Custom Software Design & Architecture',
+        'FREE 24/7 Maintenance & Support (1 Month)'
+      ],
+      cta: 'Schedule A Meeting'
     }
   ];
 
