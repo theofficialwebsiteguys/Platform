@@ -11,16 +11,25 @@
       </div>
       
     
-    <!-- <div class="pricing-container">
+    <div class="pricing-container">
         <div class="pricing-section">
           <div class="pricing-card" *ngFor="let plan of pricingPlans">
             <div class="pricing-header" [ngClass]="plan.popular ? 'popular' : ''">
-              <span>{{ plan.promo }}</span>
-              <h3>{{ plan.name }}</h3>
+              <ng-container *ngIf="plan.name === 'Custom Website'; else default">
+                <h3>Custom <br /> Website</h3>
+              </ng-container>
+              <ng-template #default><h3>{{ plan.name }}</h3></ng-template>
+              
               <p>{{ plan.description }}</p>
             </div>
             <div class="pricing-price">
-              <h2>{{ plan.price }}<span>/month</span></h2>
+              <h2>
+                <!-- Insert line break specifically for "Custom Website" pricing -->
+                <ng-container *ngIf="plan.name === 'Custom Website'; else defaultPrice">
+                  Starting at <br /> $500
+                </ng-container>
+                <ng-template #defaultPrice>{{ plan.price }}</ng-template>
+              </h2>
             </div>
             <div class="pricing-details">
               <h4>Standout features</h4>
@@ -29,11 +38,13 @@
               </ul>
             </div>
             <div class="pricing-cta">
-              <button>{{ plan.cta }}</button>
+              <a routerLink="/contact"><button>{{ plan.cta }}</button></a> 
+              
             </div>
           </div>
+          
         </div>
-      </div> -->
+      </div>
       
       <app-faq-section></app-faq-section>
 </div>
