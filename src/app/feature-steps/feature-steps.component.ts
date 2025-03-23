@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, Renderer2 } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, Inject, PLATFORM_ID, Renderer2 } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -12,46 +12,54 @@ import { RouterModule } from '@angular/router';
 export class FeatureStepsComponent {
   activeSection: string = 'connect';
   sections = ['connect', 'design', 'launch'];
-  highlightPosition = 0; // Start at the first section
+  highlightPosition = 0;
+  private isBrowser: boolean;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(
+    private renderer: Renderer2,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
 
   ngOnInit() {
-    this.startAutoCarousel();
+    if (this.isBrowser) {
+      this.startAutoCarousel();
+    }
   }
 
   startAutoCarousel() {
     const carousel = document.getElementById('featureCarousel');
+    if (!carousel) return;
 
-    if (carousel) {
-      carousel.addEventListener('slide.bs.carousel', () => {
-        const activeIndex = this.sections.indexOf(this.activeSection);
-        const nextIndex = (activeIndex + 1) % this.sections.length;
+    carousel.addEventListener('slide.bs.carousel', () => {
+      const activeIndex = this.sections.indexOf(this.activeSection);
+      const nextIndex = (activeIndex + 1) % this.sections.length;
+      this.highlightPosition = nextIndex * 100;
 
-        this.highlightPosition = nextIndex * 100; // Correctly move the highlight to 0%, 33.33%, 66.66%
-
-        // Update text color and subtext visibility
-        document.querySelectorAll('.header-text .text').forEach((element, index) => {
-          if (index === nextIndex) {
-            this.renderer.addClass(element, 'active-text');
-          } else {
-            this.renderer.removeClass(element, 'active-text');
-          }
-        });
-
-        document.querySelectorAll('.subtext-frame').forEach((element, index) => {
-          if (index === nextIndex) {
-            this.renderer.addClass(element, 'active-subtext');
-          } else {
-            this.renderer.removeClass(element, 'active-subtext');
-          }
-        });
+      document.querySelectorAll('.header-text .text').forEach((element, index) => {
+        if (index === nextIndex) {
+          this.renderer.addClass(element, 'active-text');
+        } else {
+          this.renderer.removeClass(element, 'active-text');
+        }
       });
 
-      carousel.addEventListener('slid.bs.carousel', () => {
-        const activeIndex = Array.from(carousel.querySelectorAll('.carousel-item')).findIndex(item => item.classList.contains('active'));
+      document.querySelectorAll('.subtext-frame').forEach((element, index) => {
+        if (index === nextIndex) {
+          this.renderer.addClass(element, 'active-subtext');
+        } else {
+          this.renderer.removeClass(element, 'active-subtext');
+        }
+      });
+    });
+
+    carousel.addEventListener('slid.bs.carousel', () => {
+      const items = carousel.querySelectorAll('.carousel-item');
+      const activeIndex = Array.from(items).findIndex(item => item.classList.contains('active'));
+      if (activeIndex !== -1) {
         this.activeSection = this.sections[activeIndex];
-      });
-    }
+      }
+    });
   }
 }

@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnDestroy } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnDestroy, PLATFORM_ID } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,77 +9,75 @@ import { RouterModule } from '@angular/router';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
 })
-export class NavComponent implements OnDestroy  {
-
+export class NavComponent implements OnDestroy {
   menuVisible = false;
+  isMenuOpen = false;
+  isProductsDropdownOpen = false;
+  openDropdownId = '';
 
-  constructor() {
-    window.addEventListener('resize', this.onResize.bind(this));
+  private isBrowser: boolean;
+  private resizeListener = this.onResize.bind(this);
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+    if (this.isBrowser) {
+      window.addEventListener('resize', this.resizeListener);
+    }
   }
 
   ngOnDestroy() {
-    window.removeEventListener('resize', this.onResize.bind(this));
+    if (this.isBrowser) {
+      window.removeEventListener('resize', this.resizeListener);
+    }
   }
 
   onResize() {
+    if (!this.isBrowser) return;
     const width = window.innerWidth;
 
-    // If the screen size is larger than the mobile breakpoint and the menu is open, close it
-    if (width > 991 && this.menuVisible) { 
+    if (width > 991 && this.menuVisible) {
       this.closeMenu();
     }
 
-    // Also close any dropdowns when screen size changes
     if (width <= 991) {
-      this.closeAllDropdowns();  // Close dropdowns if shrinking to mobile view
+      this.closeAllDropdowns();
     }
   }
 
   closeMenu() {
     this.menuVisible = false;
 
+    if (!this.isBrowser) return;
     const fullscreenMenu = document.querySelector('.fullscreen-menu');
     const body = document.body;
 
     fullscreenMenu?.classList.remove('show');
-    body.style.overflow = '';
-    body.style.position = '';
-    body.style.width = '';
-    body.style.height = '';
-    body.style.top = '';
-    body.style.left = '';
+    this.resetBodyStyles(body);
   }
 
-  isMenuOpen = false;
-  isProductsDropdownOpen = false;
-  openDropdownId = '';
-
-  
-toggleDropdownMobile(dropdownId: string, event: Event) {
-  event.preventDefault();
-  if (this.openDropdownId === dropdownId) {
-      this.openDropdownId = ''; // Close the dropdown if it's already open
-  } else {
-      this.openDropdownId = dropdownId; // Open the clicked dropdown
+  toggleDropdownMobile(dropdownId: string, event: Event) {
+    event.preventDefault();
+    this.openDropdownId = this.openDropdownId === dropdownId ? '' : dropdownId;
+    this.updateDropdownStates();
   }
-  this.updateDropdownStates();
-}
 
-updateDropdownStates() {
-  const dropdowns = document.querySelectorAll('.dropdown-content-mobile');
-  dropdowns.forEach((dropdown) => {
+  updateDropdownStates() {
+    if (!this.isBrowser) return;
+    const dropdowns = document.querySelectorAll('.dropdown-content-mobile');
+    dropdowns.forEach((dropdown) => {
       if (dropdown.id === this.openDropdownId) {
-          dropdown.classList.add('show');
+        dropdown.classList.add('show');
       } else {
-          dropdown.classList.remove('show');
+        dropdown.classList.remove('show');
       }
-  });
-}
+    });
+  }
 
   toggleMenu(event: Event) {
     event.preventDefault();
     this.menuVisible = !this.menuVisible;
 
+    if (!this.isBrowser) return;
     const fullscreenMenu = document.querySelector('.fullscreen-menu');
     const body = document.body;
 
@@ -93,40 +91,34 @@ updateDropdownStates() {
       body.style.left = '0';
     } else {
       fullscreenMenu?.classList.remove('show');
-      body.style.overflow = '';
-      body.style.position = '';
-      body.style.width = '';
-      body.style.height = '';
-      body.style.top = '';
-      body.style.left = '';
+      this.resetBodyStyles(body);
     }
   }
-
-
 
   toggleDropdown(dropdownId: string, event: Event): void {
     event.preventDefault();
 
+    if (!this.isBrowser) return;
     const dropdownElement = document.getElementById(dropdownId);
     const arrowIcon = document.getElementById(`${dropdownId}-arrow`);
 
     if (dropdownElement?.classList.contains('show')) {
       dropdownElement.classList.remove('show');
-      arrowIcon?.classList.remove('rotate');  // Remove the rotation when dropdown is closed
+      arrowIcon?.classList.remove('rotate');
     } else {
       this.closeAllDropdowns();
       dropdownElement?.classList.add('show');
-      arrowIcon?.classList.add('rotate');  // Rotate the arrow when dropdown is opened
+      arrowIcon?.classList.add('rotate');
     }
   }
 
-  // Close all dropdowns and reset arrows
   closeAllDropdowns(): void {
+    if (!this.isBrowser) return;
     const dropdowns = document.querySelectorAll('.dropdown-content');
     const arrows = document.querySelectorAll('.dropdown-arrow');
 
     dropdowns.forEach(dropdown => dropdown.classList.remove('show'));
-    arrows.forEach(arrow => arrow.classList.remove('rotate')); // Reset arrow rotation
+    arrows.forEach(arrow => arrow.classList.remove('rotate'));
 
     const fullscreenMenu = document.querySelector('.fullscreen-menu');
     const body = document.body;
@@ -135,12 +127,16 @@ updateDropdownStates() {
     this.openDropdownId = '';
     this.updateDropdownStates();
 
-      fullscreenMenu?.classList.remove('show');
-      body.style.overflow = '';
-      body.style.position = '';
-      body.style.width = '';
-      body.style.height = '';
-      body.style.top = '';
-      body.style.left = '';
+    fullscreenMenu?.classList.remove('show');
+    this.resetBodyStyles(body);
+  }
+
+  private resetBodyStyles(body: any) {
+    body.style.overflow = '';
+    body.style.position = '';
+    body.style.width = '';
+    body.style.height = '';
+    body.style.top = '';
+    body.style.left = '';
   }
 }

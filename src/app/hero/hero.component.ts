@@ -1,9 +1,7 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { isPlatformBrowser, CommonModule } from '@angular/common';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ProductHeroComponent } from '../product-hero/product-hero.component';
-
 
 @Component({
   selector: 'app-hero',
@@ -13,19 +11,7 @@ import { ProductHeroComponent } from '../product-hero/product-hero.component';
   styleUrl: './hero.component.scss'
 })
 export class HeroComponent {
-  // videos = [
-  //   { src: 'assets/hero-clips/amores-hero-clip.mp4', state: 'default' },
-  //   { src: 'assets/hero-clips/andy-hero-clip.mp4', state: 'default' },
-  //   { src: 'assets/hero-clips/cakes-hero-clip.mp4', state: 'default' },
-  //   { src: 'assets/hero-clips/jeremy-hero-clip.mp4', state: 'default' },
-  //   { src: 'assets/hero-clips/luke-hero-clip.mp4', state: 'default' },
-  //   { src: 'assets/hero-clips/oliver-hero-clip.mp4', state: 'default' },
-  //   { src: 'assets/hero-clips/riverside-hero-clip.mp4', state: 'default' },
-  //   { src: 'assets/hero-clips/annie.mp4', state: 'default' },
-  //   { src: 'assets/default.jpg', state: 'default' }
-  // ];
-
-  largeVideo = { src: 'https://storage.googleapis.com/the-website-guys/Hero-Clips/hero-video.mp4' }; 
+  largeVideo = { src: 'https://storage.googleapis.com/the-website-guys/Hero-Clips/hero-video.mp4' };
 
   websiteVideos = [
     { src: 'https://storage.googleapis.com/the-website-guys/Hero-Clips/amores-hero-clip.mp4', state: 'default' },
@@ -49,7 +35,6 @@ export class HeroComponent {
     { src: 'https://storage.googleapis.com/the-website-guys/Hero-Clips/riverside-hero-clip.mp4', state: 'default' }
   ];
 
-  // Define which grid slots are for podcast and website videos
   videoSlots = [
     { type: 'podcast', src: this.podcastVideos[0].src, state: 'default' },
     { type: 'website', src: this.websiteVideos[0].src, state: 'default' },
@@ -66,34 +51,36 @@ export class HeroComponent {
 
   currentVideoIndex = 0;
   transitioning = false;
+  private isBrowser: boolean;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
 
   ngOnInit() {
-    this.startVideoRotation();
+    if (this.isBrowser) {
+      this.startVideoRotation();
+    }
   }
 
   startVideoRotation() {
     setInterval(() => {
-      if (!this.transitioning) {
+      if (!this.transitioning && this.isBrowser) {
         this.transitioning = true;
 
-        // Start pop-out animation
         this.videoSlots[this.currentVideoIndex].state = 'pop-out';
 
         setTimeout(() => {
-          // Get all currently displayed video sources
           const currentlyDisplayedVideos = this.videoSlots.map(slot => slot.src);
-
-          // Determine which type of video should go in this slot
           const currentSlot = this.videoSlots[this.currentVideoIndex];
+
           const newVideo = currentSlot.type === 'website'
             ? this.getUniqueRandomVideo(this.websiteVideos, currentlyDisplayedVideos)
             : this.getUniqueRandomVideo(this.podcastVideos, currentlyDisplayedVideos);
 
-          // Update the current video's source in the visible grid
           this.videoSlots[this.currentVideoIndex].src = newVideo.src;
           this.videoSlots[this.currentVideoIndex].state = 'pop-in';
 
-          // Pick a new random index for the next transition
           let newIndex: number;
           do {
             newIndex = Math.floor(Math.random() * this.videoSlots.length);
@@ -101,25 +88,27 @@ export class HeroComponent {
 
           this.currentVideoIndex = newIndex;
           this.transitioning = false;
-        }, 1000); // Match this timing with your pop-out animation duration
+        }, 1000);
       }
-    }, 4000); // Change video every 4 seconds (1s pop-out + 3s pause)
+    }, 4000);
   }
 
-  // Function to get a unique random video that is not currently displayed
   getUniqueRandomVideo(videoArray: any[], currentlyDisplayedVideos: string[]) {
     const availableVideos = videoArray.filter(video => !currentlyDisplayedVideos.includes(video.src));
     const randomIndex = Math.floor(Math.random() * availableVideos.length);
     return availableVideos[randomIndex];
   }
 
-  // Return the correct animation class based on the current index
   getImageClass(index: number) {
     return this.videoSlots[index].state;
   }
 
   onVideoLoaded(index: number) {
+    if (!this.isBrowser) return;
+
     const videoElement = document.querySelectorAll('video')[index] as HTMLVideoElement;
-    videoElement.play();
+    if (videoElement) {
+      videoElement.play();
+    }
   }
 }
