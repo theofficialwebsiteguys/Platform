@@ -207,7 +207,6 @@ $z-index-high: 1000;
   .navbar-toggler {
     z-index: $z-index-high; // Ensures the toggler stays on top on mobile
 
-    right: 1rem; // Aligns the toggler to the right
     top: 0.5rem; // Adjusts the top position for better visibility
   }
 

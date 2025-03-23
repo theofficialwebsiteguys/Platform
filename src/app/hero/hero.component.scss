@@ -1,122 +1,111 @@
 @import '../../button';
 
-// Variables for colors, padding, and font sizes
-$primary-bg: #f4f4f4;
-$text-color-dark: #333;
-$text-color-light: #555;
-$padding-large: 50px;
-$padding-medium: 30px;
-$padding-small: 20px;
-$gap-small: 20px;
-$font-size-header-lg: 4vw;
-$font-size-subheader-lg: 2vw;
-$font-size-header-md: 6vw;
-$font-size-subheader-md: 4vw;
-$font-size-header-sm: 10vw;
-$font-size-subheader-sm: 6vw;
-$grid-gap: 20px;
-$border-radius: 10px;
+// Variables
+$primary-bg: #f9f9f9;
+$text-color-dark: #1a1a1a;
+$text-color-muted: #666;
+$accent-color: #0070f3;
+$padding-desktop: 150px;
+$padding-mobile: 40px;
+$gap: 24px;
 
-// Hero Section
+$font-size-header-lg: 3.5vw;
+$font-size-subheader-lg: 1.6vw;
+$font-size-header-sm: 8vw;
+$font-size-subheader-sm: 4.5vw;
+
 .hero-section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: $padding-large;
+  flex-direction: row;
+  padding: $padding-desktop;
   background-color: $primary-bg;
-  height: auto;
-  flex-direction: row; // Image and content side by side
 
   @media (max-width: 1024px) {
-    flex-direction: column; // Switch to stacked layout on small screens
-    padding: $padding-medium;
-  }
-
-  @media (max-width: 425px) {
-    padding: $padding-small;
+    flex-direction: column-reverse;
+    padding: $padding-mobile;
+    padding-top: 125px;
+    text-align: center;
   }
 }
 
-// Image Styling
-.hero-section img {
-  max-width: 50%;
-  height: auto;
-  margin: 5%;
-  margin-top: 100px;
-
-  @media (max-width: 1024px) {
-    max-width: 100%; // Make image full width when stacked
-  }
-}
-
-// Hero Content with Animation
 .hero-content {
   width: 50%;
-  max-width: 800px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  opacity: 0; // Start invisible
-  transform: translateY(30px); // Start slightly shifted down
+  max-width: 600px;
   animation: fadeSlideUp 1.2s ease-out forwards;
-  animation-delay: 0.5s; // Delay to give image some time
+  animation-delay: 0.5s;
+  opacity: 0;
+  transform: translateY(30px);
 
   h1 {
     font-size: $font-size-header-lg;
-    margin-bottom: $gap-small;
+    font-weight: 700;
     color: $text-color-dark;
-    animation-delay: 0.7s; // Optional staggered effect for header
+    margin-bottom: $gap;
 
-    @media (max-width: 1024px) {
-      font-size: $font-size-header-md;
-    }
-
-    @media (max-width: 425px) {
+    @media (max-width: 768px) {
       font-size: $font-size-header-sm;
     }
   }
 
   p {
     font-size: $font-size-subheader-lg;
-    margin-bottom: $gap-small * 1.5;
-    color: $text-color-light;
-    animation-delay: 0.9s; // Optional staggered effect for paragraph
+    color: $text-color-muted;
+    margin-bottom: $gap * 1.2;
 
-    @media (max-width: 1024px) {
-      font-size: $font-size-subheader-md;
-    }
-
-    @media (max-width: 425px) {
+    @media (max-width: 768px) {
       font-size: $font-size-subheader-sm;
     }
   }
 
+  .cta-link {
+    display: inline-block;
+
+    button {
+      padding: 14px 24px;
+      font-size: 1rem;
+      background-color: $accent-color;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken($accent-color, 8%);
+      }
+    }
+  }
+
+  .social-proof {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: $text-color-muted;
+  }
+
   @media (max-width: 1024px) {
-    width: 100%; // Ensure content takes full width when stacked
-    text-align: center;
-    margin: 5%;
+    width: 100%;
   }
 }
 
 .hero-image {
-  width: 100%;
+  max-width: 45%;
   height: auto;
-}
 
-@media screen and (max-width: 768px) {
-  .hero-image {
-    content: url('../../assets/landing/hero-still.png'); /* Path to the mobile image */
+  @media (max-width: 1024px) {
+    max-width: 90%;
+    margin-bottom: 30px;
   }
 }
 
-// Animation for Fade In and Slide Up
 @keyframes fadeSlideUp {
   0% {
     opacity: 0;
-    transform: translateY(30px); // Start slightly shifted down
+    transform: translateY(30px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0); // End in normal position
+    transform: translateY(0);
   }
 }
