@@ -13,6 +13,7 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class SignUpComponent {
   signUpForm: FormGroup;
+  error = '';
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.signUpForm = this.fb.group({
@@ -31,16 +32,39 @@ export class SignUpComponent {
   }
 
   onSubmit() {
-    // if (this.signUpForm.valid) {
-    //   this.authService.signUp(this.signUpForm.value).subscribe(
-    //     (response) => {
-    //       console.log('Signup successful', response);
-    //       this.router.navigate(['/login']); // Navigate to login or another page after signup
-    //     },
-    //     (error) => {
-    //       console.error('Signup failed', error);
-    //     }
-    //   );
-    // }
+    const formData = this.signUpForm.value;
+    const userData = {
+      fname: formData.firstName,
+      lname: formData.lastName,
+      email: formData.email,
+      password: formData.password,
+    };
+
+    this.authService.register(userData).subscribe({
+      next: () => {
+        this.resetForm();
+      },
+      error: (err) => {
+    
+        const errorMessage = err.error.error; // Assuming `err.error` is the string you provided
+    
+        if (err.status === 500) {
+          if (errorMessage.includes('SequelizeUniqueConstraintError')) {
+            this.error = 'This user already exists in the system.';
+          } else if (errorMessage.includes('SequelizeValidationError')) {
+            this.error = 'The provided phone or email is invalid.';
+          } else {
+            this.error = 'An unexpected error occurred. Please try again later.';
+          }
+        } else {
+          this.error = 'Unable to register a new user at this time. Please try again later.';
+        }
+      },
+    });
+    
+  }
+
+  resetForm() {
+    this.signUpForm.reset(); // Reset the form fields
   }
 }

@@ -30,7 +30,7 @@ export class PricingComponent {
     {
       name: 'E-Commerce Shop',
       description: 'Expand your reach and connect with customers through a complete online store.',
-      price: 'Starting at $2,000',
+      price: 'Starting at $2,500',
       promo: 'Sell Online Effortlessly',
       popular: false,
       features: [
@@ -47,7 +47,7 @@ export class PricingComponent {
     {
       name: 'Mobile Application',
       description: 'Bring your business to customers’ fingertips with a tailored mobile experience.',
-      price: 'Starting at $5,000',
+      price: 'Starting at $7,500',
       promo: 'Your Business, Mobile-Ready',
       popular: false,
       features: [

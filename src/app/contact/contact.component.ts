@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { EmailService } from '../email.service';
 import { PhoneFormatDirective } from '../phone-format.directive';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-contact',
   standalone: true,
@@ -23,7 +23,8 @@ export class ContactComponent {
   constructor(
     private readonly fb: FormBuilder, 
     private readonly emailService: EmailService,
-    private readonly sanitizer: DomSanitizer // Import sanitizer to create safe download URLs
+    private readonly sanitizer: DomSanitizer, // Import sanitizer to create safe download URLs
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -31,9 +32,7 @@ export class ContactComponent {
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern(/^\d{3}-\d{3}-\d{4}$/)]],
-      serviceType: ['', Validators.required],  // Updated to match the form template
-      proposal: ['', Validators.required],
-      images: [null]
+      proposal: ['']
     });
   }
 
@@ -51,8 +50,7 @@ export class ContactComponent {
       });
     }
   }
-  
-  
+    
 
   onDragOver(event: DragEvent) {
     event.preventDefault();
@@ -105,7 +103,6 @@ export class ContactComponent {
     formData.append('name', this.contactForm.get('name')?.value);
     formData.append('email', this.contactForm.get('email')?.value);
     formData.append('phone', this.contactForm.get('phone')?.value);
-    formData.append('serviceType', this.contactForm.get('serviceType')?.value);
     formData.append('proposal', this.contactForm.get('proposal')?.value);
 
     const files: File[] = this.contactForm.get('images')?.value;
@@ -122,6 +119,7 @@ export class ContactComponent {
         this.contactForm.reset();
         this.uploadedFiles = [];  // Clear uploaded files
         this.submitted = false; // Reset the submitted flag
+        this.router.navigateByUrl('/confirmation')
       },
       error => {
         console.error('Error sending email:', error);

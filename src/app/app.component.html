@@ -1,4 +1,11 @@
-<app-nav></app-nav>
-<router-outlet (activate)="onActivate($event)"></router-outlet>
-
-<app-footer></app-footer>
+<div>
+    <!-- Conditionally render Navbar -->
+    <app-nav *ngIf="!isPlatformRoute()"></app-nav>
+  
+    <!-- Main content -->
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+  
+    <!-- Conditionally render Footer -->
+    <app-footer *ngIf="!isPlatformRoute()"></app-footer>
+  </div>
+  

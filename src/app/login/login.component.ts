@@ -37,14 +37,22 @@ export class LoginComponent {
 
     this.loading = true;
 
-    this.authService.login(this.loginForm.value).subscribe(
-      data => {
-        this.router.navigate(['/dashboard']); // Navigate to a protected route
+    this.authService.login(this.loginForm.value).subscribe({
+      next: () => {
+        this.resetForm();
+        this.router.navigate(['/platform'])
       },
-      error => {
-        this.error = 'Login failed. Please try again.';
+      error: (err) => {
         this.loading = false;
-      }
-    );
+      },
+    });
   }
+
+  resetForm() {
+    this.loginForm.reset(); // Reset the form fields
+    this.submitted = false; // Reset submission state
+    this.error = ''; // Clear any errors
+    this.loading = false;
+  }
+
 }

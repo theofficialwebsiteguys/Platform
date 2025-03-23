@@ -1,0 +1,7 @@
+<div class="platform-container">
+    <app-platform-nav></app-platform-nav>
+    <div class="content-container">
+        <app-walkthrough *ngIf="showWalkthrough" (walkthroughComplete)="onWalkthroughComplete()"></app-walkthrough>
+        <router-outlet *ngIf="!showWalkthrough"></router-outlet>
+    </div>
+</div>

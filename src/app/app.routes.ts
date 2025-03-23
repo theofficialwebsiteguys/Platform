@@ -8,6 +8,11 @@ import { SeoMarketingComponent } from './seo-marketing/seo-marketing.component';
 import { DevelopmentComponent } from './development/development.component';
 import { MissionComponent } from './mission/mission.component';
 import { ContactComponent } from './contact/contact.component';
+import { PlatformComponent } from './platform/platform.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ChatComponent } from './chat/chat.component';
+import { EditorComponent } from './editor/editor.component';
+import { CalendlyComponent } from './calendly/calendly.component';
 
 export const routes: Routes = [
     { path: '', pathMatch: 'full', component: LandingComponent },
@@ -17,7 +22,24 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'mission', component: MissionComponent },
     { path: 'contact', component: ContactComponent },
+    { path: 'confirmation', component: CalendlyComponent },
     { path: 'products/websites', component: WebsitePackagesComponent },
     { path: 'products/seo-marketing', component: SeoMarketingComponent },
     { path: 'products/development', component: DevelopmentComponent },
+    { path: 'platform', component: PlatformComponent,
+        children: [
+            {
+              path: 'dashboard',
+              component: DashboardComponent
+            },
+            {
+                path: 'chat',
+                component: ChatComponent
+            },
+            {
+                path: 'editor',
+                component: EditorComponent
+            }
+          ],
+     },
 ];

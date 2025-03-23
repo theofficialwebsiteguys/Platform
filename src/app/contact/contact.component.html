@@ -1,5 +1,5 @@
 <div class="contact-container">
-  <h2 class="afacad-flux-regular mt-4">Fill Out The Form Below To Speak With The Website Guys.</h2>
+  <h2 class="afacad-flux-regular mt-4">Fill Out The Form Below To Connect With The Website Guys.</h2>
   <form class="form" [formGroup]="contactForm" (ngSubmit)="sendEmail()">
     
     <div class="form-group">
@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label class="afacad-flux-regular required" for="serviceType">Type of Service</label>
       <select id="serviceType" formControlName="serviceType" class="form-control">
         <option value="" disabled [selected]="!contactForm.get('serviceType')?.value">Select a Service Type</option>
@@ -39,17 +39,14 @@
       <div *ngIf="contactForm.get('serviceType')?.invalid && contactForm.get('serviceType')?.touched" class="error-message">
         Please select a service type.
       </div>
-    </div>
+    </div> -->
 
     <div class="form-group">
-      <label for="proposal" class="afacad-flux-regular required">Tell us as much as you can about your new Project</label>
-      <textarea formControlName="proposal" name="proposal" class="form-control" id="proposal" rows="5" placeholder="Please include as many details as possible."></textarea>
-      <div *ngIf="contactForm.get('proposal')?.invalid && contactForm.get('proposal')?.touched" class="error-message">
-        Proposal details are required.
-      </div>
+      <label for="proposal" class="afacad-flux-regular">Tell us about your new project:</label>
+      <textarea formControlName="proposal" name="proposal" class="form-control" id="proposal" rows="5" placeholder="Include any necessary details."></textarea>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="logo" class="afacad-flux-regular">ADD IMAGES/CONTEXT</label>
       <div class="file-upload" 
            [class.drag-over]="dragOver"
@@ -62,11 +59,9 @@
           <li *ngFor="let file of uploadedFiles; let i = index" class="uploaded-file-item">
             {{ file.name }}
             <span class="file-actions">
-              <!-- Font Awesome icon for download -->
               <a [href]="getFileURL(file)" download="{{ file.name }}" class="download-file" aria-label="Download">
                 <i class="fas fa-download"></i>
               </a>
-              <!-- Font Awesome icon for remove -->
               <button type="button" class="remove-file" (click)="removeFile(i)" aria-label="Remove">
                 <i class="fas fa-times"></i>
               </button>
@@ -81,9 +76,8 @@
           <button type="button" class="select-files">Select Files</button>
         </div>
       </div>
-    </div>
-    
-
+    </div> -->
+  
     <button type="submit" class="submit-button">
       <span *ngIf="!submitted">Submit</span>
       <span *ngIf="submitted">

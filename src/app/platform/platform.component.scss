@@ -1,0 +1,9 @@
+.platform-container {
+  display: flex;
+  width: 100%; /* Ensure it spans the full width */
+  height: 100%; /* Optional: If it should also take full height */
+}
+
+.content-container{
+  flex: 1;
+}

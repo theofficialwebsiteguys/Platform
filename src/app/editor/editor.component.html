@@ -1,0 +1,50 @@
+<div class="editor-container">
+    <!-- Utility Panel -->
+    <div
+      class="utility-panel"
+      [ngStyle]="{ flex: editorFlex }"
+    >
+      <!-- <div class="utility-header">
+        <h3>Edit Website</h3>
+        <div class="utility-controls">
+          <button (click)="toggleExpand()">Expand</button>
+        </div>
+      </div> -->
+      <div class="utility-content">
+        <h4>Page Settings</h4>
+        <label for="page">Select Page:</label>
+        <select id="page" (change)="selectPage($event)">
+          <option *ngFor="let page of pages" [value]="page">{{ page }}</option>
+        </select>
+  
+        <h4>Color Scheme</h4>
+        <div class="color-pickers">
+          <div>
+            <label for="primary-color">Primary</label>
+            <input id="primary-color" type="color" [(ngModel)]="colorScheme.primary" />
+          </div>
+          <div>
+            <label for="secondary-color">Secondary</label>
+            <input id="secondary-color" type="color" [(ngModel)]="colorScheme.secondary" />
+          </div>
+        </div>
+  
+        <h4>Content</h4>
+        <textarea placeholder="Add content here..." [(ngModel)]="content"></textarea>
+      </div>
+    </div>
+  
+    <!-- Live Preview -->
+    <div
+      class="preview-panel"
+      [ngStyle]="{ flex: previewFlex }"
+    >
+      <!-- <div class="preview-header">
+        <h3>Live Preview</h3>
+      </div> -->
+      <div class="preview-content">
+        <iframe [src]="generatedTemplate"></iframe>
+      </div>
+    </div>
+  </div>
+  
