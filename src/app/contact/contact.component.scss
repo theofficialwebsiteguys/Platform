@@ -1,175 +1,411 @@
-@import '../../_button';
+@import '../../styles/variables';
 
-// Variables for colors and other repeated values
-$primary-color: #000;
-$secondary-color: #b3cee3;
-$error-color: red;
-$background-color: #fff;
-$border-color: #ccc;
-$text-color: #333;
+.contact-section {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, #f9fafc 0%, #eef3f7 100%);
+  padding: 8rem 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  .glow-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
 
-// General styles
+    .glow {
+      position: absolute;
+      border-radius: 50%;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(
+        circle,
+        rgba($color-primary, 1) 0%,
+        rgba($color-primary, 0.8) 30%,
+        rgba($color-primary, 0.3) 60%,
+        transparent 90%
+      );
+      box-shadow:
+        0 0 60px rgba($color-primary, 0.9),
+        0 0 120px rgba($color-primary, 0.6);
+      filter: blur(25px);
+      opacity: 0.9;
+      animation: float-path 40s linear infinite, pulse 6s ease-in-out infinite alternate;
+    }
+
+    // Each ball follows a unique path and speed
+    .glow:nth-child(1) {
+      top: 10%;
+      left: -10%;
+      animation-delay: 0s;
+      animation-duration: 50s;
+    }
+
+    .glow:nth-child(2) {
+      top: 70%;
+      left: 5%;
+      width: 300px;
+      height: 300px;
+      animation-delay: 8s;
+      animation-duration: 60s;
+    }
+
+    .glow:nth-child(3) {
+      top: 30%;
+      right: -10%;
+      width: 350px;
+      height: 350px;
+      animation-delay: 15s;
+      animation-duration: 55s;
+    }
+
+    .glow:nth-child(4) {
+      bottom: -10%;
+      right: 20%;
+      width: 220px;
+      height: 220px;
+      animation-delay: 20s;
+      animation-duration: 65s;
+    }
+  }
+
+
+  // Large figure-eight / drifting path
+  @keyframes float-path {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+    20% {
+      transform: translate(200px, -100px) scale(1.05);
+    }
+    40% {
+      transform: translate(100px, 200px) scale(0.95);
+    }
+    60% {
+      transform: translate(-150px, 100px) scale(1.1);
+    }
+    80% {
+      transform: translate(-100px, -150px) scale(1.02);
+    }
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+  }
+
+  // Gentle brightness pulsing
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.8;
+      filter: blur(25px);
+    }
+    50% {
+      opacity: 1;
+      filter: blur(15px);
+    }
+  }
+}
+
+/* ------------------------
+   CONTAINER LAYOUT
+------------------------- */
 .contact-container {
-  color: $primary-color;
-  background-color: $background-color !important;
-  padding: 20px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  max-width: 1200px;
+  width: 100%;
+  gap: 5rem;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    gap: 3rem;
+  }
+}
+
+/* ------------------------
+   LEFT SIDE — INFO
+------------------------- */
+.contact-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 2rem;
+
+  .business-name {
+    font-size: 2.75rem;
+    font-weight: 700;
+    color: #0a0a0a;
+    margin-bottom: 0.75rem;
+    text-shadow: 0 0 12px rgba($color-primary, 0.25);
+  }
+
+  .business-tagline {
+    color: $color-primary;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .business-desc {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #2d2d2d;
+    opacity: 0.9;
+    margin-bottom: 2.5rem;
+    max-width: 440px;
+  }
+
+  .business-details {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 0.6rem;
+
+      strong {
+        color: #1a1a1a;
+      }
+    }
+  }
+}
+
+/* ------------------------
+   RIGHT SIDE — FORM CARD
+------------------------- */
+.contact-wrapper {
+  flex: 1.2;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 1.75rem;
+  padding: 3.5rem 3rem;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
   text-align: center;
-  max-width: 600px;
-  margin: auto;
-  border-radius: 8px;
-  padding-top: 100px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
 
-  h2 {
-    font-size: 24px;
-    margin-bottom: 30px;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.12);
   }
 
-  .form-group {
-    text-align: left;
-    margin-bottom: 15px;
-
-    label {
-      font-weight: bold;
-      color: $text-color;
-      margin-bottom: 5px;
-      display: block;
-
-      &.required::after {
-        content: '*';
-        color: $error-color;
-        margin-left: 2px;
-      }
-    }
-
-    .form-control {
-      width: 100%;
-      height: 45px;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 4px;
-      border: 1px solid $border-color;
-      background-color: lighten($background-color, 10%);
-    }
-
-    textarea {
-      height: 80px !important;
-    }
-
-    .error-message {
-      color: $error-color;
-    }
+  .contact-heading {
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: #0d0d0d;
+    margin-bottom: 2.5rem;
   }
 
-  .file-upload {
-    border: 2px dashed $border-color;
-    padding: 20px;
-    border-radius: 4px;
-    position: relative;
-    text-align: center;
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 
-    &.drag-over {
-      border-color: darken($border-color, 10%);
-    }
+    .input-group {
+      &.double {
+        display: flex;
+        gap: 1rem;
 
-    .file-upload-message {
-      cursor: pointer;
+        input {
+          flex: 1;
+        }
 
-      p {
-        margin: 0;
+        @media (max-width: 768px) {
+          flex-direction: column;
+        }
       }
 
-      .select-files {
-        background-color: $secondary-color;
-        color: #fff;
+      input,
+      textarea {
+        width: 100%;
+        padding: 1rem 1.25rem;
         border: none;
-        padding: 10px 20px;
-        border-radius: 4px;
-        margin-top: 10px;
-        transition: background-color 0.3s;
+        border-radius: 40px;
+        font-size: 1rem;
+        background: rgba(247, 249, 252, 0.9);
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        color: #222;
 
-        &:hover {
-          background-color: lighten($secondary-color, 5%);
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 0 2px #b3cee3, 0 0 15px rgba(179, 206, 227, 0.6);
+          background: #fff;
+        }
+      }
+
+      textarea {
+        border-radius: 20px;
+        min-height: 150px;
+        resize: none;
+      }
+    }
+
+    .checkbox-group {
+      text-align: left;
+
+      .group-label {
+        font-weight: 600;
+        color: #1a1a1a;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      .checkbox-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        label {
+          color: #444;
+          font-size: 0.95rem;
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+
+          input {
+            accent-color: #b3cee3;
+          }
         }
       }
     }
-  }
 
-  .submit-button {
-    padding: 15px 30px;
-    border: none;
-    border-radius: 4px;
-    background-color: $primary-color;
-    color: white;
-    cursor: pointer;
-    margin-top: 10px;
-    width: 100%;
-    transition: background-color 0.3s;
+    .button-primary {
+      margin-top: 2rem;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      background: #b3cee3;
+      border: none;
+      border-radius: 50px;
+      box-shadow: 0 8px 25px rgba(179, 206, 227, 0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
 
-    &:hover {
-      background-color: lighten($primary-color, 10%);
-    }
-
-    i.fa-spinner {
-      border: 2px solid rgba(0,0,0,.1);
-      border-radius: 50%;
-      border-top: 2px solid #fff;
-      width: 18px;
-      height: 18px;
-      animation: spin 1s linear infinite;
+      &:hover {
+        background: lighten(#b3cee3, 10%);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 35px rgba(179, 206, 227, 0.6);
+      }
     }
   }
 }
 
-// Media Queries
+/* ------------------------
+   RESPONSIVE
+------------------------- */
 @media (max-width: 768px) {
-  .contact-container {
-    max-width: 90%;
+  .contact-section {
+    padding: 6rem 1.5rem;
+  }
+
+  .contact-info {
+    text-align: center;
+    padding: 0;
+
+    .business-desc {
+      margin: 0 auto 2rem;
+    }
+  }
+
+  .contact-wrapper {
+    padding: 2.5rem 1.5rem;
   }
 }
 
-// Animations
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+/* ------------------------
+   MICRO ANIMATIONS
+------------------------- */
+
+// Floating form reveal (extra polish when hovered)
+// .contact-wrapper {
+//   animation: card-reveal 1.2s ease-out both;
+// }
+
+@keyframes card-reveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+    filter: brightness(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: brightness(1);
+  }
 }
 
-.uploaded-files {
-  list-style: none;
-  padding: 0;
+/* Shimmer effect for the Send button */
+.button-primary {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.2), rgba(255,255,255,0.6), rgba(255,255,255,0.2));
+    transform: skewX(-20deg);
+    transition: all 0.5s ease;
+  }
+
+  &:hover::after {
+    left: 130%;
+    transition: all 0.9s ease;
+  }
 }
 
-.uploaded-file-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #ccc;
+/* Gentle breathing effect for inputs */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  animation: input-glow 2s ease-in-out infinite alternate;
 }
 
-.file-actions {
-  display: flex;
-  gap: 1rem;  // Space between icons
+@keyframes input-glow {
+  0% {
+    box-shadow: 0 0 0 2px #b3cee3, 0 0 15px rgba(179, 206, 227, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 3px #b3cee3, 0 0 25px rgba(179, 206, 227, 0.8);
+  }
 }
 
-.download-file,
-.remove-file {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: #888;  // Subtle icon color
-  font-size: 1.2rem;
+
+.booking-confirmation {
+  text-align: center;
+  padding: 2rem;
+
+  .booking-heading {
+    font-size: 2rem;
+    color: #0d0d0d;
+    margin-bottom: 0.5rem;
+  }
+
+  .booking-text {
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .calendar-embed {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    animation: fadeIn 0.7s ease forwards;
+  }
 }
 
-.download-file:hover,
-.remove-file:hover {
-  color: #000;  // Slightly darker on hover
-}
-
-.remove-file {
-  color: red;
-}
-
-.download-file {
-  color: #007bff;  // Subtle blue color for download icon
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }

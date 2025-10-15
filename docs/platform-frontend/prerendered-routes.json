@@ -1,0 +1,19 @@
+{
+  "routes": [
+    "/",
+    "/confirmation",
+    "/contact",
+    "/landing",
+    "/login",
+    "/mission",
+    "/platform",
+    "/platform/chat",
+    "/platform/dashboard",
+    "/platform/editor",
+    "/pricing",
+    "/products/development",
+    "/products/seo-marketing",
+    "/products/websites",
+    "/sign-up"
+  ]
+}

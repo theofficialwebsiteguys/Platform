@@ -1,13 +1,13 @@
 <div class="packages-section" [ngStyle]="{'background-color': backgroundColor}">
     <div class="container">
       <div class="hook">
-        <h1 class="header" [ngStyle]="{'color': textColor}">{{ header }}</h1>
+        <h2 class="header" [ngStyle]="{'color': textColor}">{{ header }}</h2>
       </div>
       <div class="packages">
         <div class="package-card" *ngFor="let package of packages">
           <div class="contents">
             <div class="image-background">
-              <img [src]="package.icon" [alt]="package.title + ' icon'" />
+              <img [src]="package.icon" [alt]="package.title + ' icon'" alt="icon"/>
             </div>
             <div class="details">
               <h2 class="title afacad-flux-regular">{{ package.title }}</h2>

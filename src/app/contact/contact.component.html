@@ -1,93 +1,94 @@
-<div class="contact-container">
-  <h2 class="afacad-flux-regular mt-4">Fill Out The Form Below To Connect With The Website Guys.</h2>
-  <form class="form" [formGroup]="contactForm" (ngSubmit)="sendEmail()">
-    
-    <div class="form-group">
-      <label class="afacad-flux-regular required" for="name">Your Name</label>
-      <input id="name" formControlName="name" class="form-control" type="text" placeholder="Enter your name" />
-      <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" class="error-message">
-        Name is required.
-      </div>
+<section class="contact-section" id="contact">
+  <div class="glow-bg">
+    <div class="glow"></div>
+    <div class="glow"></div>
+    <div class="glow"></div>
+    <div class="glow"></div>
+  </div>
+
+  <div class="contact-container">
+    <!-- LEFT SIDE -->
+    <div
+      class="contact-info"
+      *ngIf="animateInfo"
+      [@slideInLeft]="animateInfo ? 'visible' : 'hidden'"
+    >
+      <h2 class="business-name">The Website Guys</h2>
+      <p class="business-tagline">Custom Web Solutions — Built for Growth.</p>
+      <p class="business-desc">
+        We help businesses of all sizes launch stunning, high-performing online
+        platforms. Whether it’s a new design, a full rebuild, or ongoing SEO —
+        we’ve got you covered.
+      </p>
     </div>
 
-    <div class="form-group">
-      <label class="afacad-flux-regular required" for="email">Your Email</label>
-      <input formControlName="email" id="email" class="form-control" type="email" placeholder="Enter your email" />
-      <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="error-message">
-        A valid email is required.
+    <!-- RIGHT SIDE -->
+    <div
+      class="contact-wrapper"
+      *ngIf="animateInfo"
+      [@slideInRight]="animateInfo ? 'visible' : 'hidden'"
+    >
+      <!-- Step 1: Contact Form -->
+      <div *ngIf="!showBooking; else bookingStep" class="contact-step">
+        <h2 class="contact-heading">Let’s Get Started</h2>
+
+        <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="sendEmail()">
+          <div class="input-group double">
+            <input type="text" placeholder="First Name" formControlName="firstName" required />
+            <input type="text" placeholder="Last Name" formControlName="lastName" required />
+          </div>
+
+          <div class="input-group">
+            <input type="email" placeholder="Email" formControlName="email" required />
+          </div>
+
+          <div class="input-group">
+            <input type="tel" placeholder="Phone" formControlName="phone" />
+          </div>
+
+          <div class="checkbox-group" formGroupName="services">
+            <label class="group-label">Services You Need:</label>
+            <div class="checkbox-options">
+              <label><input type="checkbox" formControlName="website" /> Website</label>
+              <label><input type="checkbox" formControlName="branding" /> Branding</label>
+              <label><input type="checkbox" formControlName="seo" /> SEO</label>
+              <label><input type="checkbox" formControlName="mobileApp" /> Mobile App</label>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <textarea
+              placeholder="Tell us more about your project"
+              formControlName="projectDetails"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="button-primary" [disabled]="submitted">
+            {{ submitted ? 'Sending...' : 'Send' }}
+          </button>
+        </form>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label class="afacad-flux-regular required" for="phone">Phone</label>
-      <input formControlName="phone" id="phone" class="form-control" type="tel" placeholder="Enter your phone number" appPhoneFormat  />
-      <div *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched" class="error-message">
-        Phone number is required.
-      </div>
-    </div>
+      <!-- Step 2: Booking View -->
+      <ng-template #bookingStep>
+        <div class="booking-step">
+          <h2 class="booking-heading">Wait… not done yet!</h2>
+          <p class="booking-text">
+            Get started quicker by <strong>booking a meeting</strong> with our team below.
+          </p>
 
-    <!-- <div class="form-group">
-      <label class="afacad-flux-regular required" for="serviceType">Type of Service</label>
-      <select id="serviceType" formControlName="serviceType" class="form-control">
-        <option value="" disabled [selected]="!contactForm.get('serviceType')?.value">Select a Service Type</option>
-        <option value="Single Page Website">Single Page Website</option>
-        <option value="Multi-Page Website">Multi-Page Website</option>
-        <option value="E-Commerce">E-Commerce</option>
-        <option value="SEO & Marketing">SEO & Marketing</option>
-        <option value="Software Development">Software Development</option>
-      </select>
-      <div *ngIf="contactForm.get('serviceType')?.invalid && contactForm.get('serviceType')?.touched" class="error-message">
-        Please select a service type.
-      </div>
-    </div> -->
-
-    <div class="form-group">
-      <label for="proposal" class="afacad-flux-regular">Tell us about your new project:</label>
-      <textarea formControlName="proposal" name="proposal" class="form-control" id="proposal" rows="5" placeholder="Include any necessary details."></textarea>
-    </div>
-
-    <!-- <div class="form-group">
-      <label for="logo" class="afacad-flux-regular">ADD IMAGES/CONTEXT</label>
-      <div class="file-upload" 
-           [class.drag-over]="dragOver"
-           (dragover)="onDragOver($event)" 
-           (dragleave)="onDragLeave($event)" 
-           (drop)="onDrop($event)">
-        
-        <input type="file" #fileInput (change)="onImagesChange($event)" style="display:none" multiple />
-        <ul *ngIf="uploadedFiles.length" class="uploaded-files">
-          <li *ngFor="let file of uploadedFiles; let i = index" class="uploaded-file-item">
-            {{ file.name }}
-            <span class="file-actions">
-              <a [href]="getFileURL(file)" download="{{ file.name }}" class="download-file" aria-label="Download">
-                <i class="fas fa-download"></i>
-              </a>
-              <button type="button" class="remove-file" (click)="removeFile(i)" aria-label="Remove">
-                <i class="fas fa-times"></i>
-              </button>
-            </span>
-          </li>
-        </ul>
-        
-        
-    
-        <div class="file-upload-message" (click)="triggerFileInput(fileInput)">
-          <p *ngIf="!uploadedFiles.length">Drop files here or</p>
-          <button type="button" class="select-files">Select Files</button>
+          <div class="calendar-container">
+            <iframe
+              [src]="bookingLink | safeUrl"
+              width="100%"
+              height="650"
+              frameborder="0"
+              style="border:0; border-radius: 20px;"
+              allowfullscreen
+            ></iframe>
+          </div>
         </div>
-      </div>
-    </div> -->
-  
-    <button type="submit" class="submit-button">
-      <span *ngIf="!submitted">Submit</span>
-      <span *ngIf="submitted">
-        <i class="fa fa-spinner fa-spin"></i> Sending...
-      </span>
-    </button>
-
-    <div *ngIf="successMessage" class="alert alert-success mt-3">
-      {{ successMessage }}
+      </ng-template>
     </div>
-    
-  </form>
-</div>
+  </div>
+</section>

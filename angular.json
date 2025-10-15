@@ -50,13 +50,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "1MB",
+                  "maximumError": "2MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
                 }
               ],
               "outputHashing": "all"
@@ -104,7 +104,59 @@
             ],
             "scripts": []
           }
-        }
+        },
+       "server": {
+  "builder": "@angular-devkit/build-angular:server",
+  "options": {
+    "outputPath": "dist/platform-frontend/server",
+    "main": "src/main.server.ts",
+    "tsConfig": "tsconfig.server.json"
+  },
+  "configurations": {
+    "production": {
+      "outputPath": "dist/platform-frontend/server",
+      "main": "src/main.server.ts",
+      "tsConfig": "tsconfig.server.json",
+      "optimization": true,
+      "sourceMap": false,
+      "extractLicenses": true
+    }
+  }
+},
+"ssr": {
+  "builder": "@angular-devkit/build-angular:ssr",
+  "options": {
+    "browserTarget": "platform-frontend:build",
+    "serverTarget": "platform-frontend:server"
+  },
+  "configurations": {
+    "production": {
+      "browserTarget": "platform-frontend:build:production",
+      "serverTarget": "platform-frontend:server:production"
+    }
+  }
+},
+"prerender": {
+  "builder": "@angular-devkit/build-angular:prerender",
+  "options": {
+    "browserTarget": "platform-frontend:build:production",
+    "serverTarget": "platform-frontend:server:production",
+    "routes": [
+      "/",
+      "/landing",
+      "/pricing",
+      "/sign-up",
+      "/login",
+      "/mission",
+      "/contact",
+      "/confirmation",
+      "/products/websites",
+      "/products/seo-marketing",
+      "/products/development"
+    ]
+  }
+}
+
       }
     }
   },

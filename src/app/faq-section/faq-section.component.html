@@ -1,13 +1,16 @@
-<div class="faq-container">
+<div class="faq-section" id="faq">
+  <div class="faq-content">
     <h2 class="faq-title afacad-flux-regular">Frequently Asked Questions</h2>
-    <div *ngFor="let faq of faqs" class="faq-item">
+
+    <div *ngFor="let faq of faqs" class="faq-item" [class.open]="faq.open">
       <div class="faq-question" (click)="toggleFaq(faq)">
         <h4>{{ faq.question }}</h4>
-        <span [ngClass]="{'rotate': faq.open}">&#x25BC;</span>
+        <span class="arrow" [class.rotate]="faq.open">&#x25BC;</span>
       </div>
-      <div class="faq-answer" [ngClass]="{'show': faq.open}">
+
+      <div class="faq-answer" [class.show]="faq.open">
         <p>{{ faq.answer }}</p>
       </div>
     </div>
   </div>
-  
+</div>

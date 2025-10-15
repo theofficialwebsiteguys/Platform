@@ -2,11 +2,12 @@ import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ProductHeroComponent } from '../product-hero/product-hero.component';
+import { PortfolioCarouselComponent } from '../portfolio-carousel/portfolio-carousel.component';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule, RouterModule, ProductHeroComponent],
+  imports: [CommonModule, RouterModule, ProductHeroComponent, PortfolioCarouselComponent],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss'
 })

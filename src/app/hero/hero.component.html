@@ -1,13 +1,27 @@
 <div class="hero-section">
   <div class="hero-content">
-    <h1 class="main-header afacad-flux-regular">Let's Build You a Better Website—Free Call. Real Results.</h1>
-    <p class="sub-header afacad-flux-thin">We'll help you map out exactly what your website needs—no cost, no commitment.</p>
+    <h1 class="hero-heading afacad-flux-regular">
+      Custom<span class="highlight-text"> Websites</span> Built to Grow Your Business.
+    </h1>
+
+    <p class="hero-subtext afacad-flux-thin">
+      Strategy. Design. Development. All in one place — we craft digital experiences that perform.
+    </p>
+
     <a routerLink="/contact" class="cta-link">
-      <button class="button-default">Book Your Free Call</button>
+      <button class="button-primary">Get Started</button>
     </a>
-    <!-- Optional: Social Proof -->
-    <!-- <p class="social-proof">Trusted by 100+ small businesses across the US</p> -->
+
+    <p class="trust-text">Trusted by small businesses nationwide</p>
+
+    <app-portfolio-carousel></app-portfolio-carousel>
   </div>
 
-  <img class="hero-image" src="assets/landing/hero-still.png" alt="Web design visual">
+  <div class="hero-visual">
+    <video autoplay muted loop playsinline class="hero-video">
+      <source src="assets/hero-video.mp4" type="video/mp4" />
+    </video>
+    <div class="video-overlay"></div>
+  </div>
+
 </div>

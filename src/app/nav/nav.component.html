@@ -1,194 +1,38 @@
-<nav class="navbar navbar-expand-lg navbar-dark black-bck fixed-top">
-  <div class="container-fluid nav-section">
-      <a class="navbar-brand d-flex align-items-center" routerLink="/" (click)="closeAllDropdowns()">
-          <img src="assets/navbar/logo.png" alt="The Website Guys" height="70">
-      </a>
-      <button class="navbar-toggler" type="button" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleMenu($event)">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
-          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="#" (click)="toggleDropdown('productsDropdown', $event)">
-                  Products <i id="productsDropdown-arrow" class="fas fa-chevron-down dropdown-arrow"></i>
-                </a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" routerLink="/mission" (click)="closeAllDropdowns()">Our Mission</a>
-              </li>
-              <!-- <li class="nav-item">
-                  <a class="nav-link" routerLink="/pricing" (click)="closeAllDropdowns()">Pricing</a>
-              </li> -->
-          </ul>
-          <div class="d-flex align-items-center">
-              <!-- <a routerLink="/login" class="text-white me-3">Log In</a> -->
-              <a routerLink="/contact"><button class="btn btn-outline-light rounded-pill" (click)="closeAllDropdowns()">Get Started</button></a>
-          </div>
-      </div>
-  </div>
-</nav>
+<header class="header" [class.scrolled]="isScrolled" [class.menu-open]="isMenuOpen"> 
+  <!-- Logo -->
+  <a routerLink="/" class="logo-link" title="Home">
+    <img 
+      src="assets/logos/logo.png" 
+      alt="NY/NJ Cars For Cash Logo" 
+      width="200" 
+      class="logo-image"
+      priority>
+  </a>
 
-
-<div class="fullscreen-menu" [ngClass]="{'show': isMenuOpen}" (click)="toggleMenu($event);$event.stopPropagation()">
-  <ul class="menu-list" (click)="$event.stopPropagation()">
-    <li>
-      <a class="nav-link" (click)="toggleDropdownMobile('productsDropdownMobile', $event)">
-        Products <i id="productsDropdownMobile-arrow" class="fas fa-chevron-down dropdown-arrow"></i>
-      </a>
-      <div class="dropdown-content-mobile" id="productsDropdownMobile">
-        <ul>
-          <h5 class="border-bottom text-white pb-2" (click)="closeAllDropdowns()">Website Packages</h5>
-          <li><a class="dropdown-item text-white" routerLink="/products/websites" (click)="closeAllDropdowns()">Single-Page Websites</a>
-            <small class="item-description">A simple, elegant single-page website solution.</small></li>
-          <li>          <a class="dropdown-item text-white" routerLink="/products/websites" (click)="closeAllDropdowns()">Multi-Page Websites</a>
-            <small class="item-description">Ideal for businesses needing more pages and flexibility.</small></li>
-          <li>                <a class="dropdown-item text-white" routerLink="/products/websites" (click)="closeAllDropdowns()">E-Commerce Websites</a>
-            <small class="item-description">Robust online stores to sell your products efficiently.</small></li>
-          <li>                <a class="dropdown-item text-white" routerLink="/products/websites" (click)="closeAllDropdowns()">Portfolio/Blog Websites</a>
-            <small class="item-description">Showcase your work or share your thoughts online.</small></li>
-          <li>   <a class="dropdown-item text-white" routerLink="/products/websites" (click)="closeAllDropdowns()">Custom Websites</a>
-            <small class="item-description">Fully customized websites tailored to your needs.</small></li>
-
-          <h5 class="border-bottom text-white pb-2">SEO & Marketing Services</h5>
-          <li> <a class="dropdown-item text-white" routerLink="/products/seo-marketing" (click)="closeAllDropdowns()">SEO Optimization</a>
-            <small class="item-description">Help your website rank higher on search engines.</small></li>
-          <li>            <a class="dropdown-item text-white" routerLink="/products/seo-marketing" (click)="closeAllDropdowns()">Social Media Integration</a>
-            <small class="item-description">Connect your website seamlessly with social platforms.</small></li>
-          <li>            <a class="dropdown-item text-white" routerLink="/products/seo-marketing" (click)="closeAllDropdowns()">Content Creation</a>
-            <small class="item-description">Professional copywriting and blog creation for your site.</small></li>
-          <li>            <a class="dropdown-item text-white" routerLink="/products/seo-marketing" (click)="closeAllDropdowns()">Email Marketing Solutions</a>
-            <small class="item-description">Integrated email capture and marketing tools.</small></li>
-
-            <li>            <a class="dropdown-item text-white" routerLink="/products/seo-marketing" (click)="closeAllDropdowns()">Performance Analytics</a>
-              <small class="item-description">Track your website's performance and user engagement.</small></li>
-            <li>            <a class="dropdown-item text-white" routerLink="/products/seo-marketing" (click)="closeAllDropdowns()">SEO Reporting</a>
-              <small class="item-description">Monitor your site's search engine performance and rankings.</small></li>
-  
-              <h5 class="border-bottom text-white pb-2">Software Development</h5>
-              <li>              <a class="dropdown-item text-white" routerLink="/products/development" (click)="closeAllDropdowns()">Custom Web Development</a>
-                <small class="item-description">Full-stack development for customized web solutions.</small></li>
-              <li>              <a class="dropdown-item text-white" routerLink="/products/development" (click)="closeAllDropdowns()">Mobile App Development</a>
-                <small class="item-description">Expand your business with responsive and user-friendly mobile apps.</small></li>
-              <li>              <a class="dropdown-item text-white" routerLink="/products/development" (click)="closeAllDropdowns()">API Integration</a>
-                <small class="item-description">Connect third-party services and streamline your operations.</small></li>
-              <li>              <a class="dropdown-item text-white" routerLink="/products/development" (click)="closeAllDropdowns()">Web Application Development</a>
-                <small class="item-description">Advanced web-based solutions for your business needs.</small></li>
-
-        </ul>
-      </div>
-    </li>
-    <li>
-      <a class="nav-link" routerLink="/mission" (click)="closeAllDropdowns()">
-        Our Mission
-      </a>
-    </li>
-    <!-- <li>
-      <a class="nav-link" routerLink="/pricing" (click)="closeAllDropdowns()">
-        Pricing 
-      </a>
-    </li> -->
-  </ul>
-  <div class="auth-buttons" (click)="$event.stopPropagation()">
-    <!-- <button class="btn btn-outline-light rounded-pill">Log In</button>
-    <button class="btn btn-outline-light rounded-pill">Sign Up</button> -->
-    <a routerLink="/contact" (click)="closeAllDropdowns()"><button class="bg-white text-black">Get Started</button></a>
-  </div>
-</div>
-
-
-<div class="dropdown-content black-bck text-white collapse" id="productsDropdown">
-  <div class="container p-4">
-    <div class="row">
-      <!-- Column 1: Website Packages -->
-      <div class="col-md-4 mb-4">
-        <div class="text-white text-decoration-none">
-          <h5 class="border-bottom pb-2" (click)="closeAllDropdowns()">Website Packages</h5>
-
-          <div class="item">
-            <a class="dropdown-item text-white" routerLink="/products/websites" (click)="closeAllDropdowns()">Single-Page Websites</a>
-            <small class="item-description">A simple, elegant single-page website solution.</small>
-          </div>
-
-          <div class="item">
-            <a class="dropdown-item text-white" routerLink="/products/websites" (click)="closeAllDropdowns()">Multi-Page Websites</a>
-            <small class="item-description">Ideal for businesses needing more pages and flexibility.</small>
-          </div>
-
-          <div class="item">
-            <a class="dropdown-item text-white" routerLink="/products/websites" (click)="closeAllDropdowns()">E-Commerce Websites</a>
-            <small class="item-description">Robust online stores to sell your products efficiently.</small>
-          </div>
-
-          <div class="item">
-            <a class="dropdown-item text-white" routerLink="/products/websites" (click)="closeAllDropdowns()">Portfolio/Blog Websites</a>
-            <small class="item-description">Showcase your work or share your thoughts online.</small>
-          </div>
-
-          <div class="item">
-            <a class="dropdown-item text-white" routerLink="/products/websites" (click)="closeAllDropdowns()">Custom Websites</a>
-            <small class="item-description">Fully customized websites tailored to your needs.</small>
-          </div>
-        </div>
-      </div>
-
-      <!-- Column 2: SEO & Marketing -->
-      <div class="col-md-4 mb-4">
-        <div class="text-white text-decoration-none">
-          <h5 class="border-bottom pb-2" (click)="closeAllDropdowns()">SEO & Marketing Services</h5>
-
-          <div class="item">
-            <a class="dropdown-item text-white" routerLink="/products/seo-marketing" (click)="closeAllDropdowns()">SEO Optimization</a>
-            <small class="item-description">Help your website rank higher on search engines.</small>
-          </div>
-
-          <div class="item">
-            <a class="dropdown-item text-white" routerLink="/products/seo-marketing" (click)="closeAllDropdowns()">Social Media Integration</a>
-            <small class="item-description">Connect your website seamlessly with social platforms.</small>
-          </div>
-
-          <div class="item">
-            <a class="dropdown-item text-white" routerLink="/products/seo-marketing" (click)="closeAllDropdowns()">Email Marketing Solutions</a>
-            <small class="item-description">Integrated email capture and marketing tools.</small>
-          </div>
-
-          <div class="item">
-            <a class="dropdown-item text-white" routerLink="/products/seo-marketing" (click)="closeAllDropdowns()">Performance Analytics</a>
-            <small class="item-description">Track your website's performance and user engagement.</small>
-          </div>
-
-          <div class="item">
-            <a class="dropdown-item text-white" routerLink="/products/seo-marketing" (click)="closeAllDropdowns()">SEO Reporting</a>
-            <small class="item-description">Monitor your site's search engine performance and rankings.</small>
-          </div>
-        </div>
-      </div>
-
-      <!-- Column 3: Software Development -->
-      <div class="col-md-4 mb-4">
-        <div class="text-white text-decoration-none">
-          <h5 class="border-bottom pb-2" (click)="closeAllDropdowns()">Software Development</h5>
-
-          <div class="item">
-            <a class="dropdown-item text-white" routerLink="/products/development" (click)="closeAllDropdowns()">Custom Web Development</a>
-            <small class="item-description">Full-stack development for customized web solutions.</small>
-          </div>
-
-          <div class="item">
-            <a class="dropdown-item text-white" routerLink="/products/development" (click)="closeAllDropdowns()">Mobile App Development</a>
-            <small class="item-description">Expand your business with responsive and user-friendly mobile apps.</small>
-          </div>
-
-          <div class="item">
-            <a class="dropdown-item text-white" routerLink="/products/development" (click)="closeAllDropdowns()">API Integration</a>
-            <small class="item-description">Connect third-party services and streamline your operations.</small>
-          </div>
-
-          <div class="item">
-            <a class="dropdown-item text-white" routerLink="/products/development" (click)="closeAllDropdowns()">Web Application Development</a>
-            <small class="item-description">Advanced web-based solutions for your business needs.</small>
-          </div>
-        </div>
-      </div>
+  <!-- Desktop Nav -->
+  <nav class="nav-island" [class.scrolled]="isScrolled">
+    <div class="nav-links">
+      <a (click)="scrollTo('services')">What We Do</a>
+      <a (click)="scrollTo('how-it-works')">How We Build</a>
+      <a (click)="scrollTo('faq')">FAQ</a>
     </div>
+  </nav>
+
+  <!-- CTA -->
+  <a class="cta-button" (click)="scrollTo('contact')">Contact Us</a>
+
+  <!-- Hamburger Toggle (mobile only) -->
+  <div class="menu-toggle" (click)="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
   </div>
-</div>
+
+  <!-- Dropdown Menu -->
+  <div class="dropdown-menu" [class.open]="isMenuOpen">
+    <a (click)="scrollTo('how-it-works'); toggleMenu()">How It Works</a>
+    <a (click)="scrollTo('services'); toggleMenu()">Services</a>
+    <a (click)="scrollTo('faq'); toggleMenu()">FAQ</a>
+    <a (click)="scrollTo('contact'); toggleMenu()" class="mobile-cta">Contact Us</a>
+  </div>
+</header>

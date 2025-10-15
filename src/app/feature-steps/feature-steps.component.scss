@@ -1,196 +1,249 @@
-@import '../../_button';
+@import '../../styles/variables';
 
-// Variables for colors, padding, and font sizes
-$primary-bg: #f4f4f4;
-$primary-highlight: #229EFF;
-$text-color: #000000;
-$padding-large: 96px;
-$padding-medium: 2rem;
-$font-size-heading-lg: 60px;
-$font-size-heading-md: 30px;
-$font-size-subtext: 30px;
-$font-size-description: 2rem;
-$font-size-hook-lg: 3.5rem;
-$font-size-hook-sm: 2.5rem;
-$border-radius: 20px;
-$transition-duration: 0.5s;
-
-// Feature Section
-.feature-section {
-  background-color: $primary-bg;
-  position: relative;
-  padding-bottom: 48px;
-  min-height: 800px;
-}
-
-// Header Text
-.header-text {
-  position: relative;
-  display: inline-block;
-  padding: 8px 16px;
-  // cursor: pointer;
-}
-
-.text {
-  font-size: $font-size-heading-lg;
-  line-height: 61px;
-  transition: color $transition-duration ease;
-  position: relative;
-  z-index: 3;
-
-  &.active-text {
-    color: $primary-highlight;
-  }
-}
-
-// Underline and Highlight
-.underline {
-  position: absolute;
-  bottom: 24px;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background-color: $text-color;
-  z-index: 1;
-}
-
-.highlight {
-  position: absolute;
-  bottom: 24px;
-  left: 0;
-  width: 33.33%;
-  height: 4px;
-  background-color: $primary-highlight;
-  transition: transform $transition-duration ease;
-  z-index: 2;
-}
-
-// Subtext Frame
-.subtext-frame {
-  position: absolute;
-  top: 80px;
-  left: 0;
-  width: 100%;
+.feature-steps-section {
+  background: linear-gradient(145deg, #f9fafc, #f4f5f7, #e9ebf0);
+  padding: 6rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  opacity: 0;
-  transition: opacity $transition-duration ease;
 
-  &.active-subtext {
-    opacity: 1;
-    color: $primary-highlight;
+  @media (max-width: 1200px) {
+    padding: 5rem 2rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 1.25rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 1rem;
   }
 }
 
-.subtext {
-  font-size: $font-size-subtext;
-  line-height: 24px;
-}
-
-// Hook and Description
-.hook .main-text {
-  font-size: $font-size-hook-lg;
-  line-height: 1.2;
-  color: $text-color;
-}
-
-.description {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: $font-size-description;
-  color: $text-color;
-}
-
-.image{
-  margin: 20px;
-}
-// Image Container
-.image-container {
+/* ------------------------------
+   HEADER
+------------------------------ */
+.feature-header {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: $padding-medium;
-  background-color: white;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  filter: drop-shadow(0px 1px 8px #363636);
-  border-radius: $border-radius;
-}
+  gap: 3rem;
+  position: relative;
+  margin-bottom: 3.5rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 1000px;
+  flex-wrap: wrap;
 
-// Feature Layout
-.feature {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px $padding-large;
-  transition: opacity $transition-duration ease;
-  margin: auto;
-  max-width: 90%;
+  .feature-step {
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 1rem;
+    transition: color 0.3s ease;
 
-  &.flex-row-reverse {
-    flex-direction: row-reverse;
-  }
-}
+    h2 {
+      font-size: clamp(1.4rem, 2vw, 2rem);
+      font-weight: 600;
+      color: #cccccc;
+      margin-bottom: 0.25rem;
+    }
 
-// Responsive adjustments
+    p {
+      font-size: clamp(0.9rem, 1.1vw, 1rem);
+      color: rgba(0, 0, 0, 0.55);
+      margin: 0;
+    }
 
-@media (max-width: 1350px) {
-  .feature {
-    padding: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .text {
-    font-size: $font-size-heading-md;
-    line-height: 40px;
+    &.active h2 {
+      color: $color-secondary;
+    }
   }
 
-  .subtext-frame {
-    display: none;
+  .feature-indicator {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 3px;
+    width: 33.33%;
+    background: linear-gradient(90deg, $color-primary, darken($color-primary, 50%));
+    transition: transform 0.4s ease;
   }
 
-  .hook .main-text {
-    font-size: 3rem;
-  }
-
-  .hook {
-    text-align: center;
-  }
-
-  .description {
-    font-size: 1.75rem;
-  }
-
-  .image-container {
-    padding: 1rem;
-    margin-bottom: 20px;
-  }
-
-  .feature {
+  @media (max-width: 900px) {
     flex-direction: column;
-    align-items: center;
+    gap: 1rem;
+    border-bottom: none;
+    .feature-indicator {
+      display: none;
+    }
   }
 }
 
-@media (max-width: 576px) {
-  .image {
-    max-width: 350px;
+/* ------------------------------
+   CONTENT
+------------------------------ */
+.feature-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  .fade-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+
+    @media (max-width: 900px) {
+      flex-direction: column;
+      gap: 2rem;
+    }
   }
 
   .text {
-    font-size: 25px;
-    line-height: 35px;
+    flex: 1 1 550px;
+    text-align: left;
+
+    h3 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.2;
+      color: #111;
+      margin: 0 0 1rem;
+    }
+
+    p {
+      font-size: clamp(1rem, 1.2vw, 1.1rem);
+      color: rgba(0, 0, 0, 0.7);
+      margin: 1.5rem 0;
+      max-width: 500px;
+    }
+
+    .button-primary {
+      background: $color-primary;
+      color: #363636;
+      padding: 0.9rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba($color-primary, 0.4);
+        background: white;
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex: none;
+    }
+
+    @media (max-width: 900px) {
+      text-align: center;
+      max-width: 100%;
+    }
+
+
+    @media (max-width: 480px) {
+      h3 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+
+      .button-primary {
+        width: 100%;
+        max-width: 260px;
+      }
+    }
   }
 
-  .hook .main-text {
-    font-size: $font-size-hook-sm;
+  .image {
+    flex: 1 1 450px;
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      max-width: 480px;
+      border-radius: 1rem;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      object-fit: cover;
+
+      @media (max-width: 480px) {
+        max-width: 100%;
+        border-radius: 0.75rem;
+      }
+    }
+  }
+}
+
+/* ------------------------------
+   SMALL DEVICES
+------------------------------ */
+@media (max-width: 900px) {
+  .feature-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .feature-steps-section {
+    padding: 3.5rem 1rem;
   }
 
-  .description {
-    font-size: 0.9rem;
+  .feature-content .fade-container {
+    gap: 1.5rem;
   }
+}
 
-  .image-container {
-    padding: 0.5rem;
+
+/* ------------------------------
+   MOBILE (below 768px)
+------------------------------ */
+@media (max-width: 768px) {
+  .feature-header {
+    flex-wrap: nowrap; /* ✅ keep steps in a single row */
+    flex-direction: row;
+    overflow-x: auto; /* ✅ allow horizontal scroll */
+    justify-content: center; /* aligns to left for swipe effect */
+    gap: 2rem;
+    padding: 0 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none; /* hide scrollbar */
+    }
+
+    .feature-step {
+      flex: 0 0 auto; /* keeps steps from wrapping */
+      text-align: center;
+      white-space: nowrap;
+
+      h2 {
+        font-size: 1.6rem; /* smaller readable size */
+      }
+
+      p {
+        display: none; /* ✅ remove subtext */
+      }
+    }
+
+    .feature-indicator {
+      height: 2px;
+    }
   }
 }

@@ -6,11 +6,12 @@ import { Injectable } from '@angular/core';
 })
 export class EmailService {
 
-  private functionUrl = 'https://twg-template-submission-92b1532f00c1.herokuapp.com';
+  // private functionUrl = 'https://twg-template-submission-92b1532f00c1.herokuapp.com';
+    private functionUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
-  sendEmail(emailData: FormData) {
-    return this.http.post(this.functionUrl + '/send-email', emailData);
+  sendUniversalEmail(formData: FormData) {
+    return this.http.post(this.functionUrl + '/send-email-universal', formData);
   }
 }

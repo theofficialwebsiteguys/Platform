@@ -33,13 +33,13 @@ export class AppComponent {
   }
 
   onActivate(event: any) {
-    if (this.isBrowser) {
-      window.scroll({
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
-      });
-    }
+    // if (this.isBrowser) {
+    //   window.scroll({
+    //     top: 0,
+    //     left: 0,
+    //     behavior: 'smooth'
+    //   });
+    // }
   }
 
   isPlatformRoute(): boolean {

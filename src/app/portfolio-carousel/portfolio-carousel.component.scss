@@ -1,30 +1,92 @@
-// Variables for colors, padding, and dimensions
-$primary-bg: #161616;
-$logo-max-size: 100px;
-$carousel-width: 800px;
-$transition-duration: 0.3s;
+@import '../../styles/variables';
+
+// Variables
+$primary-bg: #0f0f0f;
+$accent: $color-primary; // from your global variables
+$logo-max-size: 90px;
+$transition-duration: 0.4s;
+$carousel-width: 100%;
+$fade-width: 120px;
 
 // Business Growth Section
 .business-growth-section {
-  background-color: $primary-bg;
+  position: relative;
+  background: $color-secondary;
+  display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
-  z-index: 0;
+  overflow: hidden;
+
+  // subtle top and bottom glow
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  // edge fading effect (left/right)
+  .carousel-wrapper::before,
+  .carousel-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: $fade-width;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .carousel-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, $color-secondary 0%, transparent 100%);
+  }
+
+  .carousel-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, $color-secondary 0%, transparent 100%);
+  }
+}
+
+// Carousel Wrapper
+.carousel-wrapper {
+  width: 90%;
+  max-width: 1300px;
   position: relative;
+  z-index: 3;
 }
 
-// Logo Carousel Container
-.logo-carousel-container {
-  background-color: $primary-bg;
-  padding: 15px 0;
-  justify-content: center;
-}
-
-// Owl Carousel Theme
+// Owl Theme Adjustments
 .owl-theme {
-  width: $carousel-width !important;
+  width: $carousel-width;
   margin: 0 auto;
+}
+
+.owl-carousel .owl-stage-outer {
+  padding: 10px 0;
+}
+
+.owl-carousel .owl-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform $transition-duration ease, opacity $transition-duration ease;
+
+  &.active.center {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+
+  &:not(.active.center) {
+    opacity: 0.75;
+  }
+
+  &.cloned {
+    opacity: 0.5;
+  }
 }
 
 // Logo Slide
@@ -32,33 +94,26 @@ $transition-duration: 0.3s;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: $logo-max-size;
-  width: $carousel-width;
+  width: 100px;
+  height: 100px;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+  transition: transform $transition-duration ease, filter $transition-duration ease;
+
+  &:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 4px 12px rgba($accent, 0.4));
+  }
 }
 
 // Logo Image
 .logo-img {
   max-width: $logo-max-size;
   max-height: $logo-max-size;
-  transition: transform $transition-duration ease-in-out;
-}
+  object-fit: contain;
+  opacity: 0.9;
+  transition: opacity $transition-duration ease;
 
-// Owl Carousel Stage Outer
-.owl-carousel .owl-stage-outer {
-  padding-left: 0 !important;
-}
-
-// Owl Carousel Items
-.owl-carousel .owl-item {
-  opacity: 0.8;
-  transition: opacity $transition-duration ease-in-out, transform $transition-duration ease-in-out;
-
-  &.active.center {
+  &:hover {
     opacity: 1;
-    transform: scale(1.1); // Slightly scale up the active logo
-  }
-
-  &.cloned {
-    opacity: 0.5; // Further reduce opacity for cloned items
   }
 }

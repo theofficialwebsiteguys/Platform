@@ -1,5 +1,5 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, Inject, OnDestroy, PLATFORM_ID } from '@angular/core';
+import { Component, HostListener, Inject, OnDestroy, PLATFORM_ID } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -11,10 +11,22 @@ import { RouterModule } from '@angular/router';
 })
 export class NavComponent implements OnDestroy {
   menuVisible = false;
-  isMenuOpen = false;
   isProductsDropdownOpen = false;
   openDropdownId = '';
+  isScrolled = false;
 
+  isMenuOpen = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+
+  @HostListener('window:scroll')
+  onScroll() {
+    this.isScrolled = window.scrollY > 50;
+  }
+  
   private isBrowser: boolean;
   private resizeListener = this.onResize.bind(this);
 
@@ -73,27 +85,27 @@ export class NavComponent implements OnDestroy {
     });
   }
 
-  toggleMenu(event: Event) {
-    event.preventDefault();
-    this.menuVisible = !this.menuVisible;
+  // toggleMenu(event: Event) {
+  //   event.preventDefault();
+  //   this.menuVisible = !this.menuVisible;
 
-    if (!this.isBrowser) return;
-    const fullscreenMenu = document.querySelector('.fullscreen-menu');
-    const body = document.body;
+  //   if (!this.isBrowser) return;
+  //   const fullscreenMenu = document.querySelector('.fullscreen-menu');
+  //   const body = document.body;
 
-    if (this.menuVisible) {
-      fullscreenMenu?.classList.add('show');
-      body.style.overflow = 'hidden';
-      body.style.position = 'fixed';
-      body.style.width = '100%';
-      body.style.height = '100%';
-      body.style.top = '0';
-      body.style.left = '0';
-    } else {
-      fullscreenMenu?.classList.remove('show');
-      this.resetBodyStyles(body);
-    }
-  }
+  //   if (this.menuVisible) {
+  //     fullscreenMenu?.classList.add('show');
+  //     body.style.overflow = 'hidden';
+  //     body.style.position = 'fixed';
+  //     body.style.width = '100%';
+  //     body.style.height = '100%';
+  //     body.style.top = '0';
+  //     body.style.left = '0';
+  //   } else {
+  //     fullscreenMenu?.classList.remove('show');
+  //     this.resetBodyStyles(body);
+  //   }
+  // }
 
   toggleDropdown(dropdownId: string, event: Event): void {
     event.preventDefault();
@@ -139,4 +151,12 @@ export class NavComponent implements OnDestroy {
     body.style.top = '';
     body.style.left = '';
   }
+
+  scrollTo(sectionId: string) {
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
 }

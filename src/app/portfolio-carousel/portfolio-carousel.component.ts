@@ -36,22 +36,40 @@ export class PortfolioCarouselComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if (this.isBrowser) {
-      // Load the logos AFTER view is initialized to avoid timing issues
+   if (this.isBrowser) {
       setTimeout(() => {
-        this.logos = [
-          'assets/logo-carousel/ltdhype-logo.png',
+        const logos = [
+          'assets/logo-carousel/48-volt.png',
+          'assets/logo-carousel/best-diner-logo.png',
+          'assets/logo-carousel/cake-logo.png',
+          'assets/logo-carousel/cannaos-logo.png',
+          'assets/logo-carousel/flower-power-logo.png',
+          'assets/logo-carousel/ibiza-projects-logo.png',
+          'assets/logo-carousel/kevcleanedit.png',
+          'assets/logo-carousel/opmf-logo.png',
+          'assets/logo-carousel/stony-point-logo.png',
           'assets/logo-carousel/pcr-logo.png',
           'assets/logo-carousel/amores-logo.png',
           'assets/logo-carousel/ldl-logo.png',
           'assets/logo-carousel/rye-logo.png',
           'assets/logo-carousel/tsstage-logo.webp',
           'assets/logo-carousel/assetace-logo.png',
-          'assets/logo-carousel/kings-logo.png',
           'assets/logo-carousel/reyes-logo.png',
-          'assets/logo-carousel/annies-logo.avif'
+          'assets/logo-carousel/annies-logo.avif',
         ];
+
+        this.logos = this.shuffleArray(logos);
       }, 0);
     }
   }
+
+  private shuffleArray<T>(array: T[]): T[] {
+    const shuffled = [...array]; // clone to avoid mutating original
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }
+
 }

@@ -1,134 +1,307 @@
-// Variables for colors, paddings, and other reusable values
-$primary-bg: #000000;
-$text-color-light: #F2F2F2;
-$image-bg-color: #FFFFFF;
-$border-color: #F2F2F2;
-$padding-large: 4rem;
-$padding-medium: 2rem;
-$padding-small: 1.5rem;
-$gap-large: 32px;
-$gap-medium: 24px;
+@import '../../styles/variables';
 
-// General styles
-.feature-section {
-  background: $primary-bg;
-  padding: $padding-large 0;
-  overflow-x: hidden; // Prevent horizontal scrolling
+.services {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  padding: 6rem 4rem;
+  background: linear-gradient(135deg, #0a0a0f, #14161c 60%, #1c1f26);
+  text-align: left;
+  position: relative;
+  isolation: isolate; // ensures pseudo elements stay behind content
 
-  .image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-    margin: 0 auto; // Center the image container
+  // --- glowing accents ---
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba($color-primary, 0.2) 0%, transparent 70%);
+    filter: blur(160px);
+    z-index: 0;
   }
 
-  .feature-text {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0 $padding-small; // Add padding to prevent content touching screen edge
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
 
-    .hook {
-      margin-bottom: $gap-large;
+  // --- animation setup (added) ---
+  :host ::ng-deep .service-block {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  :host ::ng-deep .service-block.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  // --- service block ---
+  .service-block {
+    position: relative;
+    z-index: 1; // make sure animation appears above background
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    padding: 4rem;
+    background: white;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.25rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .header {
-      font-size: 2.5rem;
-      line-height: 1.2;
-      color: $text-color-light;
+    &.inverted {
+      flex-direction: row-reverse;
     }
 
-    .supporting-text {
-      font-size: 1.5rem;
-      line-height: 1.2;
-      color: $text-color-light;
-    }
+    .service-content {
+      flex: 1;
+      .icon {
+        font-size: 2.5rem;
+        color: $color-primary;
+        margin-bottom: 1rem;
+      }
 
-    .text-grid {
-      display: flex;
-      flex-direction: column;
-      gap: $gap-large;
-      max-width: 90%;
+      h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
 
-      .text-section {
-        display: flex;
-        align-items: flex-start;
-        width: 100%;
+      p {
+        font-size: 1.15rem;
+        line-height: 1.7;
+        color: rgba(0, 0, 0, 0.75);
+        margin-bottom: 1.5rem;
+      }
 
-        .image-background {
+      .service-features {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 1.5rem;
+
+        li {
+          font-size: 1rem;
+          margin-bottom: 0.5rem;
           display: flex;
-          justify-content: center;
           align-items: center;
-          width: 45px;
-          height: 40px;
-          background: $image-bg-color;
-          border-radius: 50%;
-          margin-right: 16px;
-          flex-shrink: 0;
+          gap: 0.6rem;
+
+          i {
+            color: $color-secondary;
+          }
+        }
+      }
+
+      .highlight {
+        background: rgba($color-primary, 0.1);
+        border-left: 4px solid $color-primary;
+        padding: 1rem 1.25rem;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        color: #333;
+      }
+    }
+
+    .service-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+
+      img {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.4s ease;
+
+        &:hover {
+          transform: scale(1.02);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    .service-block {
+      flex-direction: column !important;
+      text-align: center;
+
+      .service-content {
+        order: 2;
+      }
+
+      .service-image {
+        order: 1;
+      }
+    }
+  }
+}
+
+/* ------------------------------
+   TABLET (≤ 1200 px)
+------------------------------ */
+@media (max-width: 1200px) {
+  .services {
+    padding: 5rem 3rem;
+    gap: 5rem;
+
+    .service-block {
+      gap: 2.5rem;
+      padding: 3rem;
+
+      .service-content h2 {
+        font-size: 2.2rem;
+      }
+
+      .service-content p {
+        font-size: 1.05rem;
+      }
+    }
+  }
+}
+
+/* ------------------------------
+   TABLET / SMALL LAPTOP (≤ 900 px)
+------------------------------ */
+@media (max-width: 900px) {
+  .services {
+    padding: 4rem 2rem;
+    gap: 4rem;
+
+    .service-block {
+      flex-direction: column !important;
+      text-align: center;
+      padding: 3rem 2rem;
+      gap: 2rem;
+
+      .service-content {
+        order: 2;
+        flex: unset;
+
+        .icon {
+          font-size: 2.2rem;
         }
 
-        .header-with-supporting-text {
-          flex-grow: 1;
-          border-bottom: 1px solid $border-color;
-          padding-bottom: 24px;
+        h2 {
+          font-size: 2rem;
+          margin-bottom: 0.75rem;
+        }
+
+        p {
+          font-size: 1rem;
+          margin-bottom: 1.25rem;
+        }
+
+        .service-features {
+          li {
+            justify-content: center;
+            font-size: 0.95rem;
+          }
+        }
+
+        .highlight {
+          font-size: 0.9rem;
+          text-align: left;
+          margin-top: 1.25rem;
+        }
+      }
+
+      .service-image {
+        order: 1;
+        flex: unset;
+
+        img {
+          max-width: 420px;
           width: 100%;
-          box-sizing: border-box;
-
-          .header {
-            font-size: 1.5rem;
-            line-height: 1.2;
-          }
-
-          .supporting-text {
-            font-size: 1.2rem;
-            line-height: 1.2;
-          }
+          border-radius: 10px;
         }
       }
     }
   }
 }
 
-// Responsive adjustments
-@media (max-width: 768px) {
-  .row {
-    flex-direction: column-reverse; // Stack the image below the text
-  }
+/* ------------------------------
+   MOBILE (≤ 600 px)
+------------------------------ */
+@media (max-width: 600px) {
+  .services {
+    padding: 3.5rem 1.25rem;
+    gap: 3.5rem;
 
-  .image-container {
-    margin-top: $padding-medium; // Add space above the image
-  }
+    .service-block {
+      padding: 2.25rem 1.5rem;
+      gap: 1.5rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 
-  .feature-text {
-    padding: 0 $padding-medium;
+      .service-content {
+        h2 {
+          font-size: 1.75rem;
+        }
+
+        p {
+          font-size: 0.95rem;
+          line-height: 1.6;
+        }
+
+        .service-features li {
+          font-size: 0.9rem;
+          gap: 0.4rem;
+        }
+
+        .highlight {
+          font-size: 0.85rem;
+          padding: 0.9rem 1rem;
+        }
+      }
+
+      .service-image img {
+        max-width: 100%;
+        border-radius: 8px;
+      }
+    }
   }
 }
 
-@media (max-width: 576px) { // Mobile
-  .image {
-    max-width: 90%;
-  }
+/* ------------------------------
+   SMALL MOBILE (≤ 400 px)
+------------------------------ */
+@media (max-width: 400px) {
+  .services {
+    padding: 3rem 1rem;
+    gap: 3rem;
 
-  .header {
-    font-size: 1.75rem;
-  }
+    .service-block {
+      padding: 2rem 1rem;
 
-  .supporting-text {
-    font-size: 0.875rem;
-  }
+      .service-content h2 {
+        font-size: 1.5rem;
+      }
 
-  .text-grid {
-    gap: $gap-medium;
-    max-width: 100%;
-  }
+      .service-content p {
+        font-size: 0.9rem;
+      }
 
-  .image-container {
-    margin-top: $padding-small;
+      .service-features li {
+        font-size: 0.85rem;
+      }
+    }
   }
 }
-
-

@@ -1,111 +1,183 @@
-@import '../../button';
+@import '../../styles/variables';
 
-// Variables
-$primary-bg: #f9f9f9;
-$text-color-dark: #1a1a1a;
-$text-color-muted: #666;
-$accent-color: #0070f3;
-$padding-desktop: 150px;
-$padding-mobile: 40px;
-$gap: 24px;
-
-$font-size-header-lg: 3.5vw;
-$font-size-subheader-lg: 1.6vw;
-$font-size-header-sm: 8vw;
-$font-size-subheader-sm: 4.5vw;
+/* ------------------------------
+   HERO SECTION
+------------------------------ */
 
 .hero-section {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
-  flex-direction: row;
-  padding: $padding-desktop;
-  background-color: $primary-bg;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  padding: 0;
 
-  @media (max-width: 1024px) {
-    flex-direction: column-reverse;
-    padding: $padding-mobile;
-    padding-top: 125px;
-    text-align: center;
+  @media (max-width: 768px) {
+    flex-direction: column; // switch stacking direction
+    height: auto; // let content expand naturally
   }
 }
+/* ------------------------------
+   HERO CONTENT (LEFT SIDE)
+------------------------------ */
 
 .hero-content {
-  width: 50%;
-  max-width: 600px;
-  animation: fadeSlideUp 1.2s ease-out forwards;
-  animation-delay: 0.5s;
-  opacity: 0;
-  transform: translateY(30px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 3rem 0 7rem;
+  box-sizing: border-box;
+  min-height: 100vh;
+  z-index: 2;
+   background: linear-gradient(
+    to bottom right,
+    rgba(179, 206, 227, 0.75) 0%,     // bright light blue glow (top-left)
+    rgba(255, 255, 255, 1) 50%      // pure white bottom-right
+  );
+  backdrop-filter: blur(18px);
+  
 
-  h1 {
-    font-size: $font-size-header-lg;
-    font-weight: 700;
-    color: $text-color-dark;
-    margin-bottom: $gap;
-
-    @media (max-width: 768px) {
-      font-size: $font-size-header-sm;
-    }
-  }
-
-  p {
-    font-size: $font-size-subheader-lg;
-    color: $text-color-muted;
-    margin-bottom: $gap * 1.2;
-
-    @media (max-width: 768px) {
-      font-size: $font-size-subheader-sm;
-    }
-  }
-
-  .cta-link {
-    display: inline-block;
-
-    button {
-      padding: 14px 24px;
-      font-size: 1rem;
-      background-color: $accent-color;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-
-      &:hover {
-        background-color: darken($accent-color, 8%);
-      }
-    }
-  }
-
-  .social-proof {
-    margin-top: 20px;
-    font-size: 0.9rem;
-    color: $text-color-muted;
-  }
-
-  @media (max-width: 1024px) {
+  @media (max-width: 768px) {
+    align-items: center; // ✅ centers inner content
+    text-align: center;
+    padding: 2rem 1.5rem 0; // ✅ no large bottom padding so carousel fits tight
+    min-height: auto;
     width: 100%;
+    a{
+      margin: auto;
+    }
+  }
+
+  app-portfolio-carousel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+
+    @media (max-width: 768px) {
+      position: static; // ✅ keeps it in normal flow
+      margin-top: 2rem; // adds breathing room below trust text
+      width: 100vw;
+      box-shadow: none; // optional: remove top shadow on mobile
+    }
+  }
+
+  .hero-heading {
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: $color-secondary;
+    margin-bottom: 2rem;
+    letter-spacing: -0.03em;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    .gradient-text {
+      background: linear-gradient(90deg, #222, $color-primary, #f7931a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: gradientShift 8s ease infinite;
+    }
+
+    .highlight-text {
+      color: #9c9c9c
+    }
+  }
+
+  .hero-subtext {
+    font-size: 1.3rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(0, 0, 0, 0.75);
+    margin-bottom: 2.5rem;
+    max-width: 540px;
+  }
+
+  .button-primary {
+    background: $color-primary;
+    color: #2b2b2b;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 45px;
+    padding: 1.1rem 2.6rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba($color-primary, 0.35);
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba($color-primary, 0.5);
+      background: white;
+    }
+
+     
+  }
+
+  .trust-text {
+    margin-top: 2.2rem;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.55);
+    letter-spacing: 0.02em;
   }
 }
 
-.hero-image {
-  max-width: 45%;
-  height: auto;
+/* ------------------------------
+   HERO VISUAL (RIGHT SIDE)
+------------------------------ */
 
-  @media (max-width: 1024px) {
-    max-width: 90%;
-    margin-bottom: 30px;
+.hero-visual {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+
+  video.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+  }
+
+  .video-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  // ✅ MOBILE BEHAVIOR
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 30vh; // video covers top half of viewport
+    order: -1; // move video to top visually
+    video.hero-video {
+      position: relative;
+      height: 100%;
+    }
   }
 }
 
-@keyframes fadeSlideUp {
+/* ------------------------------
+   ANIMATIONS
+------------------------------ */
+
+@keyframes gradientShift {
   0% {
-    opacity: 0;
-    transform: translateY(30px);
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
   100% {
-    opacity: 1;
-    transform: translateY(0);
+    background-position: 0% 50%;
   }
 }

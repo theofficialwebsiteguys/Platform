@@ -1,16 +1,53 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, ElementRef, Inject, Pipe, PipeTransform, PLATFORM_ID } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EmailService } from '../email.service';
 import { PhoneFormatDirective } from '../phone-format.directive';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { trigger, style, animate, transition, query, stagger } from '@angular/animations';
+
+
+@Pipe({ name: 'safeUrl', standalone: true })
+export class SafeUrlPipe implements PipeTransform {
+  constructor(private sanitizer: DomSanitizer) {}
+  transform(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+}
+
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, PhoneFormatDirective],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, PhoneFormatDirective, SafeUrlPipe],
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss'
+  styleUrl: './contact.component.scss',
+  animations: [
+ trigger('slideInLeft', [
+    transition(':enter', [
+      style({ opacity: 0, transform: 'translateX(-80px)' }),
+      animate('900ms cubic-bezier(0.25, 1, 0.5, 1)', 
+        style({ opacity: 1, transform: 'translateX(0)' }))
+    ]),
+    transition('hidden => visible', [
+      style({ opacity: 0, transform: 'translateX(-80px)' }),
+      animate('900ms cubic-bezier(0.25, 1, 0.5, 1)',
+        style({ opacity: 1, transform: 'translateX(0)' }))
+    ])
+  ]),
+  trigger('slideInRight', [
+    transition(':enter', [
+      style({ opacity: 0, transform: 'translateX(60px)' }),
+      animate('800ms 400ms ease-out', 
+        style({ opacity: 1, transform: 'translateX(0)' }))
+    ]),
+    transition('hidden => visible', [
+      style({ opacity: 0, transform: 'translateX(60px)' }),
+      animate('800ms 400ms ease-out', 
+        style({ opacity: 1, transform: 'translateX(0)' }))
+    ])
+  ])
+  ]
 })
 export class ContactComponent {
 
@@ -19,20 +56,55 @@ export class ContactComponent {
   dragOver: boolean = false;
   uploadedFiles: File[] = [];  // Array to hold the uploaded files
   successMessage: string = ''; // Variable to hold the success message
+  animateInfo = false;
+
+  showBooking = false; // toggle after form submit
+  bookingLink = 'https://calendar.app.google/c1iP9beZufVVTg3m8'; // your Google booking link
 
   constructor(
     private readonly fb: FormBuilder, 
     private readonly emailService: EmailService,
     private readonly sanitizer: DomSanitizer, // Import sanitizer to create safe download URLs
-    private router: Router
+    private router: Router,
+        private el: ElementRef,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
+
+  transform(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+ngAfterViewInit() {
+  if (isPlatformBrowser(this.platformId)) {
+    const section = this.el.nativeElement.querySelector('.contact-section');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !this.animateInfo) {
+          this.animateInfo = true; // trigger animation
+          observer.unobserve(section); // play only once
+        }
+      });
+    }, { threshold: 0.3 });
+
+    if (section) observer.observe(section);
+  }
+}
+
 
   ngOnInit() {
     this.contactForm = this.fb.group({
-      name: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern(/^\d{3}-\d{3}-\d{4}$/)]],
-      proposal: ['']
+      phone: [''],
+      services: this.fb.group({
+        website: [false],
+        branding: [false],
+        seo: [false],
+        mobileApp: [false]
+      }),
+      projectDetails: ['']
     });
   }
 
@@ -92,40 +164,41 @@ export class ContactComponent {
 
   sendEmail() {
     if (this.contactForm.invalid) {
-      // Mark all fields as touched to trigger validation errors
       this.contactForm.markAllAsTouched();
-      return; // Prevent form submission if invalid
+      return;
     }
 
-    this.submitted = true; // Set to true to show the spinner and disable the button
+    this.submitted = true;
 
     const formData = new FormData();
-    formData.append('name', this.contactForm.get('name')?.value);
+    formData.append('businessEmail', 'theofficialwebsiteguys@gmail.com'); // where the email gets sent
+    formData.append('firstName', this.contactForm.get('firstName')?.value);
+    formData.append('lastName', this.contactForm.get('lastName')?.value);
     formData.append('email', this.contactForm.get('email')?.value);
     formData.append('phone', this.contactForm.get('phone')?.value);
-    formData.append('proposal', this.contactForm.get('proposal')?.value);
+    formData.append('projectDetails', this.contactForm.get('projectDetails')?.value);
 
-    const files: File[] = this.contactForm.get('images')?.value;
-    if (files) {
-      for (let i = 0; i < files.length; i++) {
-        formData.append('images[]', files[i]);
-      }
-    }
+    // Collect selected services
+    const services = this.contactForm.get('services')?.value;
+    const selectedServices = Object.keys(services)
+      .filter(key => services[key])
+      .join(', ') || 'None selected';
+    formData.append('services', selectedServices);
 
-    this.emailService.sendEmail(formData).subscribe(
-      response => {
+   this.emailService.sendUniversalEmail(formData).subscribe({
+      next: (response) => {
         console.log('Email sent successfully!', response);
-        this.successMessage = 'Your website template request has been submitted successfully!';
-        this.contactForm.reset();
-        this.uploadedFiles = [];  // Clear uploaded files
-        this.submitted = false; // Reset the submitted flag
-        this.router.navigateByUrl('/confirmation')
+        this.successMessage = 'Your message has been sent successfully!';
+        this.submitted = false;
+
+        // Instead of redirecting, show booking view
+        this.showBooking = true;
       },
-      error => {
+      error: (error) => {
         console.error('Error sending email:', error);
-        this.submitted = false; // Reset the submitted flag even if there's an error
+        this.submitted = false;
       }
-    );
+    });
   }
   
 }

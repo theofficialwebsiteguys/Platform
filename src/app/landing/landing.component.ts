@@ -6,10 +6,12 @@ import { FeatureStepsComponent } from '../feature-steps/feature-steps.component'
 import { FeaturePortfolioComponent } from '../feature-portfolio/feature-portfolio.component';
 import { Feature3Component } from '../feature-3/feature-3.component';
 import { PortfolioCarouselComponent } from '../portfolio-carousel/portfolio-carousel.component';
+import { ContactComponent } from '../contact/contact.component';
+import { FaqSectionComponent } from '../faq-section/faq-section.component';
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [CommonModule, HeroComponent, FeatureProductsComponent, FeatureStepsComponent, FeaturePortfolioComponent, Feature3Component, PortfolioCarouselComponent],
+  imports: [CommonModule, HeroComponent, FeatureProductsComponent, FeatureStepsComponent, FeaturePortfolioComponent, Feature3Component, PortfolioCarouselComponent, ContactComponent, FaqSectionComponent],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss'
 })
