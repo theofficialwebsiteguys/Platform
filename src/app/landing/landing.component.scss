@@ -1,0 +1,51 @@
+:host {
+  display: block;
+}
+
+/* Default desktop order */
+.landing-layout {
+  display: block;
+}
+
+:host {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+section {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+/* Mobile reordering */
+@media (max-width: 768px) {
+  :host {
+    display: grid;
+    grid-template-areas:
+      "hero"
+      "contact"
+      "steps"
+      "feature3"
+      "faq";
+  }
+
+  .hero {
+    grid-area: hero;
+  }
+
+  .contact {
+    grid-area: contact;
+  }
+
+  .steps {
+    grid-area: steps;
+  }
+
+  .feature-3 {
+    grid-area: feature3;
+  }
+
+  .faq {
+    grid-area: faq;
+  }
+}

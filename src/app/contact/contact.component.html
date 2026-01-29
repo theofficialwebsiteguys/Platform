@@ -5,19 +5,16 @@
     <div class="contact-copy">
 
       <span class="contact-eyebrow">
-        Quick assessment
+        Quick clarity call
       </span>
 
       <h2 class="contact-title orbitron-bold">
-        See if there’s an opportunity worth exploring
+        See what makes sense for your business
       </h2>
 
       <p class="contact-lead dm-sans-regular">
         This starts with a short conversation to understand your business
-        and what you’re trying to improve.
-        <br /><br />
-        From there, we’ll be direct about whether there’s a fit
-        and what — if anything — makes sense next.
+        and where you’re looking to improve.
       </p>
 
       <div class="contact-proof">
@@ -25,10 +22,13 @@
         <span>•</span>
         <span>No long-term commitment</span>
         <span>•</span>
-        <span>Custom-built for your business</span>
+        <span>Fully custom — no templates</span>
       </div>
     </div>
 
+    <p class="contact-mobile-intro">
+     Trusted by 20+ Local Businesses
+    </p>
     <!-- FORM -->
     <form
       class="contact-form"
@@ -36,17 +36,12 @@
       (ngSubmit)="sendEmail()"
       *ngIf="submitState !== 'success'">
 
-      <div class="form-row">
-        <input
-          (focus)="onFormFocus()"
-          type="text"
-          placeholder="First name"
-          formControlName="firstName" />
-        <input
-          type="text"
-          placeholder="Last name"
-          formControlName="lastName" />
-      </div>
+      <!-- REQUIRED -->
+      <input
+        (focus)="onFormFocus()"
+        type="text"
+        placeholder="Name"
+        formControlName="name" />
 
       <input
         (focus)="onFormFocus()"
@@ -54,25 +49,13 @@
         placeholder="Email address"
         formControlName="email" />
 
-      <input
-        (focus)="onFormFocus()"
-        type="tel"
-        placeholder="Phone"
-        formControlName="phone" />
-
-      <!-- <textarea
-        (focus)="onFormFocus()"
-        placeholder="What type of business do you run?"
-        formControlName="projectDetails">
-      </textarea> -->
-
       <button
         type="submit"
         class="contact-submit"
         [disabled]="submitState === 'submitting'">
 
         <span *ngIf="submitState !== 'submitting'">
-          Request a quick assessment →
+          Get clear next steps →
         </span>
         <span *ngIf="submitState === 'submitting'">
           Sending…
@@ -84,6 +67,10 @@
         {{ errorMessage }}
       </p>
 
+      <small class="contact-micro">
+        Short call • No obligation • Straight answers
+      </small>
+
     </form>
 
     <!-- SUCCESS -->
@@ -94,7 +81,8 @@
       </h3>
 
       <p class="dm-sans-regular">
-        We’ll review your info and be in touch shortly to schedule a quick call.
+        We’ll reach out shortly to schedule a quick call.
+        Booking below is optional.
       </p>
 
       <div class="calendar-wrapper">
@@ -108,7 +96,7 @@
       </div>
 
       <p class="calendar-note">
-        Booking is optional — we’ll reach out either way.
+        No pressure — we’ll follow up either way.
       </p>
 
     </div>

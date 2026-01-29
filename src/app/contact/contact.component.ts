@@ -82,11 +82,8 @@ export class ContactComponent implements OnInit, AfterViewInit {
     }
 
     this.contactForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phone: [''],
-      projectDetails: ['']
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]]
     });
   }
 
@@ -119,11 +116,8 @@ export class ContactComponent implements OnInit, AfterViewInit {
     const formData = new FormData();
 
     formData.append('businessEmail', 'theofficialwebsiteguys@gmail.com');
-    formData.append('firstName', value.firstName);
-    formData.append('lastName', value.lastName);
+    formData.append('name', value.firstName);
     formData.append('email', value.email);
-    formData.append('phone', value.phone || '');
-    formData.append('projectDetails', value.projectDetails || '');
 
     this.emailService.sendUniversalEmail(formData).subscribe({
       next: () => {
