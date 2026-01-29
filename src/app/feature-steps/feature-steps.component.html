@@ -1,38 +1,57 @@
-<div class="feature-steps-section" id="how-it-works">
-  <!-- Header -->
+<section class="feature-editorial" id="how-it-works">
+  <div class="feature-intro">
+    <div class="intro-line"></div>
+    <span>How it works</span>
+  </div>
+
   <div class="feature-header">
-    <div
-      class="feature-step"
-      *ngFor="let step of steps; let i = index"
-      [class.active]="activeStep === i"
-      (click)="activeStep = i"
-    >
-      <h2>{{ step.title }}</h2>
-      <p>{{ step.subtitle }}</p>
-    </div>
-    <div
-      class="feature-indicator"
-      [style.transform]="'translateX(' + activeStep * 100 + '%)'"
-    ></div>
+    <h2 class="orbitron-bold">
+      Get a custom website mockup in three simple steps
+    </h2>
+
+    <p>
+      No upfront cost. No pressure. Just a clear look at what your website
+      could be.
+    </p>
   </div>
 
-  <div class="feature-content">
-    <div class="fade-container" [@fadeIn]="activeStep">
-      <div class="text">
-        <h3>{{ steps[activeStep].heading1 }}</h3>
-        <h3>{{ steps[activeStep].heading2 }}</h3>
-        <p>{{ steps[activeStep].description }}</p>
-        <a routerLink="/contact">
-          <button class="button-primary">{{ steps[activeStep].cta }}</button>
-        </a>
+  <div class="feature-main">
+
+    <!-- Visual -->
+    <div class="feature-visual">
+      <img src="assets/connect.jpg" alt="Website design collaboration" />
+    </div>
+
+    <!-- Steps -->
+    <div class="feature-steps">
+
+      <div class="step">
+        <span class="step-index">01</span>
+        <h3>Tell us about your business</h3>
+        <p>
+          Share a few details about what you do and who you serve.
+          No technical knowledge required.
+        </p>
       </div>
 
-      <div class="image">
-        <img [src]="steps[activeStep].image" [alt]="steps[activeStep].title" />
+      <div class="step">
+        <span class="step-index">02</span>
+        <h3>We design your homepage mockup</h3>
+        <p>
+          Our team creates a custom homepage concept tailored
+          to your business and goals.
+        </p>
       </div>
+
+      <div class="step">
+        <span class="step-index">03</span>
+        <h3>You decide how to move forward</h3>
+        <p>
+          If you like the mockup, we can talk next steps.
+          If not, no worries at all.
+        </p>
+      </div>
+
     </div>
   </div>
-
-
-
-</div>
+</section>

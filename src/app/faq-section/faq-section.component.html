@@ -1,16 +1,43 @@
-<div class="faq-section" id="faq">
-  <div class="faq-content">
-    <h2 class="faq-title afacad-flux-regular">Frequently Asked Questions</h2>
+<section class="faq-modern" id="faq">
+  <div class="faq-inner">
 
-    <div *ngFor="let faq of faqs" class="faq-item" [class.open]="faq.open">
-      <div class="faq-question" (click)="toggleFaq(faq)">
-        <h4>{{ faq.question }}</h4>
-        <span class="arrow" [class.rotate]="faq.open">&#x25BC;</span>
-      </div>
+    <!-- LEFT COPY -->
+    <div class="faq-intro">
+      <span class="faq-eyebrow">FAQs</span>
 
-      <div class="faq-answer" [class.show]="faq.open">
-        <p>{{ faq.answer }}</p>
+      <h2 class="faq-title orbitron-bold">
+        Clear answers,<br />
+        no guesswork
+      </h2>
+
+      <p class="faq-lead dm-sans-regular">
+        Common questions we hear before getting started.
+        If something’s not answered here, we’re happy to talk.
+      </p>
+
+      <a (click)="scrollTo('contact')" class="faq-cta">
+       Get a free website mockup →
+      </a>
+    </div>
+
+    <!-- RIGHT FAQ LIST -->
+    <div class="faq-list">
+      <div
+        *ngFor="let faq of faqs"
+        class="faq-row"
+        [class.open]="faq.open"
+        (click)="toggleFaq(faq)"
+      >
+        <div class="faq-question">
+          <h4 class="dm-sans-regular">{{ faq.question }}</h4>
+          <span class="icon">+</span>
+        </div>
+
+        <div class="faq-answer">
+          <p>{{ faq.answer }}</p>
+        </div>
       </div>
     </div>
+
   </div>
-</div>
+</section>

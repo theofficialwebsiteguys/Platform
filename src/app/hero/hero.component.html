@@ -1,27 +1,52 @@
-<div class="hero-section">
-  <div class="hero-content">
-    <h1 class="hero-heading afacad-flux-regular">
-      Custom<span class="highlight-text"> Websites</span> Built to Grow Your Business.
+<section class="hero" id="home">
+  <div class="hero-inner">
+
+    <!-- Eyebrow -->
+    <span class="hero-eyebrow">
+      Helping local businesses grow online
+    </span>
+
+    <!-- Headline -->
+    <h1 class="hero-heading orbitron-bold">
+      Curious where your business stands online —
+      and where it could improve?
     </h1>
 
-    <p class="hero-subtext afacad-flux-thin">
-      Strategy. Design. Development. All in one place — we craft digital experiences that perform.
+
+    <!-- Subtext -->
+    <p class="hero-subtext">
+      We start with a short call to understand what’s working,
+      what could be improved, and whether it makes sense to move forward.
     </p>
 
-    <a routerLink="/contact" class="cta-link">
-      <button class="button-primary">Get Started</button>
-    </a>
+    <!-- Primary Action -->
+    <div class="hero-actions">
+      <a
+        class="primary-cta"
+        (click)="scrollTo('contact')">
+        See if this makes sense →
+      </a>
+      
+    </div>
+    <small class="hero-micro">
+      Short call. No pressure. We’ll be direct if it’s not a fit.
+    </small>
 
-    <p class="trust-text">Trusted by small businesses nationwide</p>
+    <!-- Trust / Proof -->
+    <div class="hero-proof">
+      <div>No upfront cost</div>
+      <div>Custom design for your business</div>
+      <div>Trusted by 20+ local businesses</div>
+    </div>
 
-    <app-portfolio-carousel></app-portfolio-carousel>
+    <!-- Visual -->
+    <div class="hero-visual">
+      <div class="hero-visual-frame">
+        <img
+          src="assets/portfolio-preview.png"
+          alt="Website examples built by The Website Guys" />
+      </div>
+    </div>
+
   </div>
-
-  <div class="hero-visual">
-    <video autoplay muted loop playsinline class="hero-video">
-      <source src="assets/hero-video.mp4" type="video/mp4" />
-    </video>
-    <div class="video-overlay"></div>
-  </div>
-
-</div>
+</section>

@@ -9,59 +9,86 @@ import { Component } from '@angular/core';
   styleUrl: './faq-section.component.scss'
 })
 export class FaqSectionComponent {
-  faqs = [
+faqs = [
   {
-    question: "How long does it take to build a website?",
-    answer: "That depends on the complexity, features, and how quickly you provide assets (content, images, feedback). A basic site might take 1–3 weeks, while more advanced/eCommerce sites often take 4–8+ weeks. We maintain clear milestones and keep you updated at every step.",
+    question: "Is the website mockup really free?",
+    answer:
+      "Yes. We design a custom homepage mockup for your business before you commit to anything. You can review it and decide if you’d like to move forward — no obligation.",
     open: false
   },
   {
-    question: "How much does it cost to build a website?",
-    answer: "Our website pricing depends on the number of pages, features, and level of customization. Single-page websites start at $500+, while multi-page builds typically start at $1,000+. The final cost depends on the functionality you need — such as eCommerce, memberships, or custom integrations. We offer tiered packages (Starter, Growth, and Custom) and provide a detailed quote after reviewing your goals and requirements.",
+    question: "What happens after I submit the form?",
+    answer:
+      "We’ll review your details, then reach out to clarify anything needed before creating your mockup. If you’d prefer, you can also book a quick call to talk things through.",
     open: false
   },
   {
-    question: "Which industries or niches do you work with?",
-    answer: "We help businesses across industries — service providers, eCommerce, local businesses, SaaS/startups, creatives, and more. We enjoy tailoring the solution to your industry’s unique needs.",
+    question: "Do I need to choose a plan upfront?",
+    answer:
+      "No. You don’t need to choose anything before seeing your mockup. Plans are only discussed after you’ve seen what we’d build for your business.",
     open: false
   },
   {
-    question: "Will my website automatically appear on Google’s first page?",
-    answer: "No, we can’t guarantee first-page placement immediately — search rankings depend on competition, keyword difficulty, ongoing SEO work, and time. However, we will optimize your site (SEO fundamentals, content, technical setup) to give you the best chance to rank. With consistent effort, many clients see significant improvements in 3–6 months.",
+    question: "Are these templates or pre-built designs?",
+    answer:
+      "No. Every website we design is built specifically for the business — no templates, no page builders, and no reused layouts.",
     open: false
   },
   {
-    question: "Do I need to know how to code to manage my website?",
-    answer: "No coding skills are required. We build the site with an easy content management system (CMS), and we provide training, documentation, and ongoing support so you can make updates (or we can do them for you).",
+    question: "What types of businesses do you work with?",
+    answer:
+      "We primarily work with local and service-based businesses that want a clear, professional website without managing the technical side themselves.",
     open: false
   },
   {
-    question: "Can I make updates to my website after launch?",
-    answer: "Absolutely. We offer post-launch maintenance and update services. Whether you want minor text/image edits or entirely new pages/features, we’re here to support you.",
+    question: "Who will I be working with?",
+    answer:
+      "You’ll communicate directly with the team building your site — no sales handoffs or middlemen. The same people who design it support it.",
     open: false
   },
   {
-    question: "What do I need to provide to get started?",
-    answer: "At the start, we’ll ask for your branding assets (logo, colors, fonts), content (text, images), examples of sites you like, and key goals or features you want. The more detail you provide early, the smoother the process.",
+    question: "What if I don’t like the mockup?",
+    answer:
+      "That’s completely fine. If it’s not the right fit, there’s no pressure to move forward. The goal is to make sure it feels right before any commitment.",
     open: false
   },
   {
-    question: "Which platforms or CMS do you build on?",
-    answer: "We build on flexible, industry-standard platforms like WordPress, Shopify, Webflow, or custom frameworks depending on your needs. Each has pros and cons — we’ll recommend what fits best for your project.",
+    question: "Can changes be made after launch?",
+    answer:
+      "Yes. Once live, we can help with updates, improvements, and adjustments as your business evolves, based on what you need.",
     open: false
   },
   {
-    question: "Will my website be mobile-friendly and fast loading?",
-    answer: "Yes — every site we build is responsive (adapts to mobile, tablet, desktop) and optimized for speed, performance, and SEO best practices (image compression, caching, code minification).",
+    question: "Will I own my website?",
+    answer:
+      "An ownership buyout option is available if you’d like full control of the site and code. We’ll explain this clearly if you decide to move forward.",
     open: false
   },
   {
-    question: "What ongoing support, maintenance or hosting do you offer?",
-    answer: "We offer maintenance plans covering updates, backups, security monitoring, bug fixes, and help with content changes. We can also host your site or guide you with hosting setup.",
+    question: "Is this a long-term contract?",
+    answer:
+      "No long-term commitment is required upfront. Everything starts with the mockup so you can decide comfortably before moving ahead.",
     open: false
   }
-]
+];
 
+
+
+  scrollTo(id: string) {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const yOffset = -80; // adjust for topbar / navbar height
+    const y =
+      el.getBoundingClientRect().top +
+      window.pageYOffset +
+      yOffset;
+
+    window.scrollTo({
+      top: y,
+      behavior: 'smooth'
+    });
+  }
 
 
   toggleFaq(faq: any) {

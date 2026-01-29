@@ -6,8 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class EmailService {
 
-  // private functionUrl = 'https://twg-template-submission-92b1532f00c1.herokuapp.com';
-    private functionUrl = 'http://localhost:3000';
+  private functionUrl = 'https://twg-template-submission-92b1532f00c1.herokuapp.com';
 
   constructor(private http: HttpClient) { }
 

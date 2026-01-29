@@ -1,94 +1,117 @@
-<section class="contact-section" id="contact">
-  <div class="glow-bg">
-    <div class="glow"></div>
-    <div class="glow"></div>
-    <div class="glow"></div>
-    <div class="glow"></div>
-  </div>
+<section class="contact-horizontal" id="contact">
+  <div class="contact-inner">
 
-  <div class="contact-container">
-    <!-- LEFT SIDE -->
-    <div
-      class="contact-info"
-      *ngIf="animateInfo"
-      [@slideInLeft]="animateInfo ? 'visible' : 'hidden'"
-    >
-      <h2 class="business-name">The Website Guys</h2>
-      <p class="business-tagline">Custom Web Solutions — Built for Growth.</p>
-      <p class="business-desc">
-        We help businesses of all sizes launch stunning, high-performing online
-        platforms. Whether it’s a new design, a full rebuild, or ongoing SEO —
-        we’ve got you covered.
+    <!-- LEFT COPY -->
+    <div class="contact-copy">
+
+      <span class="contact-eyebrow">
+        Quick assessment
+      </span>
+
+      <h2 class="contact-title orbitron-bold">
+        See if there’s an opportunity worth exploring
+      </h2>
+
+      <p class="contact-lead dm-sans-regular">
+        This starts with a short conversation to understand your business
+        and what you’re trying to improve.
+        <br /><br />
+        From there, we’ll be direct about whether there’s a fit
+        and what — if anything — makes sense next.
       </p>
+
+      <div class="contact-proof">
+        <span>No upfront cost</span>
+        <span>•</span>
+        <span>No long-term commitment</span>
+        <span>•</span>
+        <span>Custom-built for your business</span>
+      </div>
     </div>
 
-    <!-- RIGHT SIDE -->
-    <div
-      class="contact-wrapper"
-      *ngIf="animateInfo"
-      [@slideInRight]="animateInfo ? 'visible' : 'hidden'"
-    >
-      <!-- Step 1: Contact Form -->
-      <div *ngIf="!showBooking; else bookingStep" class="contact-step">
-        <h2 class="contact-heading">Let’s Get Started</h2>
+    <!-- FORM -->
+    <form
+      class="contact-form"
+      [formGroup]="contactForm"
+      (ngSubmit)="sendEmail()"
+      *ngIf="submitState !== 'success'">
 
-        <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="sendEmail()">
-          <div class="input-group double">
-            <input type="text" placeholder="First Name" formControlName="firstName" required />
-            <input type="text" placeholder="Last Name" formControlName="lastName" required />
-          </div>
-
-          <div class="input-group">
-            <input type="email" placeholder="Email" formControlName="email" required />
-          </div>
-
-          <div class="input-group">
-            <input type="tel" placeholder="Phone" formControlName="phone" />
-          </div>
-
-          <div class="checkbox-group" formGroupName="services">
-            <label class="group-label">Services You Need:</label>
-            <div class="checkbox-options">
-              <label><input type="checkbox" formControlName="website" /> Website</label>
-              <label><input type="checkbox" formControlName="branding" /> Branding</label>
-              <label><input type="checkbox" formControlName="seo" /> SEO</label>
-              <label><input type="checkbox" formControlName="mobileApp" /> Mobile App</label>
-            </div>
-          </div>
-
-          <div class="input-group">
-            <textarea
-              placeholder="Tell us more about your project"
-              formControlName="projectDetails"
-            ></textarea>
-          </div>
-
-          <button type="submit" class="button-primary" [disabled]="submitted">
-            {{ submitted ? 'Sending...' : 'Send' }}
-          </button>
-        </form>
+      <div class="form-row">
+        <input
+          (focus)="onFormFocus()"
+          type="text"
+          placeholder="First name"
+          formControlName="firstName" />
+        <input
+          type="text"
+          placeholder="Last name"
+          formControlName="lastName" />
       </div>
 
-      <!-- Step 2: Booking View -->
-      <ng-template #bookingStep>
-        <div class="booking-step">
-          <h2 class="booking-heading">Wait… not done yet!</h2>
-          <p class="booking-text">
-            Get started quicker by <strong>booking a meeting</strong> with our team below.
-          </p>
+      <input
+        (focus)="onFormFocus()"
+        type="email"
+        placeholder="Email address"
+        formControlName="email" />
 
-          <div class="calendar-container">
-            <iframe
-              [src]="bookingLink | safeUrl"
-              width="100%"
-              height="650"
-              frameborder="0"
-              style="border:0; border-radius: 20px;"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </div>
-      </ng-template>
+      <input
+        (focus)="onFormFocus()"
+        type="tel"
+        placeholder="Phone"
+        formControlName="phone" />
+
+      <!-- <textarea
+        (focus)="onFormFocus()"
+        placeholder="What type of business do you run?"
+        formControlName="projectDetails">
+      </textarea> -->
+
+      <button
+        type="submit"
+        class="contact-submit"
+        [disabled]="submitState === 'submitting'">
+
+        <span *ngIf="submitState !== 'submitting'">
+          Request a quick assessment →
+        </span>
+        <span *ngIf="submitState === 'submitting'">
+          Sending…
+        </span>
+
+      </button>
+
+      <p *ngIf="submitState === 'error'" class="contact-error">
+        {{ errorMessage }}
+      </p>
+
+    </form>
+
+    <!-- SUCCESS -->
+    <div *ngIf="submitState === 'success'" class="contact-success">
+
+      <h3 class="orbitron-bold">
+        Request received
+      </h3>
+
+      <p class="dm-sans-regular">
+        We’ll review your info and be in touch shortly to schedule a quick call.
+      </p>
+
+      <div class="calendar-wrapper">
+        <iframe
+          [src]="calendarUrl | safeUrl"
+          width="100%"
+          height="520"
+          frameborder="0"
+          loading="lazy">
+        </iframe>
+      </div>
+
+      <p class="calendar-note">
+        Booking is optional — we’ll reach out either way.
+      </p>
+
     </div>
+
   </div>
 </section>

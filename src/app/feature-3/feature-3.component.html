@@ -1,72 +1,55 @@
-<section class="services" @sectionAnimation id="services">
+<section class="principles" id="services">
 
-  <!-- Section 1 -->
- <div class="service-block">
-    <div class="service-content">
-      <i class="icon fa-solid fa-palette"></i>
-      <h2>Web Design</h2>
-      <p>We craft visually stunning, high-performing designs tailored to your brand and audience. Every pixel is intentional — every layout built to convert.</p>
+  <div class="principles-header">
+    <h2 class="orbitron-bold">
+      Built to be clear.<br />
+      Designed to get results.
+    </h2>
 
-      <ul class="service-features">
-        <li><i class="fa-regular fa-circle-check"></i> Custom UI/UX design for every device</li>
-        <li><i class="fa-regular fa-circle-check"></i> Brand identity alignment & moodboarding</li>
-        <li><i class="fa-regular fa-circle-check"></i> Interactive prototypes & design systems</li>
-      </ul>
-
-      <div class="highlight">
-        <strong>Goal:</strong> Deliver a unique visual identity that stands out and connects instantly.
-      </div>
-    </div>
-
-    <div class="service-image">
-      <img src="assets/web-design.jpg" alt="Web Design">
-    </div>
+    <p class="dm-sans-regular">
+      We focus on building websites that are easy to understand,
+      easy to manage, and designed to help customers take action.
+    </p>
   </div>
 
-  <!-- Section 2 (Inverted Layout) -->
-   <div class="service-block inverted">
-    <div class="service-content">
-      <i class="icon fa-solid fa-code"></i>
-      <h2>Web Development</h2>
-      <p>We build robust, scalable systems — not templates. From custom CMS to e-commerce platforms, our code is optimized for performance and flexibility.</p>
+  <div class="principles-grid">
 
-      <ul class="service-features">
-        <li><i class="fa-regular fa-circle-check"></i> Full-stack development (Angular, Node.js)</li>
-        <li><i class="fa-regular fa-circle-check"></i> Secure hosting, API integration & databases</li>
-        <li><i class="fa-regular fa-circle-check"></i> Lightning-fast performance & SEO-ready</li>
-      </ul>
-
-      <div class="highlight">
-        <strong>Goal:</strong> Create future-proof systems that evolve as your business grows.
-      </div>
+    <div class="principle-card dm-sans-regular">
+      <span class="principle-icon">◯</span>
+      <h3>Clear, conversion-focused design</h3>
+      <p>
+        Your website is structured to clearly explain what you do,
+        who it’s for, and what to do next — so visitors don’t get lost
+        and actually reach out.
+      </p>
     </div>
 
-    <div class="service-image">
-      <img src="assets/web-development.jpg" alt="Web Development">
+    <div class="principle-card dm-sans-regular">
+      <span class="principle-icon">◎</span>
+      <h3>Everything handled for you</h3>
+      <p>
+        We take care of setup, hosting, and ongoing maintenance so you
+        don’t have to worry about the technical side or keeping things updated.
+      </p>
     </div>
+
+    <div class="principle-card dm-sans-regular">
+      <span class="principle-icon">↗</span>
+      <h3>Support when you need it</h3>
+      <p>
+        As your business evolves, we’re here to help with updates,
+        improvements, and guidance — without starting from scratch.
+      </p>
+    </div>
+
   </div>
 
-  <!-- Section 3 -->
-    <div class="service-block">
-    <div class="service-content">
-      <i class="icon fa-solid fa-ranking-star"></i>
-      <h2>SEO Optimization</h2>
-      <p>We don’t just get you traffic — we get you the *right* traffic. Through advanced keyword strategy, on-page optimization, and analytics, we make your site visible and measurable.</p>
-
-      <ul class="service-features">
-        <li><i class="fa-regular fa-circle-check"></i> Keyword research & competitor analysis</li>
-        <li><i class="fa-regular fa-circle-check"></i> Technical SEO & performance audits</li>
-        <li><i class="fa-regular fa-circle-check"></i> Continuous analytics & growth tracking</li>
-      </ul>
-
-      <div class="highlight">
-        <strong>Goal:</strong> Drive long-term growth through sustainable search visibility.
-      </div>
-    </div>
-
-    <div class="service-image">
-      <img src="assets/seo-optimization.jpg" alt="SEO Optimization">
-    </div>
+  <div class="principles-cta">
+    <a
+      (click)="scrollTo('contact')"
+      class="principles-cta-link dm-sans-regular">
+      Get a free website mockup →
+    </a>
   </div>
 
 </section>

@@ -1,0 +1,160 @@
+.plans {
+  padding: 10rem 1.5rem 5.5rem;
+  background: #0e1116;
+  color: #fff;
+}
+
+.plans-inner {
+  max-width: 1150px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Header */
+.plans-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.plans-title {
+  font-size: clamp(2.6rem, 4.5vw, 3.6rem);
+  margin: 0.75rem 0;
+}
+
+.plans-lead {
+  max-width: 600px;
+  margin: 0 auto 2.75rem;
+  opacity: 0.75;
+  line-height: 1.6;
+}
+
+/* Grid */
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1.6rem;
+}
+
+/* Card */
+.plan-card {
+  background: #ffffff;
+  color: #000;
+  border-radius: 20px;
+  padding: 2.1rem 2rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.plan-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.18);
+}
+
+/* Featured */
+.plan-card.featured {
+  border: 2px solid #b3cee3;
+  box-shadow: 0 30px 65px rgba(0, 0, 0, 0.28);
+}
+
+/* Head */
+.plan-head {
+  margin-bottom: 1.2rem;
+}
+
+.plan-badge {
+  display: inline-block;
+  margin-bottom: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: #b3cee3;
+  color: #000;
+}
+
+.spacer {
+  display: inline-block;
+  margin-bottom: 0.4rem;
+  padding: 0.3rem 0.7rem;
+}
+
+.plan-name {
+  font-size: 1.45rem;
+  margin: 0.25rem 0;
+}
+
+.plan-tagline {
+  font-size: 0.9rem;
+  opacity: 0.65;
+}
+
+/* Price */
+.plan-price {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0.6rem 0 1.4rem;
+
+  span {
+    font-size: 0.95rem;
+    font-weight: 500;
+    opacity: 0.6;
+  }
+}
+
+/* Features */
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.8rem;
+  text-align: left;
+  font-size: 0.95rem;
+
+  li {
+    margin-bottom: 0.55rem;
+    padding-left: 1.3rem;
+    position: relative;
+
+    &:before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+      color: #000;
+    }
+  }
+}
+
+/* CTA */
+.plan-cta {
+  margin-top: auto;
+  border-radius: 999px;
+  padding: 0.85rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  background: #eef4f9;
+  transition: background 0.2s ease;
+}
+
+.plan-cta:hover {
+  background: #ddebf6;
+}
+
+.plan-cta.primary {
+  background: #b3cee3;
+}
+
+.plan-cta.primary:hover {
+  background: #a4c4dc;
+}
+
+/* Footnote */
+.plan-footnote {
+  margin-top: 0.9rem;
+  font-size: 0.8rem;
+  opacity: 0.55;
+}

@@ -1,12 +1,14 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, ElementRef, Inject, Pipe, PipeTransform, PLATFORM_ID } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, Pipe, PipeTransform, PLATFORM_ID } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EmailService } from '../email.service';
 import { PhoneFormatDirective } from '../phone-format.directive';
 import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { trigger, style, animate, transition, query, stagger } from '@angular/animations';
+import { AnalyticsService } from '../analytics.service';
 
+type SubmitState = 'idle' | 'submitting' | 'success' | 'error';
 
 @Pipe({ name: 'safeUrl', standalone: true })
 export class SafeUrlPipe implements PipeTransform {
@@ -49,117 +51,59 @@ export class SafeUrlPipe implements PipeTransform {
   ])
   ]
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit, AfterViewInit {
 
   contactForm!: FormGroup;
-  submitted: boolean = false;
-  dragOver: boolean = false;
-  uploadedFiles: File[] = [];  // Array to hold the uploaded files
-  successMessage: string = ''; // Variable to hold the success message
-  animateInfo = false;
+  submitState: SubmitState = 'idle';
+  errorMessage = '';
 
-  showBooking = false; // toggle after form submit
-  bookingLink = 'https://calendar.app.google/c1iP9beZufVVTg3m8'; // your Google booking link
+  calendarUrl =
+    'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2i_Epu-g1lHpqePUf7tdFP8aacaKmv5rABEjPGbeonq2CaY4s_Ua02RUbhnRSCVcFCM7TjXcSs?gv=true';
+
+  private formStarted = false;
 
   constructor(
-    private readonly fb: FormBuilder, 
-    private readonly emailService: EmailService,
-    private readonly sanitizer: DomSanitizer, // Import sanitizer to create safe download URLs
-    private router: Router,
-        private el: ElementRef,
+    private fb: FormBuilder,
+    private emailService: EmailService,
+    private analytics: AnalyticsService,
+    private sanitizer: DomSanitizer,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
-  transform(url: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-  }
-
-ngAfterViewInit() {
-  if (isPlatformBrowser(this.platformId)) {
-    const section = this.el.nativeElement.querySelector('.contact-section');
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !this.animateInfo) {
-          this.animateInfo = true; // trigger animation
-          observer.unobserve(section); // play only once
-        }
-      });
-    }, { threshold: 0.3 });
-
-    if (section) observer.observe(section);
-  }
-}
-
-
   ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      const selectedPlan = sessionStorage.getItem('selectedPlan');
+
+      if (selectedPlan) {
+        this.analytics.track('arrived_at_contact_with_plan', {
+          plan: selectedPlan
+        });
+      }
+    }
+
     this.contactForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: [''],
-      services: this.fb.group({
-        website: [false],
-        branding: [false],
-        seo: [false],
-        mobileApp: [false]
-      }),
       projectDetails: ['']
     });
   }
 
-  triggerFileInput(fileInput: HTMLInputElement) {
-    fileInput.click();
-  }
+  ngAfterViewInit() {
+    if (!isPlatformBrowser(this.platformId)) return;
 
-  onImagesChange(event: any) {
-    const files = Array.from(event.target.files) as File[]; // Cast to File[]
-    if (files.length > 0) {
-      // Append new files to the existing uploadedFiles array
-      this.uploadedFiles = [...this.uploadedFiles, ...files];
-      this.contactForm.patchValue({
-        images: this.uploadedFiles
-      });
-    }
-  }
-    
+    const section = document.getElementById('contact');
+    if (!section) return;
 
-  onDragOver(event: DragEvent) {
-    event.preventDefault();
-    this.dragOver = true;
-  }
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        this.analytics.track('contact_form_view');
+        observer.disconnect();
+      }
+    }, { threshold: 0.4 });
 
-  onDragLeave(event: DragEvent) {
-    event.preventDefault();
-    this.dragOver = false;
-  }
-
-  onDrop(event: DragEvent) {
-    event.preventDefault();
-    this.dragOver = false;
-    const files = Array.from(event.dataTransfer?.files || []) as File[]; // Cast to File[]
-    if (files.length > 0) {
-      // Append new files to the existing uploadedFiles array
-      this.uploadedFiles = [...this.uploadedFiles, ...files];
-      this.contactForm.patchValue({
-        images: this.uploadedFiles
-      });
-    }
-  }
-
-  // Method to remove a file from the uploaded files array
-  removeFile(index: number) {
-    this.uploadedFiles.splice(index, 1); // Remove file by index
-    this.contactForm.patchValue({
-      images: this.uploadedFiles // Update the form with the new file list
-    });
-  }
-
-  // Method to generate a safe download URL for the file
-  getFileURL(file: File): SafeUrl {
-    const blob = new Blob([file], { type: file.type });
-    const url = window.URL.createObjectURL(blob);
-    return this.sanitizer.bypassSecurityTrustUrl(url); // Return a safe URL
+    observer.observe(section);
   }
 
   sendEmail() {
@@ -168,37 +112,49 @@ ngAfterViewInit() {
       return;
     }
 
-    this.submitted = true;
+    this.submitState = 'submitting';
+    this.contactForm.disable();
 
+    const value = this.contactForm.getRawValue();
     const formData = new FormData();
-    formData.append('businessEmail', 'theofficialwebsiteguys@gmail.com'); // where the email gets sent
-    formData.append('firstName', this.contactForm.get('firstName')?.value);
-    formData.append('lastName', this.contactForm.get('lastName')?.value);
-    formData.append('email', this.contactForm.get('email')?.value);
-    formData.append('phone', this.contactForm.get('phone')?.value);
-    formData.append('projectDetails', this.contactForm.get('projectDetails')?.value);
 
-    // Collect selected services
-    const services = this.contactForm.get('services')?.value;
-    const selectedServices = Object.keys(services)
-      .filter(key => services[key])
-      .join(', ') || 'None selected';
-    formData.append('services', selectedServices);
+    formData.append('businessEmail', 'theofficialwebsiteguys@gmail.com');
+    formData.append('firstName', value.firstName);
+    formData.append('lastName', value.lastName);
+    formData.append('email', value.email);
+    formData.append('phone', value.phone || '');
+    formData.append('projectDetails', value.projectDetails || '');
 
-   this.emailService.sendUniversalEmail(formData).subscribe({
-      next: (response) => {
-        console.log('Email sent successfully!', response);
-        this.successMessage = 'Your message has been sent successfully!';
-        this.submitted = false;
-
-        // Instead of redirecting, show booking view
-        this.showBooking = true;
+    this.emailService.sendUniversalEmail(formData).subscribe({
+      next: () => {
+        this.submitState = 'success';
+        this.analytics.track('mockup_request', {
+          source: 'homepage',
+          selected_plan: sessionStorage.getItem('selectedPlan') || 'none'
+        });
+        this.analytics.track('calendar_viewed', {
+          source: 'post_form'
+        });
+        this.contactForm.reset();
+        this.contactForm.enable();
       },
-      error: (error) => {
-        console.error('Error sending email:', error);
-        this.submitted = false;
+      error: () => {
+        this.submitState = 'error';
+        this.errorMessage = 'Something went wrong. Please try again.';
+        this.contactForm.enable();
       }
     });
+  }
+
+  safeUrl(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+  onFormFocus() {
+    if (this.formStarted) return;
+    this.formStarted = true;
+
+    this.analytics.track('contact_form_start');
   }
   
 }

@@ -1,38 +1,67 @@
-<header class="header" [class.scrolled]="isScrolled" [class.menu-open]="isMenuOpen"> 
-  <!-- Logo -->
-  <a routerLink="/" class="logo-link" title="Home">
-    <img 
-      src="assets/logos/logo.png" 
-      alt="NY/NJ Cars For Cash Logo" 
-      width="200" 
-      class="logo-image"
-      priority>
-  </a>
+<header class="nav-shell" [class.scrolled]="isScrolled">
 
-  <!-- Desktop Nav -->
-  <nav class="nav-island" [class.scrolled]="isScrolled">
-    <div class="nav-links">
-      <a (click)="scrollTo('services')">What We Do</a>
-      <a (click)="scrollTo('how-it-works')">How We Build</a>
-      <a (click)="scrollTo('faq')">FAQ</a>
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="nav-container topbar-inner">
+      <div class="topbar-left">
+        <span class="dot"></span>
+        <span class="topbar-message">
+          Your website team — starting at $99/mo
+        </span>
+      </div>
+
+      <a class="topbar-cta" (click)="navigateAndScroll('contact')">
+        Get Free Mockup
+      </a>
     </div>
-  </nav>
-
-  <!-- CTA -->
-  <a class="cta-button" (click)="scrollTo('contact')">Contact Us</a>
-
-  <!-- Hamburger Toggle (mobile only) -->
-  <div class="menu-toggle" (click)="toggleMenu()">
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
   </div>
 
-  <!-- Dropdown Menu -->
-  <div class="dropdown-menu" [class.open]="isMenuOpen">
-    <a (click)="scrollTo('how-it-works'); toggleMenu()">How It Works</a>
-    <a (click)="scrollTo('services'); toggleMenu()">Services</a>
-    <a (click)="scrollTo('faq'); toggleMenu()">FAQ</a>
-    <a (click)="scrollTo('contact'); toggleMenu()" class="mobile-cta">Contact Us</a>
+  <!-- MAIN NAV -->
+  <div class="mainbar">
+    <div class="nav-container">
+      <div class="nav-inner">
+
+        <!-- LOGO -->
+        <a class="nav-logo" (click)="navigateAndScroll('home')">
+          <img
+            src="assets/logos/TWG-logo.png"
+            alt="The Website Guys"
+          />
+        </a>
+
+        <!-- DESKTOP LINKS -->
+        <nav class="nav-links">
+          <a (click)="navigateAndScroll('how-it-works')">How It Works</a>
+          <a routerLink="/plans">Pricing</a>
+        </nav>
+
+        <!-- PRIMARY CTA -->
+        <a class="nav-cta" (click)="navigateAndScroll('contact')">
+           Quick Assessment
+        </a>
+
+        <!-- MOBILE TOGGLE -->
+        <button
+          class="nav-toggle"
+          (click)="toggleMenu()"
+          aria-label="Toggle menu">
+          ☰
+        </button>
+
+      </div>
+    </div>
   </div>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" [class.open]="isMenuOpen">
+    <a (click)="navigateAndScroll('how-it-works'); closeMenu()">How It Works</a>
+    <a routerLink="/plans" (click)="closeMenu()">Pricing</a>
+
+    <a
+      class="mobile-cta"
+      (click)="navigateAndScroll('contact'); closeMenu()">
+      See if it’s a fit →
+    </a>
+  </div>
+
 </header>

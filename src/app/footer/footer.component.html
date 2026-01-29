@@ -1,17 +1,55 @@
-<div class="footer-wrapper">
-    <div class="container">
-        <div class="logo-and-directory">
+<footer class="footer-modern">
+  <div class="footer-inner">
 
-        </div>
-        <div class="copyright-and-socials">
-            <div class="copyright">© 2024 The Website Guys, LLC</div>
-            <div class="socials">
-                <div class="social-icon facebook"><a target="_blank" href="https://www.instagram.com/theofficialwebsiteguys/" class="icon-link"><i class="fa-brands fa-instagram"></i></a></div>
-                <div class="social-icon instagram"><a target="_blank" href="https://www.facebook.com/profile.php?id=61556389359855" class="icon-link"><i class="fa-brands fa-facebook-f"></i></a></div>
-                <div class="social-icon youtube"><a target="_blank" href="https://www.youtube.com/@theofficialwebsiteguys" class="icon-link"><i class="fa-brands fa-youtube"></i></a></div>
-                <div class="social-icon twitter"><a target="_blank" href="https://x.com/thewebsiteguys_" class="icon-link"><i class="fa-brands fa-twitter"></i></a></div>
-                <div class="social-icon tiktok"><a target="_blank" href="https://www.tiktok.com/@theofficialwebsiteguys" class="icon-link"><i class="fa-brands fa-tiktok"></i></a></div>
-            </div>
-        </div>
+    <!-- BRAND -->
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="assets/logos/TWG-logo.png" alt="The Website Guys logo" width="75">
+      </div>
+
+      <p class="footer-tagline orbitron-regular">
+        Custom websites for local service businesses —
+        built clearly, managed simply.
+      </p>
     </div>
-</div>
+
+    <!-- LINKS -->
+    <nav class="footer-nav dm-sans-regular">
+      <a (click)="navigateAndScroll('how-it-works')">How it works</a>
+      <a (click)="navigateAndScroll('services')">What’s included</a>
+      <a (click)="navigateAndScroll('faq')">FAQs</a>
+
+      <a
+        (click)="navigateAndScroll('contact')"
+        class="footer-cta">
+        Get a free website mockup →
+      </a>
+    </nav>
+
+    <!-- SOCIALS -->
+    <div class="footer-socials">
+      <a target="_blank" href="https://www.instagram.com/theofficialwebsiteguys/" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a target="_blank" href="https://www.facebook.com/profile.php?id=61556389359855" aria-label="Facebook">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+      <a target="_blank" href="https://www.youtube.com/@theofficialwebsiteguys" aria-label="YouTube">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+      <a target="_blank" href="https://x.com/thewebsiteguys_" aria-label="Twitter / X">
+        <i class="fa-brands fa-twitter"></i>
+      </a>
+      <a target="_blank" href="https://www.tiktok.com/@theofficialwebsiteguys" aria-label="TikTok">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div class="footer-bottom dm-sans-regular">
+    <span>© 2024 The Website Guys, LLC</span>
+    <span>Built with intention</span>
+  </div>
+</footer>

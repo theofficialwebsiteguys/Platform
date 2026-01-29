@@ -1,0 +1,68 @@
+<section class="plan-confirmation" id="plan-confirmation">
+  <div class="confirmation-inner">
+
+    <span class="confirmation-eyebrow dm-sans-regular">
+      You’re getting started with
+    </span>
+
+    <h2 class="confirmation-title orbitron-bold">
+      {{ plan.name }} Plan
+    </h2>
+
+    <p class="confirmation-lead dm-sans-regular">
+      Here’s exactly what’s included and how we’ll get things moving.
+    </p>
+
+    <!-- MAIN CARD -->
+    <div class="confirmation-card highlight">
+
+      <h3>How your website is built & managed</h3>
+
+      <p>
+        We build your website entirely from scratch using custom code —
+        <strong>no templates, no page builders.</strong>
+        Everything is designed specifically around your business and goals.
+      </p>
+
+      <ul class="confirmation-list">
+        <li>Custom-designed & custom-coded website</li>
+        <li>Domain purchase and full domain management handled by us</li>
+        <li>Secure hosting, updates, and technical maintenance included</li>
+        <li>Ongoing support and check-ins based on your plan</li>
+        <li *ngIf="plan.name === 'Scale'">
+          SEO planning, optimization guidance, and strategic improvements
+        </li>
+      </ul>
+
+    </div>
+
+    <!-- NEXT STEPS (INLINE, COMPACT) -->
+    <div class="confirmation-steps">
+      <div>
+        <strong>1.</strong> Secure Stripe checkout
+      </div>
+      <div>
+        <strong>2.</strong> Book your onboarding call
+      </div>
+      <div>
+        <strong>3.</strong> We prep before the meeting
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="confirmation-actions">
+      <button class="primary-cta" (click)="goToStripe()">
+        Continue to Secure Payment →
+      </button>
+
+      <a class="secondary-link" href="#contact">
+        I’d rather talk first
+      </a>
+    </div>
+
+    <p class="confirmation-note">
+      Ownership buyout options are available later if you choose to take full control.
+    </p>
+
+  </div>
+</section>

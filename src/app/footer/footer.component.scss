@@ -1,164 +1,132 @@
 @import '../../styles/variables';
-// Variables for colors, padding, and font sizes
-$text-color-light: #F2F2F2;
-$padding-large: 48px 0;
-$padding-small: 16px 0;
-$gap-large: 40px;
-$gap-small: 8px;
-$font-size-section-header: 18px;
-$font-size-list-item: 16px;
-$font-size-copyright: 16px;
-$font-weight-header: 800;
-$font-weight-normal: 400;
-$font-weight-copyright: 500;
-$logo-max-width: 250px;
 
-// Footer Wrapper
-.footer-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: $color-secondary;
-  padding: 0;
-  width: 100%;
-  color: $text-color-light;
-  margin: auto;
+.footer-modern {
+  background: linear-gradient(
+    to bottom,
+    #0e1116 0%,
+    #0b0e13 100%
+  );
+  color: rgba(255,255,255,0.75);
+  padding: 4.5rem 2rem 2rem;
 }
 
-// Container
-.container {
-  width: 100%;
-  max-width: 1248px;
-  padding: 0 24px;
-  margin: auto;
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 0.8fr;
+  gap: 3rem;
+  align-items: start;
 }
 
-// Logo and Directory
-.logo-and-directory {
+/* BRAND */
+.footer-brand {
+  max-width: 360px;
+}
+
+.footer-logo {
+  margin-bottom: 0.75rem;
+}
+
+.footer-tagline {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.6);
+}
+
+/* NAV */
+.footer-nav {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: $padding-large;
-  border-bottom: 2px solid $text-color-light;
-  width: 100%;
-  margin: auto;
+  gap: 0.6rem;
 
-  .logo {
-    width: 100%;
-    max-width: $logo-max-width;
-    height: auto;
-    margin: 30px;
-    background: url('../../assets/logos/logo.png') no-repeat center center;
-    background-size: contain;
+  a {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+      color: #b3cee3;
+    }
   }
 
-  .directory {
-    display: flex;
+  .footer-cta {
+    margin-top: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+
+    background: rgba($color-primary, 0.16);
+    border: 1px solid rgba($color-primary, 0.35);
+    color: #ffffff;
+
+    font-weight: 700;
+    font-size: 0.85rem;
+
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: $color-primary;
+      color: #000;
+      transform: translateY(-1px);
+    }
+  }
+}
+
+/* SOCIALS */
+.footer-socials {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+
+  a {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.6);
+    transition: transform 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      color: #b3cee3;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+/* BOTTOM BAR */
+.footer-bottom {
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .footer-socials {
+    justify-content: center;
+  }
+
+  .footer-bottom {
     flex-direction: column;
-    align-items: flex-start;
-    width: 60%;
-    gap: $gap-large;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .footer-brand {
     margin: auto;
-
-    .directory-section {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      text-align: center;
-
-      .section-header {
-        font-family: 'Inter', sans-serif;
-        font-weight: $font-weight-header;
-        font-size: $font-size-section-header;
-      }
-
-      .list {
-        display: flex;
-        flex-direction: column;
-        gap: $gap-small;
-
-        .list-item {
-          font-family: 'Inter', sans-serif;
-          font-weight: $font-weight-normal;
-          font-size: $font-size-list-item;
-        }
-      }
-    }
-  }
-}
-
-// Copyright and Socials
-.copyright-and-socials {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: $padding-small;
-  width: 100%;
-  text-align: center;
-  margin: auto;
-
-  .copyright {
-    font-family: 'Inter', sans-serif;
-    font-weight: $font-weight-copyright;
-    font-size: $font-size-copyright;
-    margin-bottom: $padding-small;
-  }
-
-  .socials {
-    display: flex;
-    gap: 16px;
-
-    .social-icon {
-      font-size: 24px;
-      cursor: pointer;
-
-      .icon-link {
-        color: $text-color-light;
-        text-decoration: none;
-      }
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .directory{
-    align-items: center !important;
-  }
-}
-
-// Responsive Design
-@media (min-width: 768px) {
-  .logo-and-directory {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: auto;
-  }
-
-  .directory {
-    flex-direction: row !important;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: $gap-large;
-    width: 100%;
-    margin: auto;
-  }
-
-  .directory-section {
-    text-align: left !important;
-  }
-
-  .copyright-and-socials {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    text-align: left;
-    margin: auto;
-
-    .copyright {
-      margin-bottom: 0;
-    }
   }
 }

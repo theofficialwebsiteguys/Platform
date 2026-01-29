@@ -1,0 +1,119 @@
+<section class="plans" id="pricing">
+  <div class="plans-inner">
+
+    <!-- HEADER -->
+    <div class="plans-header">
+      <span class="plans-eyebrow dm-sans-regular">Pricing</span>
+
+      <h1 class="plans-title orbitron-bold">
+        Simple monthly pricing
+      </h1>
+
+      <p class="plans-lead dm-sans-regular">
+        Start with a free website mockup.
+        Choose a plan only if it feels like the right fit.
+      </p>
+    </div>
+
+    <!-- REASSURANCE -->
+    <div class="plans-note dm-sans-regular">
+      <p>
+        You don’t need to choose a plan upfront.
+        We’ll recommend the best option after you’ve seen your mockup.
+      </p>
+    </div>
+
+    <!-- PLANS GRID -->
+    <div class="plans-grid">
+
+      <!-- ESSENTIAL -->
+      <div class="plan-card featured">
+        <div class="plan-head">
+          <span class="plan-badge">Most businesses start here</span>
+          <h3 class="plan-name">Essential</h3>
+          <p class="plan-tagline">Fully managed website, no hassle.</p>
+        </div>
+
+        <ul class="plan-features">
+          <li>Custom website build</li>
+          <li>Hosting + domain included</li>
+          <li>Monthly check-ins</li>
+          <li>Email-based support</li>
+          <li>Light ongoing updates</li>
+        </ul>
+
+        <div class="plan-price">
+          $99 <span>/ month</span>
+        </div>
+
+        <button
+          class="plan-cta primary"
+          (click)="selectPlan('essential')">
+          Get free website mockup →
+        </button>
+
+        <span class="plan-footnote">Simple, reliable, stress-free</span>
+      </div>
+
+      <!-- GROWTH -->
+      <div class="plan-card">
+        <div class="plan-head">
+          <span class="spacer"><br></span>
+          <h3 class="plan-name">Growth</h3>
+          <p class="plan-tagline">Faster response & priority access.</p>
+        </div>
+
+        <ul class="plan-features">
+          <li>Everything in Essential</li>
+          <li>Direct call & text access</li>
+          <li>Priority update queue</li>
+          <li>Biweekly check-ins</li>
+          <li>Faster turnaround</li>
+        </ul>
+
+        <div class="plan-price">
+          $199 <span>/ month</span>
+        </div>
+
+        <button
+          class="plan-cta"
+          (click)="selectPlan('growth')">
+          Get free website mockup →
+        </button>
+
+        <span class="plan-footnote">When timing matters</span>
+      </div>
+
+      <!-- EXPANSION -->
+      <div class="plan-card">
+        <div class="plan-head">
+          <span class="spacer"><br></span>
+          <h3 class="plan-name">Expansion</h3>
+          <p class="plan-tagline">Ongoing strategy & optimization.</p>
+        </div>
+
+        <ul class="plan-features">
+          <li>Everything in Growth</li>
+          <li>Weekly strategy calls</li>
+          <li>SEO planning & guidance</li>
+          <li>Highest build priority</li>
+          <li>Conversion optimization</li>
+        </ul>
+
+        <div class="plan-price">
+          $399 <span>/ month</span>
+        </div>
+
+        <button
+          class="plan-cta"
+          (click)="selectPlan('expansion')">
+          Get free website mockup →
+        </button>
+
+        <span class="plan-footnote">For scaling businesses</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>

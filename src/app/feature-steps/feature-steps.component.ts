@@ -25,33 +25,51 @@ export class FeatureStepsComponent {
   steps = [
     {
       title: 'Connect',
-      subtitle: 'Talk directly with your Website Guy',
-      heading1: 'Start with a Free Call,',
-      heading2: 'No Pressure — Just Strategy',
+      subtitle: 'Talk directly with the person building your site',
+      heading1: 'Start with a Real Conversation,',
+      heading2: 'Not a Sales Pitch',
       description:
-        'We’ll look at your business, your goals, and your current web presence. Together, we’ll outline exactly what you need — and how we can make it happen.',
-      cta: 'Book Your Free Call',
+        'We take time to understand your business, your goals, and what’s not working today. You’ll get clear direction, honest feedback, and a plan that actually makes sense.',
+      cta: 'Book a Free Call',
       image: 'assets/connect.jpg',
     },
     {
       title: 'Design',
-      subtitle: 'Your vision, brought to life',
-      heading1: 'Custom Designs,',
-      heading2: 'Built Around Your Brand',
+      subtitle: 'A custom design built around your brand',
+      heading1: 'Designed From Scratch,',
+      heading2: 'Built to Represent You',
       description:
-        'We turn your ideas into a clean, modern design that works on every screen. No templates — just something that feels uniquely yours and drives real results.',
-      cta: 'Start Your Design',
+        'Your site is designed specifically for your business — not adapted from a template. Every layout, interaction, and detail is intentional and built to convert.',
+      cta: 'View the Design Process',
       image: 'assets/design.jpg',
     },
     {
       title: 'Launch',
-      subtitle: 'Get live and start growing',
-      heading1: 'Launch with Confidence,',
-      heading2: 'Built for Real Performance',
+      subtitle: 'A fast, secure, and scalable launch',
+      heading1: 'Launch Confidently,',
+      heading2: 'With Full Ownership',
       description:
-        'From hosting to optimization, we handle everything so you can focus on running your business. Your site goes live fast, secure, and ready to grow.',
-      cta: 'Launch My Site',
+        'We handle everything needed to launch your site properly — performance, security, hosting, and SEO fundamentals — so you’re ready to grow from day one.',
+      cta: 'Get Started',
       image: 'assets/launch.jpg',
     },
   ];
+
+  
+  scrollTo(id: string) {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const yOffset = -80; // adjust for topbar / navbar height
+    const y =
+      el.getBoundingClientRect().top +
+      window.pageYOffset +
+      yOffset;
+
+    window.scrollTo({
+      top: y,
+      behavior: 'smooth'
+    });
+  }
+  
 }

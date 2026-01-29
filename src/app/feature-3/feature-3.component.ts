@@ -1,11 +1,12 @@
 import { AfterViewInit, Component, ElementRef, Inject, PLATFORM_ID } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { isPlatformBrowser } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-feature-3',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './feature-3.component.html',
   styleUrl: './feature-3.component.scss',
   animations: [
@@ -49,5 +50,22 @@ export class Feature3Component implements AfterViewInit {
 
       blocks.forEach((block: Element) => observer.observe(block));
     }
+  }
+
+    
+  scrollTo(id: string) {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const yOffset = -80; // adjust for topbar / navbar height
+    const y =
+      el.getBoundingClientRect().top +
+      window.pageYOffset +
+      yOffset;
+
+    window.scrollTo({
+      top: y,
+      behavior: 'smooth'
+    });
   }
 }
